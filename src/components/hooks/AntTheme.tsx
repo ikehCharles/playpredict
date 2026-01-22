@@ -62,6 +62,7 @@ const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => 
                     Checkbox: {
                         colorBorder: `rgb(${primary})`,
                     },
+                   
                     Steps: {
                         colorPrimary: "rgb(42, 227, 63)",
                         colorSplit: "rgb(240, 240, 240, 0.5)",
@@ -72,7 +73,8 @@ const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => 
                         colorTextDescription: "rgb(240, 240, 240, 0.5)",
 
                         colorText: "rgb(42, 227, 63)",
-                    }
+                    },
+                    
 
                 },
 

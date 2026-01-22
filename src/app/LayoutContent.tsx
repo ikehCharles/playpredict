@@ -10,14 +10,16 @@ export default function LayoutContent({
 }) {
   const pathname = usePathname();
   const isOnboarding = pathname === "/onboarding";
+  const isAuthPage = pathname === "/account/auth";
+  const shouldHideNav = isOnboarding || isAuthPage;
 
   return (
     <div className="min-h-screen bg-background">
       {!isOnboarding && <Header />}
-      <main className={!isOnboarding ? "pb-20 md:pb-6" : ""}>
+      <main className={!shouldHideNav ? "pb-20 md:pb-6" : ""}>
         {children}
       </main>
-      {!isOnboarding && <BottomNav />}
+      {!shouldHideNav && <BottomNav />}
     </div>
   );
 }

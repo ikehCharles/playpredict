@@ -207,9 +207,6 @@ const SignUp: React.FC<SignUpProps> = ({ onSuccess }) => {
             placeholder="Select your country"
             options={countries}
             showSearch
-            filterOption={(input, option) =>
-              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-            }
           />
         </Form.Item>
 

@@ -87,8 +87,10 @@ const SignIn: React.FC<SignInProps> = ({ onSuccess }) => {
 
         {/* Forgot Password Link */}
         <div className="text-right mb-6">
-          <a href="/forgot-password" className="text-primary text-sm hover:opacity-80">
+          <a href="/forgot-password" className=" text-sm hover:opacity-80">
+            <span className="text-primary">
             Forgot Password?
+            </span>
           </a>
         </div>
 
