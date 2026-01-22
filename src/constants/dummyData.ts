@@ -113,3 +113,35 @@ export const predictionsDummyData = [
       },
     },
   ]
+
+export const onboardingScreensData = [
+  {
+    title: "Win Money By Predicting Correctly",
+    description:
+      "Top 3 predictors each month get 50k, 35k, and 15k respectively",
+    imageSrc: "/images/onboarding/onBoarding1.svg",
+    imageAlt: "Win Money By Predicting Correctly",
+  },
+  {
+    title: "Save Tips for Later",
+    description:
+      "Save the Tips you like, so you can easily revisit them whenever you're ready.",
+    imageSrc: "/images/onboarding/onBoarding2.svg",
+    imageAlt: "Save Tips for Later",
+  },
+  {
+    title: "Track Your Performance",
+    description:
+      "Monitor your prediction accuracy and improve your skills over time with detailed statistics.",
+    imageSrc: "/images/onboarding/onBoarding3.svg",
+    imageAlt: "Track Your Performance",
+  },
+  {
+    title: "Follow Your Favorite Tipsters",
+    description:
+      "Stay updated with your favorite Tipsters and get notified when they share new predictions.",
+    imageSrc: "/images/onboarding/onBoarding4.svg",
+    imageAlt: "Follow Your Favorite Tipsters",
+  },
+ 
+]

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { PredictionCard, PredictionCardProps } from "../../utilities";
-import { predictionsDummyData } from "@/src/constants/dummyData";
+import { PredictionCard, PredictionCardProps } from "@utilities";
+import { predictionsDummyData } from "@constants";
 
 export default function Predictions() {
   const [predictions] = useState<PredictionCardProps[]>(predictionsDummyData);

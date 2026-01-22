@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navItems } from "@/src/constants/common";
+import { navItems } from "@constants";
 
 export default function BottomNav() {
   const pathname = usePathname();
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-secondary border-t border-gray-200 dark:border-gray-800 z-50">
-      <div className="flex items-center justify-around h-16 px-4">
+      <div className="flex items-center justify-around h-16 px-2">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;

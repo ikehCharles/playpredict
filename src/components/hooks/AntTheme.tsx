@@ -1,6 +1,6 @@
 "use client";
 
-import { GetCSSVariables } from "@/src/constants/helperFunc";
+import { GetCSSVariables } from "@constants";
 import { ConfigProvider } from "antd";
 
 const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => {
@@ -72,11 +72,6 @@ const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => 
                         colorTextDescription: "rgb(240, 240, 240, 0.5)",
 
                         colorText: "rgb(42, 227, 63)",
-                    },
-                    Button:{
-                        colorBorder:  `rgb(${primary}, 0.1)`,
-                        controlHeight: 35,
-                        paddingContentHorizontal:10
                     }
 
                 },
