@@ -174,16 +174,16 @@ export default function PageHeader({
                 width={120}
                 height={34}
                 priority
-                className="dark:hidden"
+                // className="dark:hidden"
               />
-              <Image
+              {/* <Image
                 src="/icons/PlayPredictLogoWhite.svg"
                 alt="PlayPredict"
                 width={120}
                 height={34}
                 priority
                 className="hidden dark:block"
-              />
+              /> */}
             </Link>
           ) : (
             <span className="flex-1" />

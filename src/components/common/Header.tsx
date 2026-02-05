@@ -25,16 +25,16 @@ export default function Header() {
               width={140}
               height={40}
               priority
-              className="dark:hidden"
+              // className="dark:hidden"
             />
-            <Image
+            {/* <Image
               src="/icons/PlayPredictLogoWhite.svg"
               alt="PlayPredict"
               width={140}
               height={40}
               priority
               className="hidden dark:block"
-            />
+            /> */}
           </Link>
 
           {/* Desktop Navigation - Hidden on auth/onboarding */}
