@@ -1,14 +1,13 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Auth } from "@main";
-import { AuthBottomSheet } from "@common";
 
 /**
- * Authentication page for Sign In and Sign Up
+ * Authentication page for email verification flow
  *
- * Navigate to: /account/auth?tab=signin or /account/auth?tab=signup
+ * Navigate to: /account/auth?from=onboarding
  */
 export default function AuthPage() {
   return (
@@ -22,11 +21,7 @@ function AuthPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const tab =
-    (searchParams.get("tab") as "signin" | "signup" | null) ?? "signin";
   const fromOnboarding = searchParams.get("from") === "onboarding";
-
-  const [showAuthOptions, setShowAuthOptions] = useState(false);
 
   const handleSuccess = () => {
     // Mark onboarding as completed if coming from onboarding
@@ -39,39 +34,17 @@ function AuthPageContent() {
   };
 
   const handleClose = () => {
-    // Show AuthBottomSheet instead of navigating away
-    setShowAuthOptions(true);
-  };
-
-  const handleCloseAuthOptions = () => {
-    setShowAuthOptions(false);
-  };
-
-  const handleAuthAction = () => {
-    // Mark onboarding as completed when user selects any auth method
+    // Navigate back to onboarding or home
     if (fromOnboarding) {
-      localStorage.setItem("onboardingCompleted", "true");
+      router.push("/onboarding");
+    } else {
+      router.back();
     }
-    // Navigate to home page
-    router.push("/");
   };
 
   return (
-    <>
-      <div className="pt-5 bg-background flex items-center justify-center py-2 px-2">
-        <Auth
-          defaultTab={tab}
-          onClose={handleClose}
-          onSuccess={handleSuccess}
-        />
-      </div>
-
-      {/* Auth Options Bottom Sheet */}
-      <AuthBottomSheet
-        isOpen={showAuthOptions}
-        onClose={handleCloseAuthOptions}
-        onAuthAction={handleAuthAction}
-      />
-    </>
+    <div className="pt-5 bg-secondary h-screen flex items-center justify-center py-2 px-2">
+      <Auth onClose={handleClose} onSuccess={handleSuccess} />
+    </div>
   );
 }

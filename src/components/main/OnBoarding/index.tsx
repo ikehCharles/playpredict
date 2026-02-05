@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import OnboardingLayout from "./OnboardingLayout";
-import { AuthBottomSheet } from "@common";
 import { onboardingScreensData } from "@constants";
 
 /**
@@ -12,7 +11,6 @@ import { onboardingScreensData } from "@constants";
  */
 const OnboardingFlow = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [showAuthModal, setShowAuthModal] = useState(false);
   const router = useRouter();
 
 
@@ -43,20 +41,8 @@ const OnboardingFlow = () => {
   };
 
   const handleCreateAccount = () => {
-    // Show authentication modal
-    setShowAuthModal(true);
-  };
-
-  const handleCloseAuthModal = () => {
-    setShowAuthModal(false);
-  };
-
-  const handleAuthAction = () => {
-    // Mark onboarding as completed when user chooses an auth method
-    localStorage.setItem("onboardingCompleted", "true");
-    // Navigate to home page (auth flow will handle the actual signup/login)
-    router.push("/");
-    router.refresh();
+    // Navigate directly to auth page
+    router.push("/account/auth?from=onboarding");
   };
 
   const currentScreen = onboardingScreensData[currentStep];
@@ -70,27 +56,18 @@ const OnboardingFlow = () => {
   };
 
   return (
-    <>
-      <OnboardingLayout
-        currentStep={currentStep}
-        totalSteps={onboardingScreensData.length}
-        title={currentScreen.title}
-        description={currentScreen.description}
-        imageSrc={currentScreen.imageSrc}
-        imageAlt={currentScreen.imageAlt}
-        onNext={handleNext}
-        onContinueWithoutSignup={handleContinueWithoutSignup}
-        onDotClick={handleDotClick}
-        nextButtonText={getNextButtonText()}
-      />
-
-      {/* Authentication Bottom Sheet */}
-      <AuthBottomSheet
-        isOpen={showAuthModal}
-        onClose={handleCloseAuthModal}
-        onAuthAction={handleAuthAction}
-      />
-    </>
+    <OnboardingLayout
+      currentStep={currentStep}
+      totalSteps={onboardingScreensData.length}
+      title={currentScreen.title}
+      description={currentScreen.description}
+      imageSrc={currentScreen.imageSrc}
+      imageAlt={currentScreen.imageAlt}
+      onNext={handleNext}
+      onContinueWithoutSignup={handleContinueWithoutSignup}
+      onDotClick={handleDotClick}
+      nextButtonText={getNextButtonText()}
+    />
   );
 };
 

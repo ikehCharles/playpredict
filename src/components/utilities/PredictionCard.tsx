@@ -5,7 +5,7 @@ import { FaRegFlag, FaThumbsUp } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 import { TiFlagOutline } from "react-icons/ti";
 import { PiShareFatBold } from "react-icons/pi";
-import { HiOutlineBookmark } from "react-icons/hi";
+import { HiBookmark, HiOutlineBookmark } from "react-icons/hi";
 import Button from "./Button";
 import RadioGroup from "./RadioGroup";
 
@@ -13,6 +13,7 @@ export interface PredictionCardProps {
     sport: string;
     league: string;
     timeAgo: string;
+    isSaved?: boolean;
     user: {
         name: string;
         username: string;
@@ -38,6 +39,7 @@ export default function PredictionCard({
     sport,
     league,
     timeAgo,
+    isSaved = false,
     user,
     match,
     prediction,
@@ -130,7 +132,10 @@ export default function PredictionCard({
                     <div className="flex items-center gap-2">
 
 
-                        <Button type="default" icon={<HiOutlineBookmark />} />
+                        <Button
+                            type="default"
+                            icon={isSaved ? <HiBookmark className="text-primary" /> : <HiOutlineBookmark />}
+                        />
                         <Button type="default" icon={<PiShareFatBold />} />
                     </div>
                 </div>

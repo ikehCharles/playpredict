@@ -114,6 +114,172 @@ export const predictionsDummyData = [
     },
   ]
 
+export const savedPredictionsDummyData = [
+  {
+    sport: "Football",
+    league: "Ligue 1",
+    timeAgo: "12m",
+    user: {
+      name: "John Wayne",
+      username: "johnwayne",
+      avatar: "https://i.pravatar.cc/150?img=3",
+      verified: true,
+      winRate: "84%",
+      tips: 1250,
+    },
+    match: {
+      home: "RC Lens",
+      away: "Paris SG",
+    },
+    prediction: {
+      title:
+        "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
+      odd: 2.56,
+    },
+    stats: {
+      likes: 44,
+    },
+  },
+  {
+    sport: "Basketball",
+    league: "USA / NBA",
+    timeAgo: "44m",
+    user: {
+      name: "John Wayne",
+      username: "johnwayne",
+      avatar: "https://i.pravatar.cc/150?img=3",
+      verified: true,
+      winRate: "87%",
+      tips: 101,
+    },
+    match: {
+      home: "Boston Celtics",
+      away: "Milwaukee Bucks",
+    },
+    prediction: {
+      title: "Over/Under – Over 225.5 Points",
+      odd: 2.55,
+    },
+    stats: {
+      likes: 430,
+    },
+  },
+  {
+    sport: "Football",
+    league: "Spain / La Liga",
+    timeAgo: "1h",
+    user: {
+      name: "John Wayne",
+      username: "johnwayne",
+      avatar: "https://i.pravatar.cc/150?img=3",
+      verified: true,
+      winRate: "46%",
+      tips: 258,
+    },
+    match: {
+      home: "Barcelona",
+      away: "Athletic Club",
+    },
+    prediction: {
+      title: "Barcelona",
+      odd: 1.24,
+    },
+    stats: {
+      likes: 0,
+    },
+  },
+];
+
+// Current user profile (for Profile landing & Edit)
+export const currentUserProfile = {
+  displayName: "XCV",
+  username: "bettinggod",
+  email: "johndoe@gmail.com",
+  phone: "+39 801 234 5678",
+  phoneVerified: false,
+  country: "England",
+  countryCode: "GB",
+  joinDate: "05 Jan, 2025",
+  bio: "Data-driven punter. I bet on stats, trends & form, not gut. Big accas & smart singles. No sure things, just sharp analysis & calculated risks.",
+  avatar: "https://i.pravatar.cc/150?img=3",
+  verified: false,
+  followingCount: 12,
+  followersCount: 643,
+};
+
+// Users shown on Following page (list of people you follow / search)
+export const followingListDummyData = [
+  {
+    id: "1",
+    name: "John Wayne",
+    username: "johnwayne",
+    avatar: "https://i.pravatar.cc/150?img=3",
+    verified: true,
+    bio: "Data-driven punter. I bet on stats, trends & form, not gut. Big accas & smart singles. No sure things, just sharp analysis & calculated risks.",
+    winRate: "84%",
+    winRateColor: "green" as const,
+    tipsCount: 1250,
+    isFollowing: true,
+  },
+  {
+    id: "2",
+    name: "Jack Clouseau",
+    username: "jacktips",
+    avatar: "https://i.pravatar.cc/150?img=5",
+    verified: false,
+    bio: "Sports betting strategist 🎯 Turning odds into opportunities. Live for the thrill, stats, and the next big win 💰 #BetSmart #PuntersLife",
+    winRate: "49%",
+    winRateColor: "red" as const,
+    tipsCount: 38,
+    isFollowing: false,
+  },
+  {
+    id: "3",
+    name: "Jack Clouseau",
+    username: "jacktips",
+    avatar: "https://i.pravatar.cc/150?img=5",
+    verified: false,
+    bio: "Just a punter chasing value bets and good vibes 🍀 Football addict ⚽ Odds whisperer 💬 Wins, losses, lessons, all part of the game!",
+    winRate: "53%",
+    winRateColor: "yellow" as const,
+    tipsCount: 38,
+    isFollowing: true,
+  },
+  {
+    id: "4",
+    name: "Andres Munoz",
+    username: "andresss",
+    avatar: "https://i.pravatar.cc/150?img=8",
+    verified: false,
+    bio: "Sports betting analyst | Data-driven punter 📈 Focused on long-term profit, discipline, and the edge hidden in the numbers 📊",
+    winRate: "78%",
+    winRateColor: "green" as const,
+    tipsCount: 258,
+    isFollowing: false,
+  },
+];
+
+// Settings & Preferences rows
+export const settingsPreferencesRows = [
+  { key: "language", label: "Language", value: "English", icon: "language" },
+  { key: "changePassword", label: "Change Password", icon: "lock" },
+  { key: "notifications", label: "Notifications Settings", icon: "bell" },
+  { key: "verifyAccount", label: "Verify Your Account", icon: "badge" },
+  { key: "oddsFormat", label: "Odds Format", value: "Decimal Odds (2.50)", icon: "chart" },
+  { key: "timezone", label: "Timezone", value: "Africa/Lagos (UTC +01:00)", icon: "globe" },
+  { key: "bookiesFor", label: "Bookies For", value: "Netherlands", icon: "bookies", flag: "🇳🇱" },
+];
+
+// Support rows
+export const supportRows = [
+  { key: "privacy", label: "Privacy Policy", icon: "support" },
+  { key: "terms", label: "Terms of Use", icon: "support" },
+  { key: "helpCentre", label: "Help Centre", icon: "support" },
+  { key: "community", label: "Community Guidelines", icon: "support" },
+  { key: "reportBug", label: "Report a bug", icon: "bug" },
+  { key: "featureSuggestion", label: "Feature Suggestion", icon: "bug" },
+];
+
 export const onboardingScreensData = [
   {
     title: "Win Money By Predicting Correctly",

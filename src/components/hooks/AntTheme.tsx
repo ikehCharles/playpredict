@@ -47,10 +47,11 @@ const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => 
                     },
                     Tabs: {
                         colorPrimary: `rgb(${primary})`,
+                        cardBg: `rgb(${secondary})`,
+                        colorBgContainer: `rgb(${secondary})`,
                     },
                     Segmented: {
                         colorText: `rgb(${primary})`,
-
                         colorTextLabel: `rgb(${primary})`,
                     },
                     Select: {

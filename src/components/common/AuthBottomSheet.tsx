@@ -30,8 +30,8 @@ const AuthBottomSheet: React.FC<AuthBottomSheetProps> = ({
       return;
     }
     
-    // Navigate to auth page with signup tab
-    router.push("/account/auth?tab=signup&from=onboarding");
+    // Navigate to auth page
+    router.push("/account/auth?from=onboarding");
   };
 
   const handleGoogleSignup = () => {

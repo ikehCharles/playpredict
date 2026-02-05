@@ -12,7 +12,7 @@ const DatePickerUI: React.FC<DatePickerProps> = ({ value, onChange }) => {
   return (
 
 
-    <Space className='relative bg-primary/5 py-1 rounded-xl ' vertical>
+    <Space className='relative bg-primary/5 py-1 rounded-lg ' vertical>
 
 
       <DatePicker

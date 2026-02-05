@@ -19,8 +19,8 @@ export const navItems: NavItem[] = [
     icon: IoTrophy,
   },
   {
-    name: "Saves",
-    href: "/saves",
+    name: "Saved",
+    href: "/saved",
     icon: IoBookmark,
   },
   {

@@ -24,7 +24,13 @@ export default function BottomNav() {
               }`}
             >
               <Icon className={`w-6 h-6 ${isActive ? "scale-110" : ""}`} />
-              <span className="text-xs font-medium">{item.name}</span>
+              <span
+                className={`text-xs font-medium ${
+                  isActive ? "border-b-2 border-primary pb-0.5" : ""
+                }`}
+              >
+                {item.name}
+              </span>
             </Link>
           );
         })}

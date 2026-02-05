@@ -11,6 +11,8 @@ import { AntTheme as ThemeConfigProvider } from "@hooks";
  */
 export default function OnboardingPage() {
   return (<ThemeConfigProvider>
+    <div className="h-screen bg-secondary">
     <OnboardingFlow />;
+    </div>
   </ThemeConfigProvider>)
 }

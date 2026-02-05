@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Header, BottomNav } from "@common";
+import { BottomNav } from "@common";
 
 export default function LayoutContent({
   children,
@@ -13,9 +13,10 @@ export default function LayoutContent({
   const isAuthPage = pathname === "/account/auth";
   const shouldHideNav = isOnboarding || isAuthPage;
 
+
+
   return (
-    <div className="min-h-screen bg-background">
-      {!isOnboarding && <Header />}
+    <div>
       <main className={!shouldHideNav ? "pb-20 md:pb-6" : ""}>
         {children}
       </main>

@@ -5,6 +5,7 @@ import { XSlidingButtons } from "@utilities";
 import HomeFilters, { Filter } from "./Filters";
 import { buttonListDummyData } from "@constants";
 import Predictions from "./Predictions";
+import { PageHeader } from "@common";
 
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState(buttonListDummyData[0]);
@@ -28,8 +29,11 @@ export default function Home() {
 
   return (
     <div className="w-full mx-auto">
+      {/* Header */}
+      <PageHeader isAuthenticated={false} />
+
       {/* Sticky Filter Bar */}
-      <div className="sticky top-16 border-t border-tertiary/5 z-40 bg-secondary">
+      <div className="sticky top-16 lg:top-16 border-t border-tertiary/5 z-40 bg-secondary">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-3">
           <HomeFilters
             onFilterChange={onFilterChange}

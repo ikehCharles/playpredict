@@ -1,67 +1,59 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@utilities";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import { IoArrowBack } from "react-icons/io5";
+import EnterEmail from "./EnterEmail";
+import VerifyEmail from "./VerifyEmail";
+import EmailVerified from "./EmailVerified";
 
 interface AuthProps {
-  defaultTab?: "signin" | "signup";
   onClose?: () => void;
   onSuccess?: () => void;
 }
 
-const Auth: React.FC<AuthProps> = ({ 
-  defaultTab = "signin", 
-  onClose,
-  onSuccess 
-}) => {
-  const [activeTab, setActiveTab] = useState<string>(defaultTab);
+type AuthStep = "enter-email" | "verify-email" | "email-verified";
+
+const Auth: React.FC<AuthProps> = ({ onClose, onSuccess }) => {
+  const [currentStep, setCurrentStep] = useState<AuthStep>("enter-email");
+  const [email, setEmail] = useState<string>("");
+
+  const handleEmailSubmit = (submittedEmail: string) => {
+    setEmail(submittedEmail);
+    setCurrentStep("verify-email");
+  };
+
+  const handleVerify = (otp: string) => {
+    console.log("Verifying OTP:", otp, "for email:", email);
+    // TODO: Implement actual OTP verification
+    setCurrentStep("email-verified");
+  };
+
+  const handleBack = () => {
+    setCurrentStep("enter-email");
+  };
+
+  const handleComplete = () => {
+    onSuccess?.();
+  };
 
   return (
     <div className="w-full max-w-md mx-auto">
       {/* White Background Wrapper */}
-      <div className="bg-secondary rounded-3xl shadow-xl p-6">
-        {/* Back Button */}
-        {onClose && (
-          <button
-            onClick={onClose}
-            className="mb-4 p-2 rounded-full hover:bg-tertiary/5 transition-colors"
-            aria-label="Go back"
-          >
-            <IoArrowBack className="w-6 h-6 text-tertiary" />
-          </button>
+      <div className="bg-secondary p-6 px-3">
+        {currentStep === "enter-email" && (
+          <EnterEmail onNext={handleEmailSubmit} />
         )}
 
-        {/* Sign In / Sign Up Buttons */}
-        <div className="flex gap-3 mb-6">
-          <Button
-            type={activeTab === "signin" ? "primary" : "default"}
-            onClick={() => setActiveTab("signin")}
-            className="flex-1"
-            
-          >
-            Sign In
-          </Button>
-          <Button
-            type={activeTab === "signup" ? "primary" : "default"}
-            onClick={() => setActiveTab("signup")}
-            className="flex-1"
-           
-          >
-            Sign Up
-          </Button>
-        </div>
+        {currentStep === "verify-email" && (
+          <VerifyEmail
+            email={email}
+            onBack={handleBack}
+            onVerify={handleVerify}
+          />
+        )}
 
-        {/* Form Content */}
-        <div className="">
-          {activeTab === "signin" ? (
-            <SignIn onSuccess={onSuccess} />
-          ) : (
-            <SignUp onSuccess={onSuccess} />
-          )}
-        </div>
+        {currentStep === "email-verified" && (
+          <EmailVerified onComplete={handleComplete} />
+        )}
       </div>
     </div>
   );

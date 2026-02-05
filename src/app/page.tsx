@@ -1,38 +1,56 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Home } from "@main";
 import { SplashScreen } from "@common";
 
+type PageStatus = "pending" | "redirect" | "splash" | "home";
+
 export default function HomePage() {
-  const [showSplash, setShowSplash] = useState(true);
+  const [status, setStatus] = useState<PageStatus>("pending");
   const router = useRouter();
+  const splashTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    // Check if user has visited before
     const hasVisited = localStorage.getItem("hasVisited");
     const onboardingCompleted = localStorage.getItem("onboardingCompleted");
+    const splashShown = localStorage.getItem("splashShown");
 
-    // Show splash screen for 2 seconds
-    const timer = setTimeout(() => {
-      if (!hasVisited || !onboardingCompleted) {
-        // First time user - navigate to onboarding page
-        localStorage.setItem("hasVisited", "true");
-        router.push("/onboarding");
-      } else {
-        // Returning user - hide splash and show home
-        setShowSplash(false);
-      }
-    }, 2000);
+    if (!hasVisited || !onboardingCompleted) {
+      localStorage.setItem("hasVisited", "true");
+      router.push("/onboarding");
+      return;
+    }
 
-    return () => clearTimeout(timer);
+    // Returning user: show splash only once
+    if (splashShown === "true") {
+      const id = setTimeout(() => setStatus("home"), 0);
+      return () => clearTimeout(id);
+    }
+
+    const deferId = setTimeout(() => {
+      setStatus("splash");
+      splashTimerRef.current = setTimeout(() => {
+        localStorage.setItem("splashShown", "true");
+        setStatus("home");
+      }, 2000);
+    }, 0);
+
+    return () => {
+      clearTimeout(deferId);
+      if (splashTimerRef.current) clearTimeout(splashTimerRef.current);
+    };
   }, [router]);
+
+  if (status === "pending" || status === "redirect") {
+    return null;
+  }
 
   return (
     <>
-      <SplashScreen isVisible={showSplash} />
-      {!showSplash && <Home />}
+      <SplashScreen isVisible={status === "splash"} />
+      {status === "home" && <Home />}
     </>
   );
 }

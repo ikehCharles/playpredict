@@ -22,7 +22,7 @@ const RadioGroupUI: React.FC<RadioGroupProps> = (props) => {
                         fontSize: 15,
                         controlPaddingHorizontal: 1,
                         paddingContentHorizontal: 1,
-                        padding:12
+                        padding:8
                     },
                     
                     
