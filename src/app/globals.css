@@ -5,6 +5,7 @@
     --secondary: 255, 255, 255;
     --tertiary: 33, 33, 33;
     --background: 243, 243, 243;
+    --error: 220, 52, 84;
 }
 
 @theme inline {
@@ -14,6 +15,7 @@
     --color-tertiary: rgb(var(--tertiary));
     --font-sans: rgb(var(--font-geist-sans));
     --font-mono: rgb(var(--font-geist-mono));
+    --color-error: rgb(var(--error));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +24,7 @@
         --secondary: 33, 33, 33;
         --tertiary: 255, 255, 255;
         --background: 5, 1, 12;
+        --error: 220, 52, 84;
     }
 }
 

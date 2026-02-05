@@ -11,3 +11,8 @@ export { default as OnboardingFlow } from './OnBoarding';
 
 // Auth components
 export { default as Auth } from './Auth';
+
+// Rankings components
+export { default as Rankings } from './Rankings';
+export { type RankingsFilterState } from './Rankings/RankingsFilters';
+export { type RankingUser } from './Rankings/RankingCard';

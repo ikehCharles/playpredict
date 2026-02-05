@@ -28,7 +28,7 @@ export default function FollowingCard({ user, onFollowToggle }: FollowingCardPro
 
   return (
     <div className="flex gap-3 p-4 rounded-xl bg-secondary border border-tertiary/10">
-      <Avatar src={user.avatar} size={48} className="flex-shrink-0" />
+      <Avatar src={user.avatar} size={48} className="shrink-0" />
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
           <div>

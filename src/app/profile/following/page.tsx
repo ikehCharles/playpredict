@@ -5,10 +5,10 @@ import Link from "next/link";
 import { PageHeader } from "@common";
 import FollowingCard from "@/src/components/main/Profile/FollowingCard";
 import { followingListDummyData } from "@constants";
-import { HiOutlineArrowLeft } from "react-icons/hi2";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { Input } from "@utilities";
 import type { FollowingUser } from "@/src/components/main/Profile/FollowingCard";
+import { MdKeyboardBackspace } from "react-icons/md";
 
 export default function FollowingPage() {
   const [search, setSearch] = useState("");
@@ -35,14 +35,15 @@ export default function FollowingPage() {
     <div className="w-full mx-auto min-h-[50vh]">
       <PageHeader
         title="Following"
+        showMobileHeader
         leftContent={
           <Link
             href="/profile"
-            className="p-2 -ml-1 rounded-full hover:bg-tertiary/5 transition-colors"
+            className="px-2 -ml-1 rounded-full hover:bg-tertiary/5 transition-colors"
             aria-label="Back to profile"
           >
-            <HiOutlineArrowLeft className="w-6 h-6 text-tertiary" />
-          </Link>
+            <MdKeyboardBackspace className="w-6 h-6 text-primary" />
+            </Link>
         }
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4">

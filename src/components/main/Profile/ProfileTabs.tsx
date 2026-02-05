@@ -40,7 +40,7 @@ export default function ProfileTabs() {
         <div className="flex items-center bg-secondary py-2 px-1  justify-between gap-3 mb-4">
           <DatePicker value={date} onChange={(d) => setDate(d as Dayjs | null)} />
           
-          <Button size="lg" >
+          <Button >
           <MdInsertChartOutlined />
                     <span>Insights</span>
                 </Button>

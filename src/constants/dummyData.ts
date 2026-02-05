@@ -280,6 +280,114 @@ export const supportRows = [
   { key: "featureSuggestion", label: "Feature Suggestion", icon: "bug" },
 ];
 
+// Rankings leaderboard data
+export const rankingsDummyData = [
+  {
+    id: "1",
+    name: "John Wayne",
+    username: "johnwayne",
+    avatar: "https://i.pravatar.cc/150?img=3",
+    verified: true,
+    winRate: 98,
+    tipsCount: 1024,
+    rank: 1,
+  },
+  {
+    id: "2",
+    name: "Jack Closeau",
+    username: "jacktips",
+    avatar: "https://i.pravatar.cc/150?img=5",
+    verified: true,
+    winRate: 96,
+    tipsCount: 1250,
+    rank: 2,
+  },
+  {
+    id: "3",
+    name: "Alani Mann",
+    username: "alanibetting",
+    avatar: "https://i.pravatar.cc/150?img=8",
+    verified: true,
+    winRate: 95,
+    tipsCount: 865,
+    rank: 3,
+  },
+  {
+    id: "4",
+    name: "Andres Munoz",
+    username: "andresss",
+    avatar: "https://i.pravatar.cc/150?img=12",
+    verified: true,
+    winRate: 94,
+    tipsCount: 767,
+    rank: 4,
+  },
+  {
+    id: "5",
+    name: "Cenk Tosun",
+    username: "cenkkk",
+    avatar: "https://i.pravatar.cc/150?img=15",
+    verified: true,
+    winRate: 94,
+    tipsCount: 829,
+    rank: 5,
+  },
+  {
+    id: "6",
+    name: "Maria Santos",
+    username: "mariabets",
+    avatar: "https://i.pravatar.cc/150?img=20",
+    verified: true,
+    winRate: 92,
+    tipsCount: 542,
+    rank: 6,
+  },
+  {
+    id: "7",
+    name: "David Kim",
+    username: "davidtips",
+    avatar: "https://i.pravatar.cc/150?img=33",
+    verified: true,
+    winRate: 91,
+    tipsCount: 623,
+    rank: 7,
+  },
+  {
+    id: "8",
+    name: "Emma Wilson",
+    username: "emmawins",
+    avatar: "https://i.pravatar.cc/150?img=25",
+    verified: true,
+    winRate: 90,
+    tipsCount: 456,
+    rank: 8,
+  },
+];
+
+// Rankings filter options
+export const rankingsFilterOptions = {
+  sports: [
+    { value: "all", label: "All Sports" },
+    { value: "football", label: "Football" },
+    { value: "basketball", label: "Basketball" },
+    { value: "tennis", label: "Tennis" },
+    { value: "hockey", label: "Hockey" },
+    { value: "baseball", label: "Baseball" },
+  ],
+  timeframe: [
+    { value: "all-time", label: "All-Time" },
+    { value: "this-month", label: "This Month" },
+    { value: "this-week", label: "This Week" },
+    { value: "last-30-days", label: "Last 30 Days" },
+    { value: "last-90-days", label: "Last 90 Days" },
+  ],
+  sortBy: [
+    { value: "tips", label: "No. of Tips" },
+    { value: "winrate", label: "Win Rate" },
+    { value: "followers", label: "Followers" },
+  ],
+};
+
 export const onboardingScreensData = [
   {
     title: "Win Money By Predicting Correctly",

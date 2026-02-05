@@ -78,7 +78,7 @@ const SelectUI: React.FC<SelectProps> = (props) => {
 
             // Size
             controlHeight: 45,
-            fontSize: 15,
+            fontSize: 13,
             borderRadius: 12,
 
             // Dropdown

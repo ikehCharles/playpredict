@@ -18,7 +18,7 @@ const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => 
                     colorPrimaryHover: `rgb(${primary})`,
                     colorIcon: `rgb(${primary})`,
                     colorText: `rgb(${primary})`,
-
+                    colorLink: `rgb(${primary})`,
                     colorBgContainer: `rgb(${secondary})`,
                     
                     colorBorderBg:`rgb(${primary}, 0.1)`,

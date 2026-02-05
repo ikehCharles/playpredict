@@ -22,7 +22,7 @@ const ButtonUI: React.FC<ButtonProps> = (props) => {
             fontSizeSM: 12,
             colorBorder: `rgb(${primary}, 0.1)`,
             paddingContentHorizontal: 12,
-            fontWeight:400
+            fontWeight:400,
 
           },
         }
