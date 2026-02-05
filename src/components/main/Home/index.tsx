@@ -33,7 +33,7 @@ export default function Home() {
       <PageHeader isAuthenticated={false} />
 
       {/* Sticky Filter Bar */}
-      <div className="sticky top-16 lg:top-16 border-t border-tertiary/5 z-40 bg-secondary">
+      <div className="sticky top-14 lg:top-16 border-t border-tertiary/5 z-40 bg-secondary">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-3">
           <HomeFilters
             onFilterChange={onFilterChange}
