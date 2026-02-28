@@ -1,39 +1,12 @@
 "use client";
 
-import { Avatar, Badge, Radio, Tag } from "antd";
-import { FaRegFlag, FaThumbsUp } from "react-icons/fa";
+import { useState } from "react";
+import { Avatar, Badge, Tag } from "antd";
 import { MdVerified } from "react-icons/md";
-import { TiFlagOutline } from "react-icons/ti";
-import { PiShareFatBold } from "react-icons/pi";
-import { HiBookmark, HiOutlineBookmark } from "react-icons/hi";
-import Button from "./Button";
-import RadioGroup from "./RadioGroup";
+import { PredictionCardActions, PredictionDetailsBottomSheet } from "@common";
+import type { PredictionItemType } from "@models";
 
-export interface PredictionCardProps {
-    sport: string;
-    league: string;
-    timeAgo: string;
-    isSaved?: boolean;
-    user: {
-        name: string;
-        username: string;
-        avatar: string;
-        verified?: boolean;
-        winRate: string;
-        tips: number;
-    };
-    match: {
-        home: string;
-        away: string;
-    };
-    prediction: {
-        title: string;
-        odd: number;
-    };
-    stats: {
-        likes: number;
-    };
-}
+export type PredictionCardProps = PredictionItemType;
 
 export default function PredictionCard({
     sport,
@@ -44,11 +17,25 @@ export default function PredictionCard({
     match,
     prediction,
     stats,
+    bookies
 }: PredictionCardProps) {
+    const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
     return (
-       
-            <div className="w-full  rounded-xl bg-secondary text-tertiary p-4 ">
+       <>
+            <div
+                className="w-full rounded-xl bg-secondary text-tertiary p-4 cursor-pointer"
+                role="button"
+                tabIndex={0}
+                onClick={() => setIsDetailsOpen(true)}
+                onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setIsDetailsOpen(true);
+                    }
+                }}
+                aria-label={`Open prediction details for ${match.home} vs ${match.away}`}
+            >
                 {/* Header */}
                 <div className="mb-3 flex items-center border-b border-tertiary/10 pb-2 justify-between text-xs">
                     <span className="font-medium">
@@ -105,40 +92,25 @@ export default function PredictionCard({
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1">
-                        <Button
-                            type="default"
-                            icon={<FaThumbsUp />}
-                            className="flex items-center gap-1"
-                        >
-                            {stats.likes}
-                        </Button>
-
-                        <Button
-                            icon={<FaRegFlag />}
-                            color="red"
-                            variant="filled"
-                        />
-                    </div>
-                    <div>
-                        <RadioGroup disabled defaultValue="b">
-                            <Radio.Button value="a">{prediction.odd}</Radio.Button>
-                            <Radio.Button value="b">Stake</Radio.Button>
-                        </RadioGroup>
-
-                    </div>
-
-                    <div className="flex items-center gap-2">
-
-
-                        <Button
-                            type="default"
-                            icon={isSaved ? <HiBookmark className="text-primary" /> : <HiOutlineBookmark />}
-                        />
-                        <Button type="default" icon={<PiShareFatBold />} />
-                    </div>
-                </div>
+                <PredictionCardActions
+                    likes={stats.likes}
+                    odd={prediction.odd}
+                    isSaved={isSaved}
+                    stopPropagation
+                />
             </div>
+            <PredictionDetailsBottomSheet
+                isOpen={isDetailsOpen}
+                onClose={() => setIsDetailsOpen(false)}
+                sport={sport}
+                league={league}
+                user={user}
+                match={match}
+                prediction={prediction}
+                stats={stats}
+                isSaved={isSaved}
+                bookies={bookies}
+            />
+       </>
     );
 }

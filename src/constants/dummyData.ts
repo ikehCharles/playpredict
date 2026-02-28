@@ -1,3 +1,5 @@
+import type { PredictionItemType } from "@models";
+
 export const buttonListDummyData = [
     {
         id: '1',
@@ -36,7 +38,16 @@ export const buttonListDummyData = [
     },
 ]
 
-export const predictionsDummyData = [
+const defaultBookies = [
+  { name: "Stake",     logoUrl: "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70", odd: 2.57 },
+  { name: "Bet365",   logoUrl: "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg", odd: 2.44 },
+  { name: "Staked",     logoUrl: "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70", odd: 2.57 },
+  { name: "Bet165",   logoUrl: "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg", odd: 2.44 },
+  { name: "Stakedd",     logoUrl: "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70", odd: 2.57 },
+  { name: "Bet265",   logoUrl: "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg", odd: 2.44 },
+ ];
+
+export const predictionsDummyData: PredictionItemType[] = [
     {
       sport: "Football",
       league: "Ligue 1",
@@ -61,6 +72,7 @@ export const predictionsDummyData = [
       stats: {
         likes: 44,
       },
+      bookies: defaultBookies,
     },
     {
       sport: "Football",
@@ -86,6 +98,7 @@ export const predictionsDummyData = [
       stats: {
         likes: 44,
       },
+      bookies: defaultBookies,
     },
     {
       sport: "Football",
@@ -111,10 +124,11 @@ export const predictionsDummyData = [
       stats: {
         likes: 44,
       },
+      bookies: defaultBookies,
     },
   ]
 
-export const savedPredictionsDummyData = [
+export const savedPredictionsDummyData: PredictionItemType[] = [
   {
     sport: "Football",
     league: "Ligue 1",

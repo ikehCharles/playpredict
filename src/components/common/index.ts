@@ -5,3 +5,7 @@ export { default as BottomNav } from './BottomNav';
 export { default as SplashScreen } from './SplashScreen';
 export { default as Avatar } from './Avatar';
 export { default as AuthBottomSheet } from './AuthBottomSheet';
+export { default as PredictionDetailsBottomSheet } from './PredictionDetailsBottomSheet';
+export { default as PredictionCardActions } from './PredictionCardActions';
+export { default as BookieBetButton } from './BookieBetButton';
+export { default as ReportTipSheet } from './ReportTipSheet';
