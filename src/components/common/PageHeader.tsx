@@ -43,7 +43,7 @@ export default function PageHeader({
   // Centered logo header (Onboarding, Auth)
   if (centered) {
     return (
-      <header className={`bg-secondary border-b border-tertiary/10 sticky safe-top z-50 safe-pt ${className}`}>
+      <header className={`bg-secondary border-b border-tertiary/10 sticky top-0 z-50 ${className}`} style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-16">
             <Link href="/" className="flex items-center gap-2">
@@ -75,7 +75,7 @@ export default function PageHeader({
     <>
    
     {/* Mobile: Logo + Navigation */}
-    <header className={`border-b  border-tertiary/5 ${showMobileHeader ? "" : " "} sticky bg-secondary safe-top z-50 safe-pt ${className}`}>
+    <header className={`border-b  border-tertiary/5 ${showMobileHeader ? "" : " "} sticky bg-secondary top-0 z-50 ${className}`} style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       
     <div className="  mx-auto px-2 ">
         <div className=" py-4 pl-2 pr-2 pt-4 flex items-center justify-between gap-2">
