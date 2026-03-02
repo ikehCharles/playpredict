@@ -38,3 +38,30 @@ export interface PredictionItemType {
     stats: PredictionStatsType;
     bookies?: BookieType[];
 }
+
+/* ── Profile Stats ── */
+
+export type FormResult = "win" | "loss" | "draw" | "pending";
+
+export interface SportWinRateType {
+    sport: string;
+    icon: string;
+    winRate: number;
+    tips: number;
+    color: string;          // Tailwind bg- class for the badge
+}
+
+export interface ProfileStatsType {
+    totalTips: number;
+    won: number;
+    lost: number;
+    voided: number;
+    totalWinRate: number;
+    totalWinRateTips: number;
+    sportWinRates: SportWinRateType[];
+    averageOdds: number;
+    winStreak: number;
+    loseStreak: number;
+    form: FormResult[];
+    achievements: string[];   // badge image URLs (empty strings = placeholder)
+}

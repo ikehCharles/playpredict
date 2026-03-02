@@ -26,7 +26,7 @@ export default function RankingsFilters({
     filters.sortBy !== "tips";
 
   return (
-    <div className="bg-secondary rounded-xl p-4 border border-tertiary/10">
+    <div className="bg-secondary p-4">
       {/* Filter dropdowns */}
       <div className="flex gap-2 items-center overflow-x-auto scrollbar-hide pb-1">
         <Select
@@ -66,7 +66,7 @@ export default function RankingsFilters({
       </div>
 
       {/* Info text */}
-      <p className="text-sm text-tertiary/60 mt-4 text-center">
+      <p className="text-sm bg-background p-2 rounded-lg text-tertiary/60 mt-4 text-center">
         Only verified tipster will appear on the leaderboard
       </p>
     </div>

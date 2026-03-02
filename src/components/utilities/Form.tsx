@@ -10,7 +10,6 @@ function FormUI<Values = unknown>(props: FormProps<Values>) {
         components: {
           Form: {
             labelColor: `rgb(${tertiary})`,
-            labelFontSize: 14,
             verticalLabelPadding: "0 0 6px",
           },
           

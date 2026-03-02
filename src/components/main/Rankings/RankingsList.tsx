@@ -5,9 +5,10 @@ import RankingCard, { RankingUser } from "./RankingCard";
 interface RankingsListProps {
   users: RankingUser[];
   onFollowClick?: (id: string) => void;
+  currentUser: RankingUser;
 }
 
-export default function RankingsList({ users, onFollowClick }: RankingsListProps) {
+export default function RankingsList({ users, currentUser, onFollowClick }: RankingsListProps) {
   if (users.length === 0) {
     return (
       <div className="bg-secondary rounded-xl p-8 text-center border border-tertiary/10">
@@ -17,9 +18,9 @@ export default function RankingsList({ users, onFollowClick }: RankingsListProps
   }
 
   return (
-    <div className="bg-secondary rounded-xl border border-tertiary/10 overflow-hidden">
+    <div className="flex flex-col gap-3  overflow-hidden">
       {users.map((user) => (
-        <RankingCard key={user.id} user={user} onFollowClick={onFollowClick} />
+        <RankingCard key={user.id} user={user} currentUser={currentUser} onFollowClick={onFollowClick} />
       ))}
     </div>
   );

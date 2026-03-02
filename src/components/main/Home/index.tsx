@@ -1,5 +1,6 @@
 "use client";
-
+import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { XSlidingButtons } from "@utilities";
 import HomeFilters, { Filter } from "./Filters";
@@ -30,11 +31,30 @@ export default function Home() {
   return (
     <div className="w-full mx-auto">
       {/* Header */}
-      <PageHeader isAuthenticated={false} />
+      <PageHeader
+        leftContent={
+          <>
+            <h1 className="text-md hidden lg:flex font-bold text-tertiary flex-1 min-w-0 truncate">
+              Home
+            </h1>
+
+            <Link href="/" className="flex lg:hidden items-center gap-2 flex-1">
+              <Image
+                src="/icons/PlayPredictLogoBlue.svg"
+                alt="PlayPredict"
+                width={120}
+                height={34}
+                priority
+              />
+            </Link>
+          </>
+        }
+        isAuthenticated={false} />
+
 
       {/* Sticky Filter Bar */}
-      <div className="sticky top-14 lg:top-16 border-t border-tertiary/5 z-40 bg-secondary">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-3">
+      <div className="sticky top-14 mt-2 lg:px-2 border-t border-tertiary/5 z-40">
+        <div className="max-w-8xl mx-auto p-2 lg:rounded-xl  bg-secondary">
           <HomeFilters
             onFilterChange={onFilterChange}
             onNotificationClick={handleNotificationClick}
@@ -46,7 +66,7 @@ export default function Home() {
       </div>
 
       {/* Sports Category Tabs */}
-      <div className="py-2 max-w-7xl mx-auto lg:px-8">
+      <div className="py-2 max-w-8xl mx-auto ">
         <XSlidingButtons
           buttonList={buttonList}
           selectedButton={selectedButton}
@@ -55,7 +75,7 @@ export default function Home() {
       </div>
 
       {/* Predictions List */}
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto px-2 ">
         <Predictions />
       </div>
     </div>

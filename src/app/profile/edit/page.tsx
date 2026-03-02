@@ -21,7 +21,9 @@ export default function EditProfilePage() {
             </Link>
         }
       />
+      <div className="max-w-8xl px-2">
       <EditProfileForm />
+      </div>
     </div>
   );
 }

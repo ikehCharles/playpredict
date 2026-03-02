@@ -25,7 +25,6 @@ const TextAreaUI: React.FC<TextAreaProps> = (props) => {
             colorTextPlaceholder: `rgb(${tertiary}, 0.4)`,
 
             // Size
-            fontSize: 15,
             borderRadius: 12,
             paddingInline: 16,
 

@@ -37,7 +37,7 @@ export default function SettingsList() {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-      <div className="text-sm max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 space-y-6">
+      <div className="text-sm py-4 px-2 space-y-6">
         {/* Settings & Preferences */}
         <section>
           <h2 className="text-sm font-semibold text-tertiary/70  tracking-wide mb-3 flex items-center gap-4">

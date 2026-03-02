@@ -19,7 +19,6 @@ const RadioGroupUI: React.FC<RadioGroupProps> = (props) => {
                         colorBorder: `rgb(${tertiary}, 0.3)`,
                         buttonCheckedColorDisabled: `rgb(${secondary})`,
                         colorBgContainerDisabled: `rgb(${secondary})`,
-                        fontSize: 15,
                         controlPaddingHorizontal: 1,
                         paddingContentHorizontal: 1,
                         padding:8

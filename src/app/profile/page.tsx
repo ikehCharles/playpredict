@@ -6,10 +6,15 @@ import ProfileTabs from "@/src/components/main/Profile/ProfileTabs";
 
 export default function ProfilePage() {
   return (
-    <div className="w-full mx-auto min-h-[50vh]">
-      <PageHeader title="Profile" />
+    <>
+    <PageHeader title="Profile" />
+    <div className="max-w-8xl mx-auto lg:px-2 min-h-[50vh]">
+      <div className="lg:mt-4 ">
+
       <ProfileBlock />
       <ProfileTabs />
+      </div>
     </div>
+    </>
   );
 }

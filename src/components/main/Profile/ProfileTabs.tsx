@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Segmented, Button, DatePicker } from "@utilities";
 import { PredictionCard, type PredictionCardProps } from "@utilities";
 import { predictionsDummyData } from "@constants";
-import { HiOutlineChartBar } from "react-icons/hi2";
 import { MdInsertChartOutlined } from "react-icons/md";
+import ProfileStats from "./ProfileStats";
 
 import type { Dayjs } from "dayjs";
 
@@ -17,7 +17,7 @@ export default function ProfileTabs() {
   const [tips] = useState<PredictionCardProps[]>(predictionsDummyData);
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="">
       <Segmented
         block
         options={[
@@ -26,42 +26,42 @@ export default function ProfileTabs() {
           { label: "Stats", value: "stats" },
         ]}
         classNames={{
-          root: "!bg-secondary !py-2",
-         
-        
+          root: "!bg-secondary !py-1",
+
+
         }}
         className="border border-tertiary/10 rounded-xl"
         value={tab}
         onChange={(v) => setTab((v as TabKey) ?? "tips")}
       />
+      
 
-      {/* Date row + Insights (only for Tips) */}
-      {tab === "tips" && (
-        <div className="flex items-center bg-secondary py-2 px-1  justify-between gap-3 mb-4">
-          <DatePicker value={date} onChange={(d) => setDate(d as Dayjs | null)} />
-          
-          <Button >
-          <MdInsertChartOutlined />
-                    <span>Insights</span>
-                </Button>
-         
-        </div>
-      )}
+        {/* Date row + Insights (only for Tips) */}
+        {tab === "tips" && (
+          <div className="flex items-center p-2 bg-secondary  justify-between gap-3 mb-3">
+            <DatePicker value={date} onChange={(d) => setDate(d as Dayjs | null)} />
 
-      {/* Content by tab */}
-      {tab === "tips" && (
-        <div className="space-y-4">
-          {tips.map((item, index) => (
-            <PredictionCard key={index} {...item} />
-          ))}
-        </div>
-      )}
-      {tab === "likes" && (
-        <p className="py-8 text-center text-tertiary/70 text-sm">Likes content coming soon.</p>
-      )}
-      {tab === "stats" && (
-        <p className="py-8 text-center text-tertiary/70 text-sm">Stats content coming soon.</p>
-      )}
-    </div>
+            <Button >
+              <MdInsertChartOutlined />
+              <span>Insights</span>
+            </Button>
+
+          </div>
+        )}
+
+        {/* Content by tab */}
+        {tab === "tips" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {tips.map((item, index) => (
+              <PredictionCard key={index} {...item} />
+            ))}
+          </div>
+        )}
+        {tab === "likes" && (
+          <p className="py-8 text-center text-tertiary/70 text-sm">Likes content coming soon.</p>
+        )}
+        {tab === "stats" && <ProfileStats />}
+      </div>
+  
   );
 }

@@ -59,7 +59,6 @@ const SegmentedUI: React.FC<SegmentedProps> = (props) => {
             
             // Size
             controlHeight: 45,
-            fontSize: 15,
 
             // Border
             trackBg: `rgb(${tertiary}, 0.05)`,

@@ -8,9 +8,9 @@ export default function Predictions() {
   const [predictions] = useState<PredictionCardProps[]>(predictionsDummyData);
 
   return (
-    <div className="space-y-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {predictions.map((item, index) => (
-        <PredictionCard key={index} {...item} />
+      <PredictionCard key={index} {...item} />
       ))}
     </div>
   );

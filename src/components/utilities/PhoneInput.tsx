@@ -86,7 +86,7 @@ function PhoneInputUI({
             border-radius: 0 12px 12px 0;
             background: rgb(var(--secondary));
             color: rgb(var(--tertiary));
-            font-size: 15px;
+            font-size: 14px;
             outline: none;
             transition: border-color 0.2s, box-shadow 0.2s;
           }

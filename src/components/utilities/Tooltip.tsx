@@ -12,7 +12,6 @@ const TooltipUI: React.FC<TooltipProps> = (props) => {
             colorBgSpotlight: `rgb(${tertiary})`,
             colorTextLightSolid: `rgb(${secondary})`,
             borderRadius: 8,
-            fontSize: 13,
           },
         },
       }}

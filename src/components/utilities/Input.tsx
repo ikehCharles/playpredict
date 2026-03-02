@@ -24,7 +24,6 @@ const InputUI: React.FC<InputProps> = (props) => {
             
             // Size
             controlHeight: 45,
-            fontSize: 15,
             borderRadius: 12,
             paddingInline: 16,
             

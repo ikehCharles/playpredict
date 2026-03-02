@@ -1,132 +1,159 @@
-import type { PredictionItemType } from "@models";
+import type { PredictionItemType, ProfileStatsType } from "@models";
 
 export const buttonListDummyData = [
-    {
-        id: '1',
-        name: 'All Sports',
-        icon: ''
-    },
-    {
-        id: '2',
-        name: 'Football',
-        icon: '⚽️'
-    },
-    {
-        id: '3',
-        name: 'Basketball',
-        icon: '🏀'
-    },
-    {
-        id: '4',
-        name: 'Tennis',
-        icon: '🎾'
-    },
-    {
-        id: '5',
-        name: 'Am. Football',
-        icon: '🏈'
-    },
-    {
-        id: '6',
-        name: 'Hockey',
-        icon: '🏒'
-    },
-    {
-        id: '7',
-        name: 'Baseball',
-        icon: '⚾️'
-    },
-]
+  {
+    id: "1",
+    name: "All Sports",
+    icon: "",
+  },
+  {
+    id: "2",
+    name: "Football",
+    icon: "⚽️",
+  },
+  {
+    id: "3",
+    name: "Basketball",
+    icon: "🏀",
+  },
+  {
+    id: "4",
+    name: "Tennis",
+    icon: "🎾",
+  },
+  {
+    id: "5",
+    name: "Am. Football",
+    icon: "🏈",
+  },
+  {
+    id: "6",
+    name: "Hockey",
+    icon: "🏒",
+  },
+  {
+    id: "7",
+    name: "Baseball",
+    icon: "⚾️",
+  },
+];
 
 const defaultBookies = [
-  { name: "Stake",     logoUrl: "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70", odd: 2.57 },
-  { name: "Bet365",   logoUrl: "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg", odd: 2.44 },
-  { name: "Staked",     logoUrl: "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70", odd: 2.57 },
-  { name: "Bet165",   logoUrl: "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg", odd: 2.44 },
-  { name: "Stakedd",     logoUrl: "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70", odd: 2.57 },
-  { name: "Bet265",   logoUrl: "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg", odd: 2.44 },
- ];
+  {
+    name: "Stake",
+    logoUrl:
+      "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70",
+    odd: 2.57,
+  },
+  {
+    name: "Bet365",
+    logoUrl:
+      "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg",
+    odd: 2.44,
+  },
+  {
+    name: "Staked",
+    logoUrl:
+      "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70",
+    odd: 2.57,
+  },
+  {
+    name: "Bet165",
+    logoUrl:
+      "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg",
+    odd: 2.44,
+  },
+  {
+    name: "Stakedd",
+    logoUrl:
+      "https://pictures.tribuna.com/image/a106f92f-e9ee-499a-8c7b-93c19c5c96b6?width=1920&quality=70",
+    odd: 2.57,
+  },
+  {
+    name: "Bet265",
+    logoUrl:
+      "https://assets.goal.com/images/v3/bltd71a574d2ca1ba92/bet365_(1).jpg",
+    odd: 2.44,
+  },
+];
 
 export const predictionsDummyData: PredictionItemType[] = [
-    {
-      sport: "Football",
-      league: "Ligue 1",
-      timeAgo: "12m",
-      user: {
-        name: "John Wayne",
-        username: "johnwayne",
-        avatar: "https://i.pravatar.cc/150?img=3",
-        verified: true,
-        winRate: "84%",
-        tips: 1250,
-      },
-      match: {
-        home: "RC Lens",
-        away: "Paris SG",
-      },
-      prediction: {
-        title:
-          "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
-        odd: 2.56,
-      },
-      stats: {
-        likes: 44,
-      },
-      bookies: defaultBookies,
+  {
+    sport: "Football",
+    league: "Ligue 1",
+    timeAgo: "12m",
+    user: {
+      name: "John Wayne",
+      username: "johnwayne",
+      avatar: "https://i.pravatar.cc/150?img=3",
+      verified: true,
+      winRate: "84%",
+      tips: 1250,
     },
-    {
-      sport: "Football",
-      league: "Ligue 1",
-      timeAgo: "12m",
-      user: {
-        name: "John Wayne",
-        username: "johnwayne",
-        avatar: "https://i.pravatar.cc/150?img=3",
-        verified: true,
-        winRate: "84%",
-        tips: 1250,
-      },
-      match: {
-        home: "RC Lens",
-        away: "Paris SG",
-      },
-      prediction: {
-        title:
-          "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
-        odd: 2.56,
-      },
-      stats: {
-        likes: 44,
-      },
-      bookies: defaultBookies,
+    match: {
+      home: "RC Lens",
+      away: "Paris SG",
     },
-    {
-      sport: "Football",
-      league: "Ligue 1",
-      timeAgo: "12m",
-      user: {
-        name: "John Wayne",
-        username: "johnwayne",
-        avatar: "https://i.pravatar.cc/150?img=3",
-        verified: true,
-        winRate: "84%",
-        tips: 1250,
-      },
-      match: {
-        home: "RC Lens",
-        away: "Paris SG",
-      },
-      prediction: {
-        title:
-          "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
-        odd: 2.56,
-      },
-      stats: {
-        likes: 44,
-      },
-      bookies: defaultBookies,
+    prediction: {
+      title: "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
+      odd: 2.56,
     },
-  ]
+    stats: {
+      likes: 44,
+    },
+    bookies: defaultBookies,
+  },
+  {
+    sport: "Football",
+    league: "Ligue 1",
+    timeAgo: "12m",
+    user: {
+      name: "John Wayne",
+      username: "johnwayne",
+      avatar: "https://i.pravatar.cc/150?img=3",
+      verified: true,
+      winRate: "84%",
+      tips: 1250,
+    },
+    match: {
+      home: "RC Lens",
+      away: "Paris SG",
+    },
+    prediction: {
+      title: "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
+      odd: 2.56,
+    },
+    stats: {
+      likes: 44,
+    },
+    bookies: defaultBookies,
+  },
+  {
+    sport: "Football",
+    league: "Ligue 1",
+    timeAgo: "12m",
+    user: {
+      name: "John Wayne",
+      username: "johnwayne",
+      avatar: "https://i.pravatar.cc/150?img=3",
+      verified: true,
+      winRate: "84%",
+      tips: 1250,
+    },
+    match: {
+      home: "RC Lens",
+      away: "Paris SG",
+    },
+    prediction: {
+      title: "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
+      odd: 2.56,
+    },
+    stats: {
+      likes: 44,
+    },
+    bookies: defaultBookies,
+  },
+];
 
 export const savedPredictionsDummyData: PredictionItemType[] = [
   {
@@ -146,8 +173,7 @@ export const savedPredictionsDummyData: PredictionItemType[] = [
       away: "Paris SG",
     },
     prediction: {
-      title:
-        "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
+      title: "Player To Score A Goal At Any Time: Mateta, Jean-Philippe – Yes",
       odd: 2.56,
     },
     stats: {
@@ -206,6 +232,8 @@ export const savedPredictionsDummyData: PredictionItemType[] = [
 
 // Current user profile (for Profile landing & Edit)
 export const currentUserProfile = {
+  id: "100",
+  name: "XCV",
   displayName: "XCV",
   username: "bettinggod",
   email: "johndoe@gmail.com",
@@ -219,6 +247,9 @@ export const currentUserProfile = {
   verified: false,
   followingCount: 12,
   followersCount: 643,
+  winRate: 10,
+  tipsCount: 10,
+  rank: 1000,
 };
 
 // Users shown on Following page (list of people you follow / search)
@@ -279,9 +310,25 @@ export const settingsPreferencesRows = [
   { key: "changePassword", label: "Change Password", icon: "lock" },
   { key: "notifications", label: "Notifications Settings", icon: "bell" },
   { key: "verifyAccount", label: "Verify Your Account", icon: "badge" },
-  { key: "oddsFormat", label: "Odds Format", value: "Decimal Odds (2.50)", icon: "chart" },
-  { key: "timezone", label: "Timezone", value: "Africa/Lagos (UTC +01:00)", icon: "globe" },
-  { key: "bookiesFor", label: "Bookies For", value: "Netherlands", icon: "bookies", flag: "🇳🇱" },
+  {
+    key: "oddsFormat",
+    label: "Odds Format",
+    value: "Decimal Odds (2.50)",
+    icon: "chart",
+  },
+  {
+    key: "timezone",
+    label: "Timezone",
+    value: "Africa/Lagos (UTC +01:00)",
+    icon: "globe",
+  },
+  {
+    key: "bookiesFor",
+    label: "Bookies For",
+    value: "Netherlands",
+    icon: "bookies",
+    flag: "🇳🇱",
+  },
 ];
 
 // Support rows
@@ -376,6 +423,7 @@ export const rankingsDummyData = [
     tipsCount: 456,
     rank: 8,
   },
+  currentUserProfile,
 ];
 
 // Rankings filter options
@@ -431,5 +479,25 @@ export const onboardingScreensData = [
     imageSrc: "/images/onboarding/onBoarding4.svg",
     imageAlt: "Follow Your Favorite Tipsters",
   },
- 
-]
+];
+
+/* ── Profile Stats Dummy Data ── */
+
+export const profileStatsDummyData: ProfileStatsType = {
+  totalTips: 1250,
+  won: 610,
+  lost: 540,
+  voided: 100,
+  totalWinRate: 78,
+  totalWinRateTips: 258,
+  sportWinRates: [
+    { sport: "Football",   icon: "⚽", winRate: 88, tips: 101, color: "bg-primary" },
+    { sport: "Basketball", icon: "🏀", winRate: 68, tips: 64,  color: "bg-error" },
+    { sport: "Tennis",     icon: "🎾", winRate: 78, tips: 92,  color: "bg-primary" },
+  ],
+  averageOdds: 2.15,
+  winStreak: 9,
+  loseStreak: 7,
+  form: ["loss", "win", "draw", "loss", "draw", "win", "win", "win", "pending"],
+  achievements: ["", "", "", ""],
+};

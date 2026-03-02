@@ -1,20 +1,43 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Avatar } from "@common";
+import { Avatar, RightDrawer } from "@common";
 import { Button } from "@utilities";
-import { currentUserProfile } from "@constants";
+import { currentUserProfile, GetBreakpoint } from "@constants";
 import { MdVerified } from "react-icons/md";
 import { HiOutlineFlag, HiOutlineCalendar, HiOutlinePencil, HiOutlineShare, HiOutlineCog6Tooth } from "react-icons/hi2";
+import EditProfileForm from "./EditProfileForm";
+import SettingsList from "./SettingsList";
 
 export default function ProfileBlock() {
   const router = useRouter();
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { displayName, username, bio, country, joinDate, verified, followingCount, followersCount, avatar } =
     currentUserProfile;
 
+  const handleEditClick = useCallback(() => {
+    // Desktop: open drawer, Mobile: navigate
+    if (GetBreakpoint("md")) {
+      setIsEditOpen(true);
+    } else {
+      router.push("/profile/edit");
+    }
+  }, [router]);
+
+  const handleSettingsClick = useCallback(() => {
+    if (GetBreakpoint("md")) {
+      setIsSettingsOpen(true);
+    } else {
+      router.push("/profile/settings");
+    }
+  }, [router]);
+
   return (
-    <div className="max-w-7xl mx-auto px-4 bg-secondary py-4 sm:px-6 md:px-8">
+    <>
+    <div className="p-2 rounded-lg bg-secondary">
       <div className="flex flex-col">
         <div className="flex items-start gap-3 mb-3">
           <Avatar src={avatar} size={80} className="shrink-0" />
@@ -22,7 +45,7 @@ export default function ProfileBlock() {
             <Button
               size="large"
               icon={<HiOutlinePencil />}
-              onClick={() => router.push("/profile/edit")}
+              onClick={handleEditClick}
               aria-label="Edit profile"
             />
             <Button
@@ -34,7 +57,7 @@ export default function ProfileBlock() {
             <Button
               size="large"
               icon={<HiOutlineCog6Tooth />}
-              onClick={() => router.push("/profile/settings")}
+              onClick={handleSettingsClick}
               aria-label="Settings"
             />
           </div>
@@ -74,5 +97,23 @@ export default function ProfileBlock() {
         </div>
       </div>
     </div>
+
+    <RightDrawer
+      isOpen={isEditOpen}
+      onClose={() => setIsEditOpen(false)}
+      title="Edit Profile"
+    >
+      <EditProfileForm />
+    </RightDrawer>
+
+    <RightDrawer
+      isOpen={isSettingsOpen}
+      onClose={() => setIsSettingsOpen(false)}
+      title="Settings"
+    >
+      <SettingsList />
+    </RightDrawer>
+    </>
   );
 }
+

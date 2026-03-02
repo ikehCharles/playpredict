@@ -56,21 +56,21 @@ export default function HomeFilters({
         <div className="flex gap-3 items-center">
           <Badge dot={hasNotifications} color="red" offset={[-5, 5]}>
             <Button
-            size="large"
+            size="small"
               icon={<IoNotificationsOutline />}
               onClick={onNotificationClick}
               aria-label="Notifications"
             />
           </Badge>
           <Button
-size="large"
+size="small"
             icon={<IoSearchOutline />}
 
             onClick={onSearchClick}
             aria-label="Search"
           />
           <Button
-size="large"
+size="small"
             icon={<IoFilterOutline />}
 
             onClick={onFilterClick}

@@ -21,7 +21,9 @@ export default function SettingsPage() {
           </Link>
         }
       />
+      <div className="max-w-8xl mx-auto">
       <SettingsList />
+      </div>
     </div>
   );
 }

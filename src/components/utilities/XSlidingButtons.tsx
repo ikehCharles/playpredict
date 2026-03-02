@@ -16,7 +16,7 @@ const XSlidingButtons: React.FC<XSlidingButtonsProps> = (props) => {
     return (
         <div style={{scrollbarWidth: 'none'}} className="flex item-center px-2 gap-3 pb-3 pt-1 overflow-x-auto">
             {buttonList.map((btn) => (
-                <Button onClick={() => setSelectedButton(btn)} type={btn.id === selectedButton.id ? 'primary' : 'default'} key={btn.id} >
+                <Button size="small" onClick={() => setSelectedButton(btn)} type={btn.id === selectedButton.id ? 'primary' : 'default'} key={btn.id} >
                     <span>{btn.icon}</span>
                     <span>{btn.name}</span>
                 </Button>
