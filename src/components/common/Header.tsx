@@ -14,7 +14,7 @@ export default function Header() {
   const isOnboarding = pathname === "/onboarding";
 
   return (
-    <header className="bg-secondary border-b border-gray-200 dark:border-gray-800 sticky top-0 z-50" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
+    <header className="bg-secondary border-b border-gray-200 dark:border-gray-800 sticky safe-top z-50 safe-pt">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className={`flex items-center h-16 ${isAuthPage || isOnboarding ? "justify-center" : "justify-between"}`}>
           {/* Logo */}
