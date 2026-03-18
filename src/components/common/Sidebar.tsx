@@ -28,7 +28,6 @@ export default function Sidebar() {
       <nav className="flex flex-col items-center gap-5 py-4 flex-1 px-2">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
-          const Icon = item.icon;
           return (
             <Link
               key={item.name}
@@ -39,7 +38,7 @@ export default function Sidebar() {
                   : "text-tertiary/50 hover:bg-primary/5 hover:text-tertiary"
               }`}
             >
-              <Icon className="w-6 h-6" />
+              <i className={` text-lg ${isActive ? `${item.activeIcon} text-secondary` : `${item.icon} text-primary`}`}></i>
               <span className="text-xs font-medium">{item.name}</span>
             </Link>
           );

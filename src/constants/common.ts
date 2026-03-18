@@ -4,28 +4,33 @@ import { IconType } from "react-icons";
 export interface NavItem {
   name: string;
   href: string;
-  icon: IconType;
+  icon: string;
+  activeIcon: string;
 }
 
 export const navItems: NavItem[] = [
   {
     name: "Home",
     href: "/",
-    icon: IoHome,
+    icon: "fi fi-rr-home",
+    activeIcon: "fi fi-sr-home",
   },
   {
     name: "Rankings",
     href: "/rankings",
-    icon: IoTrophy,
+    icon: "fi fi-rr-trophy",
+    activeIcon: "fi fi-sr-trophy",
   },
   {
     name: "Saved",
     href: "/saved",
-    icon: IoBookmark,
+    icon: "fi fi-rr-bookmark",
+    activeIcon: "fi fi-sr-bookmark",
   },
   {
     name: "Profile",
     href: "/profile",
-    icon: IoPerson,
+     icon: "fi fi-rs-user",
+    activeIcon: "fi fi-ss-user",
   },
 ];

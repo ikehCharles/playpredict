@@ -2,9 +2,8 @@
 
 import { Dayjs } from "dayjs";
 import { useState } from "react";
-import { Button, DatePicker } from "@utilities";
+import { Button, DatePicker, Icon } from "@utilities";
 import { Badge, ConfigProvider } from "antd";
-import { IoFilterOutline, IoNotificationsOutline, IoSearchOutline } from "react-icons/io5";
 import { GetCSSVariables } from "@constants";
 
 export interface Filter {
@@ -54,24 +53,41 @@ export default function HomeFilters({
 
         {/* Action Buttons */}
         <div className="flex gap-3 items-center">
-          <Badge dot={hasNotifications} color="red" offset={[-5, 5]}>
+
+          <Badge size="small" className="text-xs!" style={{ padding:' 0 3px', fontSize: 10, fontWeight: 500}} count={2} color="red" offset={[-10, 8]}>
             <Button
-            size="small"
-              icon={<IoNotificationsOutline />}
+              size="small"
+              bgColorOpacity={0.05}
+              borderColorOpacity={0.05}
+              textColor="primary"
+              icon={
+                <Icon className="fi-rr-bell" />
+              }
               onClick={onNotificationClick}
               aria-label="Notifications"
             />
           </Badge>
-          <Button
-size="small"
-            icon={<IoSearchOutline />}
 
+
+          <Button
+            size="small"
+            bgColorOpacity={0.05}
+            borderColorOpacity={0.05}
+            textColor="primary"
+            icon={
+             <Icon className="fi-rr-search" />
+            }
             onClick={onSearchClick}
             aria-label="Search"
           />
           <Button
-size="small"
-            icon={<IoFilterOutline />}
+            size="small"
+            bgColorOpacity={0.05}
+            borderColorOpacity={0.05}
+            textColor="primary"
+            icon={
+            <Icon className="fi-rr-settings-sliders" />
+            }
 
             onClick={onFilterClick}
             aria-label="Filter"

@@ -1,12 +1,14 @@
+@import "@flaticon/flaticon-uicons/css/all/all";
 @import "tailwindcss";
 
 :root {
     --primary: 94, 23, 235;
     --secondary: 255, 255, 255;
     --tertiary: 33, 33, 33;
-    --background: 243, 243, 243;
-    --error: 220, 52, 84;
+    --background: 250, 248, 254;
+    --error: 228, 25, 85;
 }
+  
 
 @theme inline {
     --color-background: rgb(var(--background));
@@ -72,6 +74,10 @@ body {
 .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* Slide up animation for bottom sheet (mobile) */

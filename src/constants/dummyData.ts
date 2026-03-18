@@ -9,32 +9,22 @@ export const buttonListDummyData = [
   {
     id: "2",
     name: "Football",
-    icon: "⚽️",
+    icon: "fi fi-sr-football",
   },
   {
     id: "3",
     name: "Basketball",
-    icon: "🏀",
+    icon: "fi fi-sr-basketball",
   },
   {
     id: "4",
     name: "Tennis",
-    icon: "🎾",
+    icon: "fi fi-sr-tennis",
   },
   {
     id: "5",
     name: "Am. Football",
-    icon: "🏈",
-  },
-  {
-    id: "6",
-    name: "Hockey",
-    icon: "🏒",
-  },
-  {
-    id: "7",
-    name: "Baseball",
-    icon: "⚾️",
+    icon: "fi fi-sr-rugby",
   },
 ];
 
