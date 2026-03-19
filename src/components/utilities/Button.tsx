@@ -37,7 +37,7 @@ const ButtonUI: React.FC<ButtonUIProps> = (props) => {
             controlHeightLG: 45,
             controlHeightSM: 35,
             colorBorder: colorBorder,
-            paddingContentHorizontal: 12,
+            paddingContentHorizontal: 14,
             fontWeight: 500,
             borderRadius: 10,
             borderRadiusSM: 10,

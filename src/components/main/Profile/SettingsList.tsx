@@ -55,9 +55,12 @@ export default function SettingsList() {
                   return Icon ? (
                     <Button
                       size="small"
-                      type="default"
-                      icon={<Icon />}
-                      // onClick={onNotificationClick}
+                      bgColor="primary"
+                      bgColorOpacity={0.05}
+                      borderColor="primary"
+                      borderColorOpacity={0.05}
+                      textColor="primary"
+                      icon={<Icon className="text-lg" />}
                       aria-label={row.label}
                     />
                     
@@ -74,7 +77,11 @@ export default function SettingsList() {
               
               <Button
                       size="small"
-                      type="default"
+                      bgColor="primary"
+                      bgColorOpacity={0.05}
+                      borderColor="primary"
+                      borderColorOpacity={0.05}
+                      textColor="primary"
                       icon={<HiOutlineMoon />}
                       // onClick={onNotificationClick}
                       aria-label={"Dark mode"}

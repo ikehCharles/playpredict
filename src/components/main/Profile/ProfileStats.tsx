@@ -40,7 +40,14 @@ export default function ProfileStats() {
             key={f.value}
             size="middle"
             onClick={() => setFilter(f.value)}
-            transparent={filter !== f.value}
+            bgColor={filter === f.value ? "primary" : "secondary"}
+            bgColorOpacity={filter === f.value ? 0.05 : 1}
+            borderColor={filter === f.value ? "primary" : "tertiary"}
+            borderColorOpacity={0.1}
+            textColor={filter === f.value ? "primary" : "tertiary"
+
+            }
+            // transparent={filter !== f.value}
           >
             {f.label}
           </Button>
