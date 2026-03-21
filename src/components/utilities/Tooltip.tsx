@@ -1,16 +1,14 @@
-import { GetCSSVariables } from "@constants";
+import { cssRgbVar } from "@constants";
 import { Tooltip, TooltipProps, ConfigProvider } from "antd";
 
 const TooltipUI: React.FC<TooltipProps> = (props) => {
-  const { primary, secondary, tertiary } = GetCSSVariables();
-
   return (
     <ConfigProvider
       theme={{
         components: {
           Tooltip: {
-            colorBgSpotlight: `rgb(${tertiary})`,
-            colorTextLightSolid: `rgb(${secondary})`,
+            colorBgSpotlight: cssRgbVar("tertiary"),
+            colorTextLightSolid: cssRgbVar("secondary"),
             borderRadius: 8,
           },
         },

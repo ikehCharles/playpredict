@@ -1,22 +1,28 @@
-import { GetCSSVariables } from "@constants";
+"use client";
+
+import { cssRgbVar, GetActualColor } from "@constants";
 import { Tag, TagProps, ConfigProvider } from "antd";
+import { useMemo } from "react";
 
 const TagUI: React.FC<TagProps> = (props) => {
-  const { tertiary } = GetCSSVariables();
+  const color = useMemo(
+    () => (props.color ? GetActualColor(props.color, props.color) : undefined),
+    [props.color],
+  );
 
   return (
     <ConfigProvider
       theme={{
         components: {
           Tag: {
-            colorText: `rgb(${tertiary})`,
+            colorText: cssRgbVar("tertiary"),
             borderRadiusSM: 9999,
             fontSizeSM: 12,
           },
         },
       }}
     >
-      <Tag {...props} />
+      <Tag {...props} color={color} />
     </ConfigProvider>
   );
 };

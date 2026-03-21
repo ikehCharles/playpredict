@@ -1,15 +1,13 @@
-import { GetCSSVariables } from "@constants";
+import { cssRgbVar } from "@constants";
 import { Form, FormProps, ConfigProvider } from "antd";
 
 function FormUI<Values = unknown>(props: FormProps<Values>) {
-  const { tertiary } = GetCSSVariables();
-
   return (
     <ConfigProvider
       theme={{
         components: {
           Form: {
-            labelColor: `rgb(${tertiary})`,
+            labelColor: cssRgbVar("tertiary"),
             verticalLabelPadding: "0 0 6px",
           },
           

@@ -1,21 +1,16 @@
-export function GetCSSVariables(){
-    const styles = typeof window !== "undefined" ? getComputedStyle(document.documentElement)
-    : null;
+import { cssRgbVar, isThemeColorKey } from "./theme";
 
+export function GetActualColor(
+  colorName?: string,
+  fallback: string = "default",
+) {
+  if (!colorName) return fallback;
 
-  const primary = styles?.getPropertyValue("--primary")
-  const secondary = styles?.getPropertyValue("--secondary");
-  const tertiary = styles?.getPropertyValue("--tertiary");
-  const accent = styles?.getPropertyValue("--accent");
-
-  return {
-    primary,
-    secondary,
-    tertiary,
-    accent
+  if (isThemeColorKey(colorName)) {
+    return cssRgbVar(colorName);
   }
 
-
+  return colorName;
 }
 
 export function GetBreakpoint(key: "sm" | "md" | "lg" | "xl" | "2xl") {

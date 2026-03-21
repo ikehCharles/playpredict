@@ -1,17 +1,18 @@
-import { GetCSSVariables } from "@constants";
+import { cssRgbVar, ThemeColorName } from "@constants";
 import { Button, ButtonProps, ConfigProvider } from "antd";
 
 type ButtonUIProps = ButtonProps & {
-  bgColor?: "primary" | "secondary" | "tertiary" | "transparent";
-  textColor?: "primary" | "secondary" | "tertiary";
-  borderColor?: "primary" | "secondary" | "tertiary";
+  bgColor?: Exclude<ThemeColorName, "background" | "error" | "success"> | "transparent";
+  textColor?: Exclude<ThemeColorName, "background" | "error" | "success">;
+  borderColor?: Exclude<ThemeColorName, "background" | "error" | "success">;
   bgColorOpacity?: number; // Only values from 0.0 to 1.0
   textColorOpacity?: number; // Only values from 0.0 to 1.0
   borderColorOpacity?: number; // Only values from 0.0 to 1.0
+  borderradius?: number; // In pixels
+  ctrlheight?: number; // In pixels or any valid CSS height value
 };
 
 const ButtonUI: React.FC<ButtonUIProps> = (props) => {
-  const colors = GetCSSVariables()
   const {
     bgColor = "primary",
     textColor = "secondary",
@@ -22,39 +23,55 @@ const ButtonUI: React.FC<ButtonUIProps> = (props) => {
     ...rest
   } = props;
 
-  const colorBgContainer = bgColor === "transparent" ? "transparent" : `rgb(${colors[bgColor]}, ${bgColorOpacity ?? 1})`;
-  const colorText = `rgb(${colors[textColor]}, ${textColorOpacity ?? 1})`;
-  const colorBorder = `rgb(${colors[borderColor]}, ${borderColorOpacity ?? 1})`;
+
+  const toColor = (
+    color: Exclude<ThemeColorName, "background" | "error" | "success">,
+    opacity: number = 1,
+  ) => cssRgbVar(color, opacity >= 1 ? undefined : opacity);
+
+
+
+  const colorBgContainer =
+    bgColor === "transparent"
+      ? "transparent"
+      : toColor(bgColor, bgColorOpacity ?? 1);
+  const colorText = toColor(textColor, textColorOpacity ?? 1);
+  const colorBorder = toColor(borderColor, borderColorOpacity ?? 1);
+  const borderradius = props.borderradius || 10; // Default to 10px if not provided
+
 
   return (
     <ConfigProvider
       theme={{
+
         components: {
           Button: {
-            colorBgContainer: colorBgContainer,
-            controlHeight: 40,
-            controlHeightXS: 30,
-            controlHeightLG: 45,
-            controlHeightSM: 35,
-            colorBorder: colorBorder,
-            paddingContentHorizontal: 14,
+            colorBgContainer,
+            colorBgBase: colorBgContainer,
+            colorPrimary: colorBgContainer,
+            controlHeight: Math.max(props.ctrlheight ?? 40, 1),
+            controlHeightXS: Math.max((props.ctrlheight ?? 40) - 10, 1),
+            controlHeightLG: Math.max((props.ctrlheight ?? 40) + 5, 1),
+            controlHeightSM: Math.max((props.ctrlheight ?? 40) - 5, 1),
+            colorBorder,
             fontWeight: 500,
-            borderRadius: 10,
-            borderRadiusSM: 10,
-            borderRadiusLG: 10,
-            borderRadiusXS: 10,
-            colorText: colorText,
+            borderRadius: borderradius,
+            borderRadiusSM: borderradius,
+            borderRadiusLG: borderradius,
+            borderRadiusXS: borderradius,
+            colorText,
             fontSize: 14,
             fontSizeSM: 14,
             fontSizeLG: 14,
             fontSizeXL: 14,
-          
-
+            defaultShadow: `0 1px 4px ${toColor("tertiary", 0.1)}`,
           },
         },
       }}
     >
-      <Button {...rest}>{props.children}</Button>
+      <Button
+        {...rest}
+      >{props.children}</Button>
     </ConfigProvider>
   )
 }

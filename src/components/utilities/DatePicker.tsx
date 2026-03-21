@@ -11,7 +11,7 @@ const DatePickerUI: React.FC<DatePickerProps> = ({ value, onChange }) => {
   return (
 
 
-    <Space className='relative bg-secondary/5 py-0 rounded-lg w-45 ' vertical>
+    <Space className='relative bg-secondary/5 py-0 rounded-lg w-45 shadow-sm shadow-tertiary/5 ' vertical>
 
       <DatePicker
         open={open}

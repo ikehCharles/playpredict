@@ -4,6 +4,7 @@ import PhoneInputWithCountry from "react-phone-number-input";
 import type { Country } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { FiPhone } from "react-icons/fi";
+import { cssRgbVar } from "@constants";
 
 // Re-export useful utilities from react-phone-number-input
 export {
@@ -47,19 +48,19 @@ function PhoneInputUI({
             align-items: center;
             padding: 0 12px;
             height: 45px;
-            border: 1px solid rgb(var(--tertiary), 0.2);
+            border: 1px solid ${cssRgbVar("tertiary", 0.2)};
             border-right: none;
             border-radius: 12px 0 0 12px;
-            background: rgb(var(--secondary));
+            background: ${cssRgbVar("secondary")};
             cursor: pointer;
             transition: border-color 0.2s;
           }
           .PhoneInputCountry:hover {
-            border-color: rgb(var(--primary), 0.6);
+            border-color: ${cssRgbVar("primary", 0.6)};
           }
           .PhoneInputCountry:focus-within {
-            border-color: rgb(var(--primary));
-            box-shadow: 0 0 0 2px rgba(var(--primary), 0.1);
+            border-color: ${cssRgbVar("primary")};
+            box-shadow: 0 0 0 2px ${cssRgbVar("primary", 0.1)};
           }
           .PhoneInputCountryIcon {
             width: 24px;
@@ -75,17 +76,17 @@ function PhoneInputUI({
             margin-left: 6px;
             width: 8px;
             height: 8px;
-            border-color: rgb(var(--tertiary), 0.5);
+            border-color: ${cssRgbVar("tertiary", 0.5)};
             opacity: 1;
           }
           .PhoneInputInput {
             flex: 1;
             height: 45px;
             padding: 0 40px 0 16px;
-            border: 1px solid rgb(var(--tertiary), 0.2);
+            border: 1px solid ${cssRgbVar("tertiary", 0.2)};
             border-radius: 0 12px 12px 0;
-            background: rgb(var(--secondary));
-            color: rgb(var(--tertiary));
+            background: ${cssRgbVar("secondary")};
+            color: ${cssRgbVar("tertiary")};
             font-size: 14px;
             outline: none;
             transition: border-color 0.2s, box-shadow 0.2s;
@@ -102,19 +103,19 @@ function PhoneInputUI({
             right: 12px;
             top: 50%;
             transform: translateY(-50%);
-            color: rgb(var(--tertiary), 0.5);
+            color: ${cssRgbVar("tertiary", 0.5)};
             pointer-events: none;
             z-index: 1;
           }
           .PhoneInputInput::placeholder {
-            color: rgb(var(--tertiary), 0.4);
+            color: ${cssRgbVar("tertiary", 0.4)};
           }
           .PhoneInputInput:hover {
-            border-color: rgb(var(--primary), 0.6);
+            border-color: ${cssRgbVar("primary", 0.6)};
           }
           .PhoneInputInput:focus {
-            border-color: rgb(var(--primary));
-            box-shadow: 0 0 0 2px rgba(var(--primary), 0.1);
+            border-color: ${cssRgbVar("primary")};
+            box-shadow: 0 0 0 2px ${cssRgbVar("primary", 0.1)};
           }
           .PhoneInputCountrySelect {
             position: absolute;

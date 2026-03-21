@@ -1,24 +1,22 @@
-import { GetCSSVariables } from "@constants";
+import { cssRgbVar } from "@constants";
 import { ConfigProvider, Radio, RadioGroupProps } from "antd";
 
 
 
 const RadioGroupUI: React.FC<RadioGroupProps> = (props) => {
-    const { secondary, tertiary } = GetCSSVariables()
-
     return (
         <ConfigProvider
             theme={{
                 components: {
                     Radio: {
-                        buttonBg: `rgb(${tertiary})`,
-                        buttonColor: `rgb(${tertiary})`,
-                        colorTextDisabled: `rgb(${tertiary})`,
+                        buttonBg: cssRgbVar("tertiary"),
+                        buttonColor: cssRgbVar("tertiary"),
+                        colorTextDisabled: cssRgbVar("tertiary"),
                         controlHeight: 45,
-                        buttonCheckedBgDisabled: `rgb(${tertiary})`,
-                        colorBorder: `rgb(${tertiary}, 0.3)`,
-                        buttonCheckedColorDisabled: `rgb(${secondary})`,
-                        colorBgContainerDisabled: `rgb(${secondary})`,
+                        buttonCheckedBgDisabled: cssRgbVar("tertiary"),
+                        colorBorder: cssRgbVar("tertiary", 0.3),
+                        buttonCheckedColorDisabled: cssRgbVar("secondary"),
+                        colorBgContainerDisabled: cssRgbVar("secondary"),
                         controlPaddingHorizontal: 1,
                         paddingContentHorizontal: 1,
                         padding:8

@@ -53,7 +53,7 @@ export default function Home() {
 
 
       {/* Sticky Filter Bar */}
-      <div className="sticky lg:px-2 border-t border-tertiary/5 z-40" style={{ top: 'calc(3.5rem + env(safe-area-inset-top, 0px))' }}>
+      <div className=" shadow-sm shadow-secondary sticky lg:px-2 border-t border-tertiary/5 z-40" style={{ top: 'calc(3.5rem + env(safe-area-inset-top, 0px))' }}>
         <div className="max-w-8xl mx-auto p-2 lg:rounded-xl  bg-secondary">
           <HomeFilters
             onFilterChange={onFilterChange}

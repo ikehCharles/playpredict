@@ -1,12 +1,23 @@
 "use client";
 import { useState } from "react";
-import { Avatar, Badge, Tag } from "antd";
+import { Avatar, Badge, MenuProps, Tag } from "antd";
 import { IoMdClose } from "react-icons/io";
-import { MdVerified } from "react-icons/md";
+import { MdMoreVert, MdVerified } from "react-icons/md";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import PredictionCardActions from "./PredictionCardActions";
 import BookieBetButton from "./BookieBetButton";
 import type { PredictionItemType } from "@models";
+import { Button, Dropdown } from "@utilities";
+
+
+const items: MenuProps['items'] = [
+  {
+    key: '4',
+    danger: true,
+    label: 'Flag Prediction',
+  },
+]
+
 
 type PredictionDetailsBottomSheetProps = PredictionItemType & {
     isOpen: boolean;
@@ -30,7 +41,6 @@ export default function PredictionDetailsBottomSheet({
     const primaryBookie = bookies?.[0];
     const displayedBookies = isOddsExpanded ? (bookies ?? []) : (primaryBookie ? [primaryBookie] : []);
 
-    console.warn(bookies, displayedBookies, )
 
     if (!isOpen) return null;
 
@@ -43,15 +53,19 @@ export default function PredictionDetailsBottomSheet({
 
             <div className="fixed inset-x-0 bottom-0 z-90 mx-auto w-full max-w-xl md:max-w-4xl lg:max-w-5xl rounded-t-3xl bg-secondary shadow-2xl animate-slide-up">
                 <div className="flex items-center justify-between border-b border-tertiary/10 px-4 py-4">
-                    <h3 className="text-lg font-semibold text-tertiary">Details</h3>
-                    <button
-                        type="button"
+                    <h3 className="font-semibold text-tertiary">Details</h3>
+                    <Button
                         onClick={onClose}
-                        className="rounded-full bg-tertiary/10 p-1.5 hover:bg-tertiary/15"
+                        bgColor="tertiary"
+                        bgColorOpacity={0.2}
+                        borderColorOpacity={0}
+                        textColor="tertiary"
                         aria-label="Close details"
+                        borderradius={100}
+                        ctrlheight={20}
+                        icon={<IoMdClose className="text-sm text-tertiary/70" />}
                     >
-                        <IoMdClose className="h-5 w-5 text-tertiary/70" />
-                    </button>
+                    </Button>
                 </div>
 
                 <div className="max-h-[82vh] overflow-y-auto p-4 pb-8">
@@ -71,8 +85,13 @@ export default function PredictionDetailsBottomSheet({
                                 </div>
                                 <p className="text-xs text-tertiary/70">@{user.username}</p>
                             </div>
+                            <div className="cursor-pointer">
+                                <Dropdown  trigger={['click']} menu={{ items }}>
+                                    <MdMoreVert className=" text-lg" />
+                                </Dropdown>
+                            </div>
                         </div>
-                        <div className="bg-background pt-3">
+                        <div className="bg-tertiary/5 font-medium pt-3">
 
 
                             <p className="text-center text-sm">
@@ -80,17 +99,17 @@ export default function PredictionDetailsBottomSheet({
                             </p>
 
                             <div className=" p-4">
-                                <div className="mb-4 flex items-center justify-between text-sm">
-                                    <div className="w-24 text-left font-medium">{match.home}</div>
+                                <div className="mb-4 flex items-center border-b pb-3 border-tertiary/10 justify-between text-sm">
+                                    <div className="w-24 text-left font-semibold">{match.home}</div>
                                     <div className="text-center">
                                         <p className="font-semibold">Today</p>
                                         <p className="text-tertiary/60">02:00 PM</p>
                                     </div>
-                                    <div className="w-24 text-right font-medium">{match.away}</div>
+                                    <div className="w-24 text-right font-semibold">{match.away}</div>
                                 </div>
 
-                                <div className="flex items-center justify-center gap-3 p-3">
-                                    <p className="text-sm text-center">{prediction.title}</p>
+                                <div className="flex items-center justify-center gap-3 px-3">
+                                    <p className="text-sm font-bold text-center">{prediction.title}</p>
 
                                 </div>
                             </div>

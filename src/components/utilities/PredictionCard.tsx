@@ -35,7 +35,7 @@ export default function PredictionCard({
     return (
         <>
             <div
-                className="w-full rounded-xl bg-secondary text-tertiary p-4 cursor-pointer"
+                className="w-full shadow-sm shadow-tertiary/10 rounded-xl bg-secondary text-tertiary p-4 cursor-pointer"
                 role="button"
                 tabIndex={0}
 
@@ -77,7 +77,7 @@ export default function PredictionCard({
                                 {user.verified && (
                                     <MdVerified className="text-blue-800" />
                                 )}
-                                <Tag color='success' variant="solid" rootClassName="rounded-full" className="font-semibold rounded-full">
+                                <Tag color={`success`} variant="solid" rootClassName="rounded-full" className="font-semibold rounded-full">
                                     {user.winRate} W.R
                                 </Tag>
                                 <Tag color="black" variant="solid" className="font-semibold rounded-full" >{user.tips} Tips</Tag>

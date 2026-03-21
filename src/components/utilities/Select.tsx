@@ -1,4 +1,4 @@
-import { GetCSSVariables } from "@constants";
+import { cssRgbVar } from "@constants";
 import { Select, SelectProps, ConfigProvider } from "antd";
 
 // Shared filter logic that safely handles string, number and ReactNode labels/values
@@ -35,8 +35,6 @@ const defaultFilterOption: NonNullable<
 };
 
 const SelectUI: React.FC<SelectProps> = (props) => {
-  const { primary, secondary, tertiary } = GetCSSVariables();
-
   const { showSearch, ...restProps } = props;
 
   // Merge caller's showSearch with our default filterOption.
@@ -64,29 +62,29 @@ const SelectUI: React.FC<SelectProps> = (props) => {
         components: {
           Select: {
             // Border and colors
-            colorBorder: `rgb(${tertiary}, 0.2)`,
-            colorPrimaryHover: `rgb(${primary})`,
-            colorPrimary: `rgb(${primary})`,
+            colorBorder: cssRgbVar("tertiary", 0.2),
+            colorPrimaryHover: cssRgbVar("primary"),
+            colorPrimary: cssRgbVar("primary"),
 
             // Background
-            colorBgContainer: `rgb(${secondary})`,
-            colorBgElevated: `rgb(${secondary})`,
+            colorBgContainer: cssRgbVar("secondary"),
+            colorBgElevated: cssRgbVar("secondary"),
 
             // Text
-            colorText: `rgb(${tertiary})`,
-            colorTextPlaceholder: `rgb(${tertiary}, 0.4)`,
+            colorText: cssRgbVar("tertiary"),
+            colorTextPlaceholder: cssRgbVar("tertiary", 0.4),
 
             // Size
             controlHeight: 45,
             borderRadius: 12,
 
             // Dropdown
-            optionActiveBg: `rgb(${primary}, 0.1)`,
-            optionSelectedBg: `rgb(${primary}, 0.15)`,
+            optionActiveBg: cssRgbVar("primary", 0.1),
+            optionSelectedBg: cssRgbVar("primary", 0.15),
 
             // Focus state
-            colorPrimaryBorder: `rgb(${primary})`,
-            controlOutline: `rgba(${primary}, 0.1)`,
+            colorPrimaryBorder: cssRgbVar("primary"),
+            controlOutline: cssRgbVar("primary", 0.1),
           },
         },
       }}

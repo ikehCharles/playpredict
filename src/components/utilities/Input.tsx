@@ -1,26 +1,24 @@
-import { GetCSSVariables } from "@constants";
+import { cssRgbVar } from "@constants";
 import { Input, InputProps, ConfigProvider } from "antd";
 
 const InputUI: React.FC<InputProps> = (props) => {
-  const { primary, secondary, tertiary } = GetCSSVariables();
-
   return (
     <ConfigProvider
       theme={{
         components: {
           Input: {
             // Border and colors
-            colorBorder: `rgb(${tertiary}, 0.2)`,
-            colorPrimaryHover: `rgb(${primary})`,
-            colorPrimary: `rgb(${primary})`,
+            colorBorder: cssRgbVar("tertiary", 0.2),
+            colorPrimaryHover: cssRgbVar("primary"),
+            colorPrimary: cssRgbVar("primary"),
             
             // Background
-            colorBgContainer: `rgb(${secondary})`,
-            colorTextDisabled: `rgb(${tertiary}, 0.8)`,
+            colorBgContainer: cssRgbVar("secondary"),
+            colorTextDisabled: cssRgbVar("tertiary", 0.8),
             
             // Text
-            colorText: `rgb(${tertiary})`,
-            colorTextPlaceholder: `rgb(${tertiary}, 0.4)`,
+            colorText: cssRgbVar("tertiary"),
+            colorTextPlaceholder: cssRgbVar("tertiary", 0.4),
             
             // Size
             controlHeight: 45,
@@ -28,11 +26,11 @@ const InputUI: React.FC<InputProps> = (props) => {
             paddingInline: 16,
             
             // Focus state
-            activeBorderColor: `rgb(${primary})`,
-            hoverBorderColor: `rgb(${primary}, 0.6)`,
+            activeBorderColor: cssRgbVar("primary"),
+            hoverBorderColor: cssRgbVar("primary", 0.6),
             
             // Shadow
-            activeShadow: `0 0 0 2px rgba(${primary}, 0.1)`,
+            activeShadow: `0 0 0 2px ${cssRgbVar("primary", 0.1)}`,
           },
         },
       }}

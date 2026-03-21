@@ -1,9 +1,7 @@
-import { GetCSSVariables } from "@constants";
+import { cssRgbVar } from "@constants";
 import { Segmented, SegmentedProps, ConfigProvider } from "antd";
 
 const SegmentedUI: React.FC<SegmentedProps> = (props) => {
-  const { primary, secondary, tertiary } = GetCSSVariables();
-
   return (
     <ConfigProvider
       theme={{
@@ -11,17 +9,17 @@ const SegmentedUI: React.FC<SegmentedProps> = (props) => {
           
           Segmented: {
            
-            itemSelectedBg: `rgb(${primary})`,
-            itemSelectedColor: `rgb(${secondary})`,
-            itemHoverBg: `rgb(${primary}, 0.05)`,
-            itemHoverColor: `rgb(${tertiary})`,
-            itemActiveBg: `rgb(${primary})`,
-            itemColor: `rgb(${tertiary})`,
+            itemSelectedBg: cssRgbVar("primary"),
+            itemSelectedColor: cssRgbVar("secondary"),
+            itemHoverBg: cssRgbVar("primary", 0.05),
+            itemHoverColor: cssRgbVar("tertiary"),
+            itemActiveBg: cssRgbVar("primary"),
+            itemColor: cssRgbVar("tertiary"),
             // Size
             controlHeight: 45,
 
             // Border
-            trackBg: `rgb(${tertiary}, 0.05)`,
+            trackBg: cssRgbVar("tertiary", 0.05),
             trackPadding: 4,
           },
         },

@@ -4,7 +4,7 @@ import { Dayjs } from "dayjs";
 import { useState } from "react";
 import { Button, DatePicker, Icon } from "@utilities";
 import { Badge, ConfigProvider } from "antd";
-import { GetCSSVariables } from "@constants";
+import { cssRgbVar } from "@constants";
 
 export interface Filter {
   date: Dayjs | null;
@@ -25,7 +25,6 @@ export default function HomeFilters({
   onFilterClick,
   hasNotifications = true,
 }: HomeFiltersProps) {
-  const { primary } = GetCSSVariables();
   const [filter, setFilter] = useState<Filter>({
     date: null,
   });
@@ -42,7 +41,7 @@ export default function HomeFilters({
       theme={{
         components: {
           Button: {
-            colorBgContainer: `rgb(${primary}, 0.1)`,
+            colorBgContainer: cssRgbVar("primary", 0.1),
           },
         },
       }}
