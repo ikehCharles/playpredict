@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Avatar } from "antd";
 import { navItems, currentUserProfile } from "@constants";
+import { Icon } from "../utilities";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -35,10 +36,10 @@ export default function Sidebar() {
               className={`flex flex-col items-center justify-center gap-1.5 w-full py-3 px-2 rounded-xl transition-colors ${
                 isActive
                   ? "bg-primary text-secondary"
-                  : "text-tertiary/50 hover:bg-primary/5 hover:text-tertiary"
+                  : "text-tertiary/75 hover:bg-primary/5 hover:text-tertiary"
               }`}
             >
-              <i className={` text-lg ${isActive ? `${item.activeIcon} text-secondary` : `${item.icon} text-primary`}`}></i>
+              <Icon className={` text-lg ${isActive ? `${item.activeIcon} text-secondary` : `${item.icon} text-tertiary/75`}`}></Icon>
               <span className="text-xs font-medium">{item.name}</span>
             </Link>
           );

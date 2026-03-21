@@ -9,7 +9,7 @@ const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => 
             theme={{
                 token: {
                     fontSize: 14,
-                    fontFamily: "'Satoshi', sans-serif",
+                    fontFamily: "'Satoshi', 'Inter', sans-serif",
                     colorPrimary: cssRgbVar("primary"),
                     colorPrimaryHover: cssRgbVar("primary"),
                     colorIcon: cssRgbVar("primary"),

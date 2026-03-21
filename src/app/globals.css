@@ -12,7 +12,7 @@
 }
 
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     :root {
         --primary: 94, 23, 235;
         --secondary: 33, 33, 33;
@@ -21,7 +21,7 @@
         --error: 220, 52, 84;
         --success: 76, 175, 80;
 }
-}
+} */
 
 @theme inline {
     --color-background: rgb(var(--background));
@@ -31,14 +31,14 @@
     --color-accent: rgb(var(--accent));
     --color-error: rgb(var(--error));
     --color-success: rgb(var(--success));
-    --font-sans: 'Satoshi', sans-serif;
+    --font-sans: 'Satoshi', 'Inter', sans-serif;
 }
 
 
 body {
     background: rgb(var(--background));
     color: rgb(var(--secondary));
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Satoshi', 'Inter', sans-serif;
     font-size: 14px;
 }
 

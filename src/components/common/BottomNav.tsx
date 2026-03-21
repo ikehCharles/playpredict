@@ -20,10 +20,10 @@ export default function BottomNav() {
               className={`flex flex-col items-center gap-1 justify-center transition-colors ${
                 isActive
                   ? "text-primary border-t-2 border-primary"
-                  : "text-tertiary hover:text-tertiary"
+                  : "text-tertiary/75 hover:text-tertiary"
               }`}
             >
-              <Icon className={`text-lg  ${isActive ? item.activeIcon : `${item.icon} opacity-75`}`}></Icon>
+              <Icon className={`text-lg ${isActive ? `${item.activeIcon} text-primary` : `${item.icon} text-tertiary/75`}`}></Icon>
               <span
                 className={`text-xs font-medium`}
               >
