@@ -17,7 +17,8 @@ const SegmentedUI: React.FC<SegmentedProps> = (props) => {
             itemColor: cssRgbVar("tertiary"),
             // Size
             controlHeight: 45,
-
+            borderRadiusSM: 10,
+          
             // Border
             trackBg: cssRgbVar("tertiary", 0.05),
             trackPadding: 4,

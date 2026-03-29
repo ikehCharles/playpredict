@@ -45,6 +45,7 @@ body {
     color: rgb(var(--secondary));
     font-family: 'Satoshi', 'Inter', sans-serif;
     font-size: 14px;
+    font-weight: 500;
 }
 
 @keyframes fade-in {

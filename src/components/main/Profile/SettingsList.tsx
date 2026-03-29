@@ -68,7 +68,7 @@ export default function SettingsList() {
                 })()}
                 <span className="flex-1 text-tertiary font-medium">{row.label}</span>
                 {row.value && <span className="text-sm text-tertiary/60">{row.value}</span>}
-                {row.flag && <span className="text-lg">{row.flag}</span>}
+                {/* {row.flag && <span className="text-lg">{row.flag}</span>} */}
                 <HiOutlineChevronRight className="w-5 h-5 text-tertiary/40" />
               </Link>
             ))}

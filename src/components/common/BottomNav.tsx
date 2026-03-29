@@ -20,7 +20,7 @@ export default function BottomNav() {
               href={item.href}
               className={`flex flex-col items-center gap-1 justify-center transition-colors ${
                 isActive
-                  ? "text-primary border-t-2 border-primary"
+                  ? "text-primary border-t-4 border-primary"
                   : "text-tertiary/75 hover:text-tertiary"
               }`}
             >

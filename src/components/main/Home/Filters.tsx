@@ -55,7 +55,6 @@ export default function HomeFilters({
 
           <Badge size="small" className="text-xs!" style={{ padding:' 0 3px', fontSize: 10, fontWeight: 500}} count={2} color="red" offset={[-10, 8]}>
             <Button
-              size="small"
               bgColorOpacity={0.05}
               borderColorOpacity={0.05}
               textColor="primary"
@@ -69,7 +68,6 @@ export default function HomeFilters({
 
 
           <Button
-            size="small"
             bgColorOpacity={0.05}
             borderColorOpacity={0.05}
             textColor="primary"
@@ -80,7 +78,6 @@ export default function HomeFilters({
             aria-label="Search"
           />
           <Button
-            size="small"
             bgColorOpacity={0.05}
             borderColorOpacity={0.05}
             textColor="primary"

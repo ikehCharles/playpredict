@@ -306,19 +306,19 @@ export const settingsPreferencesRows = [
     value: "Decimal Odds (2.50)",
     icon: "chart",
   },
-  {
-    key: "timezone",
-    label: "Timezone",
-    value: "Africa/Lagos (UTC +01:00)",
-    icon: "globe",
-  },
-  {
-    key: "bookiesFor",
-    label: "Bookies For",
-    value: "Netherlands",
-    icon: "bookies",
-    flag: "🇳🇱",
-  },
+  // {
+  //   key: "timezone",
+  //   label: "Timezone",
+  //   value: "Africa/Lagos (UTC +01:00)",
+  //   icon: "globe",
+  // },
+  // {
+  //   key: "bookiesFor",
+  //   label: "Bookies For",
+  //   value: "Netherlands",
+  //   icon: "bookies",
+  //   flag: "🇳🇱",
+  // },
 ];
 
 // Support rows

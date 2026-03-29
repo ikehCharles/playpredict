@@ -46,7 +46,6 @@ export default function ProfileBlock() {
                 bgColorOpacity={0.05}
                 borderColorOpacity={0.05}
                 textColor="primary"
-                size="small"
                 icon={
                   <Icon className="fi-rr-user-pen" />
                 }
@@ -57,7 +56,6 @@ export default function ProfileBlock() {
                 bgColorOpacity={0.05}
                 borderColorOpacity={0.05}
                 textColor="primary"
-                size="small"
                 icon={ <Icon className="fi fi-rr-redo" /> }
                 onClick={() => { }}
                 aria-label="Share profile"
@@ -66,7 +64,6 @@ export default function ProfileBlock() {
                 bgColorOpacity={0.05}
                 borderColorOpacity={0.05}
                 textColor="primary"
-                size="small"
                 icon={<Icon className="fi fi-rr-settings" />}
                 onClick={handleSettingsClick}
                 aria-label="Settings"
@@ -79,10 +76,10 @@ export default function ProfileBlock() {
 
           {/* Tags: Country, Join date, Verify */}
           <div className="flex flex-wrap gap-2 mb-3">
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-tertiary/5 px-3 py-2 text-xs text-tertiary">
+            {/* <span className="inline-flex items-center gap-1.5 rounded-lg bg-tertiary/5 px-3 py-2 text-xs text-tertiary">
               <HiOutlineFlag className="w-3.5 h-3.5" />
               {country}
-            </span>
+            </span> */}
             <span className="inline-flex items-center gap-1.5 rounded-lg bg-tertiary/5 px-3 py-2 text-xs text-tertiary">
               <HiOutlineCalendar className="w-3.5 h-3.5" />
               {joinDate}

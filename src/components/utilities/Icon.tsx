@@ -11,10 +11,10 @@ const Icon: React.FC<IconProps> = ({ className = "", srcHost = "font", icon }) =
     return (
       <span
         aria-hidden
-        className={`inline-block bg-current ${className}`}
+        className={`block shrink-0 bg-current ${className}`}
         style={{
-          width: "1em",
-          height: "1em",
+          width: "1.1em",
+          height: "1.1em",
           WebkitMaskImage: `url(${icon})`,
           maskImage: `url(${icon})`,
           WebkitMaskRepeat: "no-repeat",
@@ -28,7 +28,7 @@ const Icon: React.FC<IconProps> = ({ className = "", srcHost = "font", icon }) =
     );
   }
 
-  return <i className={`fi flex text-base ${icon ?? ""} ${className}`} />;
+  return <i className={`fi block shrink-0 leading-none text-base ${icon ?? ""} ${className}`} />;
 };
 
 export default Icon;

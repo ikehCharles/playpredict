@@ -71,7 +71,7 @@ export default function PredictionDetailsBottomSheet({
                 <div className="max-h-[82vh] overflow-y-auto p-4 pb-8">
                     <div className="space-y-4 rounded-xl bg-secondary p-0 text-tertiary">
                         <div className="flex items-center gap-3 rounded-lg bg-secondary p-3">
-                            <Badge color="none" count="🏴" offset={[-5, 30]}>
+                            <Badge color="none" offset={[-5, 30]}>
                                 <Avatar size={42} src={user.avatar} />
                             </Badge>
 

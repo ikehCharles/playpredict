@@ -65,7 +65,7 @@ export default function PredictionCard({
                     {/* User */}
                     <div className="mb-3 flex items-center gap-3">
                         <div>
-                            <Badge color='none' title="punter avatar and country" count={'🏴󠁧󠁢󠁥󠁮󠁧󠁿'} offset={[-5, 30]}>
+                            <Badge color='none' title="punter avatar and country" offset={[-5, 30]}>
                                 <Avatar size={40} src={user.avatar} />
                             </Badge>
 

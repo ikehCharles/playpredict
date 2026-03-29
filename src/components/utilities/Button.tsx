@@ -59,7 +59,7 @@ const ButtonUI: React.FC<ButtonUIProps> = (props) => {
             fontSizeSM: 14,
             fontSizeLG: 14,
             fontSizeXL: 14,
-            defaultShadow: defaultShadow,
+            defaultShadow: defaultShadow
           },
         },
       }}

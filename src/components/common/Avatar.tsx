@@ -20,7 +20,7 @@ const Avatar: React.FC<AvatarProps> = ({
       <Badge
         color="none"
         style={{ boxShadow: "none" }}
-        count={countryFlag}
+        
         offset={flagOffset}
       >
         <AntAvatar {...props} />
