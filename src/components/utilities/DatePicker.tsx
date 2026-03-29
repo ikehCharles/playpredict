@@ -11,7 +11,7 @@ const DatePickerUI: React.FC<DatePickerProps> = ({ value, onChange }) => {
   return (
 
 
-    <Space className='relative bg-secondary/5 py-0.5 rounded-lg w-45 ' vertical>
+    <Space className='relative bg-secondary/5 py-0.5 rounded-xl w-45 ' vertical>
 
       <DatePicker
         open={open}
@@ -19,7 +19,7 @@ const DatePickerUI: React.FC<DatePickerProps> = ({ value, onChange }) => {
         className='opacity-0 top-0 absolute w-full h-full'
         onChange={onChange}
         value={value as Dayjs | null} />
-      <p className='absolute border border-tertiary/10 rounded-lg flex left-0 w-full h-full justify-between p-1 items-center text-sm text-primary top-0' >
+      <p className='absolute border border-tertiary/10 rounded-xl flex left-0 w-full h-full justify-between p-1 items-center text-sm text-primary top-0' >
         <span
           onClick={() => {
             if (onChange) {

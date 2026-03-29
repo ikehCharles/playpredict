@@ -40,7 +40,7 @@ export default function ProfileBlock() {
       <div className="p-2 rounded-lg bg-secondary">
         <div className="flex flex-col">
           <div className="flex items-start gap-3 mb-3">
-            <Avatar src={avatar} size={80} className="shrink-0" />
+            <Avatar src={avatar} size={60} className="shrink-0" />
             <div className="flex items-center gap-3 mt-1 ml-auto">
               <Button
                 bgColorOpacity={0.05}
@@ -75,7 +75,7 @@ export default function ProfileBlock() {
           <p className="text-sm text-tertiary/90 mb-3 whitespace-pre-line">{bio}</p>
 
           {/* Tags: Country, Join date, Verify */}
-          <div className="flex flex-wrap gap-2 mb-3">
+          <div className="flex flex-wrap gap-4 mb-3">
             {/* <span className="inline-flex items-center gap-1.5 rounded-lg bg-tertiary/5 px-3 py-2 text-xs text-tertiary">
               <HiOutlineFlag className="w-3.5 h-3.5" />
               {country}
@@ -93,7 +93,7 @@ export default function ProfileBlock() {
           </div>
 
           {/* Following | Followers */}
-          <div className="flex gap-4">
+          <div className="flex mb-2 gap-4">
             <Link href="/profile/following" className="text-sm">
               <span className="font-semibold text-primary">{followingCount}</span>
               <span className="text-tertiary/70 ml-1">Following</span>

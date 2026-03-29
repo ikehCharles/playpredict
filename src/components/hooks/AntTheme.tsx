@@ -11,6 +11,7 @@ const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => 
                     fontSize: 14,
                     fontFamily: "'Satoshi', 'Inter', sans-serif",
                     colorPrimary: cssRgbVar("primary"),
+                    
                     colorPrimaryHover: cssRgbVar("primary"),
                     colorIcon: cssRgbVar("primary"),
                     colorText: cssRgbVar("primary"),

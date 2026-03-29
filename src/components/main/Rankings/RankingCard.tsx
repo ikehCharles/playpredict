@@ -69,14 +69,7 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
       {/* Avatar with follow button */}
       <div className="relative shrink-0">
       <Badge
-        count={
-        <button
-          onClick={() => onFollowClick?.(user.id)}
-          className="flex items-center justify-center w-5 h-5 rounded-full bg-red-500 border-2 border-secondary cursor-pointer hover:bg-red-600 transition-colors"
-        >
-          <FaPlus className="w-2.5 h-2.5 text-white" />
-        </button>
-        }
+        
         offset={[-2, 32]}
       >
         <Avatar src={user.avatar} size={38} />
