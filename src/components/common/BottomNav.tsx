@@ -13,6 +13,7 @@ export default function BottomNav() {
       <div className="flex  justify-around h-16 px-2">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
+          const iconValue = isActive ? item.activeIcon : item.icon;
           return (
             <Link
               key={item.name}
@@ -23,7 +24,11 @@ export default function BottomNav() {
                   : "text-tertiary/75 hover:text-tertiary"
               }`}
             >
-              <Icon className={`text-lg ${isActive ? `${item.activeIcon} text-primary` : `${item.icon} text-tertiary/75`}`}></Icon>
+              <Icon
+                srcHost={item.srcHost}
+                icon={iconValue}
+                className={`text-lg ${isActive ? "text-primary" : "text-tertiary/75"}`}
+              />
               <span
                 className={`text-xs font-medium`}
               >

@@ -1,3 +1,4 @@
+import { cssRgbVar, ThemeColorName, toColor } from "@/src/constants"
 import { IdNameIconType } from "@models"
 import { Button, Icon } from "@utilities"
 
@@ -13,6 +14,7 @@ const XSlidingButtons: React.FC<XSlidingButtonsProps> = (props) => {
 
     const { buttonList, selectedButton, setSelectedButton } = props
 
+ 
     return (
 
         <div style={{ scrollbarWidth: 'none' }} className="flex item-center px-2 gap-3 pb-3 pt-1 overflow-x-auto">
@@ -25,6 +27,7 @@ const XSlidingButtons: React.FC<XSlidingButtonsProps> = (props) => {
                     onClick={() => setSelectedButton(btn)}
                     type={btn.id === selectedButton.id ? 'primary' : 'default'}
                     key={btn.id}
+                    defaultShadow={`0 1px 4px ${toColor("tertiary", 0.1)}`}
                 >
                     {btn.icon && <Icon className={btn.icon} />}
                     <span>{btn.name}</span>

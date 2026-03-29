@@ -62,7 +62,7 @@ const SelectUI: React.FC<SelectProps> = (props) => {
         components: {
           Select: {
             // Border and colors
-            colorBorder: cssRgbVar("tertiary", 0.2),
+            colorBorder: cssRgbVar("tertiary", 0.1),
             colorPrimaryHover: cssRgbVar("primary"),
             colorPrimary: cssRgbVar("primary"),
 
@@ -75,7 +75,7 @@ const SelectUI: React.FC<SelectProps> = (props) => {
             colorTextPlaceholder: cssRgbVar("tertiary", 0.4),
 
             // Size
-            controlHeight: 45,
+            controlHeight: 42,
             borderRadius: 12,
 
             // Dropdown

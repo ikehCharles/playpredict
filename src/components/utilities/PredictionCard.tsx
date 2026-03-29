@@ -35,7 +35,7 @@ export default function PredictionCard({
     return (
         <>
             <div
-                className="w-full shadow-sm shadow-tertiary/10 rounded-xl bg-secondary text-tertiary p-4 cursor-pointer"
+                className="w-full shadow-small rounded-xl bg-secondary text-tertiary p-4 cursor-pointer"
                 role="button"
                 tabIndex={0}
 

@@ -75,9 +75,9 @@ export default function PredictionCardActions({
 
                 <Button
                     bgColorOpacity={0.05}
-                    borderColorOpacity={0.05}
+                    borderColorOpacity={0}
                     textColor="primary"
-                    icon={isLiked ? <Icon className="fi-sr-heart" /> : <Icon className="fi-rr-heart" />}
+                    icon={isLiked ? <Icon icon="fi-sr-heart" /> : <Icon icon="fi-rr-heart" />}
                     className="flex items-center gap-1"
                     onClick={handleLike}
                 >
@@ -88,18 +88,18 @@ export default function PredictionCardActions({
 
                 <Button
                     bgColorOpacity={0.05}
-                    borderColorOpacity={0.05}
+                    borderColorOpacity={0}
                     textColor="primary"
-                    icon={isSaved ? <Icon className="fi-sr-bookmark" /> : <Icon className="fi-rr-bookmark" />}
+                    icon={isSaved ? <Icon icon="/icons/bookmarkFill.svg" srcHost="local" /> : <Icon icon="/icons/bookmarkOutline.svg" srcHost="local" />}
                     onClick={handleSave}
                 >
                     {showActionText && (isSaved ? "Saved" : "Save")}
                 </Button>
                 <Button
                     bgColorOpacity={0.05}
-                    borderColorOpacity={0.05}
+                    borderColorOpacity={0}
                     textColor="primary"
-                    icon={<Icon className="fi-rr-redo" />}
+                    icon={<Icon icon="fi-rr-redo" />}
                     onClick={handleShare}
                 >
                     {showActionText && "Share"}

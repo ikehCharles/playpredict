@@ -11,7 +11,7 @@ const DatePickerUI: React.FC<DatePickerProps> = ({ value, onChange }) => {
   return (
 
 
-    <Space className='relative bg-secondary/5 py-0 rounded-lg w-45 shadow-sm shadow-tertiary/5 ' vertical>
+    <Space className='relative bg-secondary/5 py-0.5 rounded-lg w-45 ' vertical>
 
       <DatePicker
         open={open}
@@ -28,7 +28,7 @@ const DatePickerUI: React.FC<DatePickerProps> = ({ value, onChange }) => {
               onChange(prevDate, prevDate.format('YYYY-MM-DD'));
             }
           }}
-          className='cursor-pointer border border-primary/5 bg-primary/5 p-1.5 rounded-lg'>
+          className='cursor-pointer border border-primary/5 bg-primary/5 p-2 rounded-lg'>
 
           <Icon className="fi-rr-angle-small-left" />
 
@@ -46,7 +46,7 @@ const DatePickerUI: React.FC<DatePickerProps> = ({ value, onChange }) => {
           })()}
         </span>
         <span
-          className='cursor-pointer border border-primary/5 bg-primary/5 p-1.5 rounded-lg'
+          className='cursor-pointer border border-primary/5 bg-primary/5 p-2 rounded-lg'
           onClick={() => {
             if (onChange) {
               const selectedDate = value ? dayjs(value as Dayjs) : dayjs();

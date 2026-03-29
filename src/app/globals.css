@@ -34,6 +34,11 @@
     --font-sans: 'Satoshi', 'Inter', sans-serif;
 }
 
+@layer utilities {
+    .shadow-small {
+        box-shadow: 0 1px 2px 0 rgb(var(--tertiary), 0.1);
+    }
+}
 
 body {
     background: rgb(var(--background));
@@ -121,3 +126,4 @@ body {
 .animate-slide-in-right {
     animation: slide-in-right 0.3s ease-out;
 }
+

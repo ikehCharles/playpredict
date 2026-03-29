@@ -6,6 +6,7 @@ export interface NavItem {
   href: string;
   icon: string;
   activeIcon: string;
+  srcHost?: "font" | "local";
 }
 
 export const navItems: NavItem[] = [
@@ -24,8 +25,9 @@ export const navItems: NavItem[] = [
   {
     name: "Saved",
     href: "/saved",
-    icon: "fi fi-rr-bookmark",
-    activeIcon: "fi fi-sr-bookmark",
+    icon: "/icons/bookmarkOutline.svg",
+    activeIcon: "/icons/bookmarkFill.svg",
+    srcHost: "local",
   },
   {
     name: "Profile",

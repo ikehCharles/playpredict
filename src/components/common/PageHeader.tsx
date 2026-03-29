@@ -75,13 +75,13 @@ export default function PageHeader({
     <>
    
     {/* Mobile: Logo + Navigation */}
-    <header className={`border-b  border-tertiary/5 ${showMobileHeader ? "" : " "} sticky bg-secondary top-0 z-50 ${className}`} style={{ paddingTop: 'env(safe-area-inset-top)' }}>
+    <header className={`border-b shadow-small border-tertiary/5 ${showMobileHeader ? "" : " "} sticky bg-secondary top-0 z-50 ${className}`} style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       
     <div className="  mx-auto px-2 ">
-        <div className=" py-4 pl-2 pr-2 pt-4 flex items-center justify-between gap-2">
+        <div className=" pl-2 pr-2 py-5 flex items-center justify-between gap-2">
           {leftContent ?? null}
           {title ? (
-            <h1 className="text-md font-bold text-tertiary flex-1 min-w-0 truncate">
+            <h1 className="text-[16px] font-bold text-tertiary flex-1 min-w-0 truncate">
               {title}
             </h1>
           ) : !leftContent && !rightContent ? (
@@ -89,7 +89,7 @@ export default function PageHeader({
               <Image
                 src="/icons/PlayPredictLogoBlue.svg"
                 alt="PlayPredict"
-                width={120}
+                width={140}
                 height={34}
                 priority
                 // className="dark:hidden"

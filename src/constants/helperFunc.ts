@@ -1,4 +1,11 @@
-import { cssRgbVar, isThemeColorKey } from "./theme";
+import { cssRgbVar, isThemeColorKey, ThemeColorName } from "./theme";
+
+export function toColor(
+  color: Exclude<ThemeColorName, "background" | "error" | "success">,
+  opacity: number = 1,
+) {
+  return cssRgbVar(color, opacity >= 1 ? undefined : opacity);
+}
 
 export function GetActualColor(
   colorName?: string,
@@ -11,6 +18,16 @@ export function GetActualColor(
   }
 
   return colorName;
+}
+
+export function formatCount(value: number): string {
+  if (value >= 1_000_000_000)
+    return `${parseFloat((value / 1_000_000_000).toFixed(1))}b`;
+  if (value >= 1_000_000)
+    return `${parseFloat((value / 1_000_000).toFixed(1))}m`;
+  if (value >= 1_000)
+    return `${parseFloat((value / 1_000).toFixed(1))}k`;
+  return value.toString();
 }
 
 export function GetBreakpoint(key: "sm" | "md" | "lg" | "xl" | "2xl") {

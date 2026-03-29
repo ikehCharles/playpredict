@@ -1,4 +1,4 @@
-import { cssRgbVar, ThemeColorName } from "@constants";
+import { ThemeColorName, toColor } from "@constants";
 import { Button, ButtonProps, ConfigProvider } from "antd";
 
 type ButtonUIProps = ButtonProps & {
@@ -10,6 +10,7 @@ type ButtonUIProps = ButtonProps & {
   borderColorOpacity?: number; // Only values from 0.0 to 1.0
   borderradius?: number; // In pixels
   ctrlheight?: number; // In pixels or any valid CSS height value
+  defaultShadow?: string;
 };
 
 const ButtonUI: React.FC<ButtonUIProps> = (props) => {
@@ -20,15 +21,9 @@ const ButtonUI: React.FC<ButtonUIProps> = (props) => {
     bgColorOpacity = 1,
     textColorOpacity = 1,
     borderColorOpacity = 1,
+    defaultShadow,
     ...rest
   } = props;
-
-
-  const toColor = (
-    color: Exclude<ThemeColorName, "background" | "error" | "success">,
-    opacity: number = 1,
-  ) => cssRgbVar(color, opacity >= 1 ? undefined : opacity);
-
 
 
   const colorBgContainer =
@@ -64,7 +59,7 @@ const ButtonUI: React.FC<ButtonUIProps> = (props) => {
             fontSizeSM: 14,
             fontSizeLG: 14,
             fontSizeXL: 14,
-            defaultShadow: `0 1px 4px ${toColor("tertiary", 0.1)}`,
+            defaultShadow: defaultShadow,
           },
         },
       }}

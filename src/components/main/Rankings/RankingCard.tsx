@@ -5,7 +5,8 @@ import { Badge } from "antd";
 import { MdVerified } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { LuTrophy } from "react-icons/lu";
-import { useState } from "react";
+import { formatCount } from "@constants";
+import { Tooltip } from "../../utilities";
 
 export interface RankingUser {
   id: string;
@@ -61,7 +62,7 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
 
   return (
     <div
-      className={`flex rounded-lg items-center gap-3 p-4 border-b border-tertiary/10 last:border-b-0 ${
+      className={`flex rounded-lg items-start gap-3 p-4 px-3 border-b border-tertiary/10 last:border-b-0 ${
         user.id === currentUser.id ? "bg-primary/5" : "bg-background"
       }`}
     >
@@ -78,7 +79,7 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
         }
         offset={[-2, 32]}
       >
-        <Avatar src={user.avatar} size={48} />
+        <Avatar src={user.avatar} size={38} />
       </Badge>
       </div>
 
@@ -93,9 +94,11 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
         <span className="ml-1 px-2 py-0.5 text-xs font-semibold rounded-full bg-green-500 text-white">
         {user.winRate}% W.R
         </span>
-        <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-tertiary/10 text-tertiary">
-        {user.tipsCount} Tips
-        </span>
+        <Tooltip title={`${user.tipsCount.toLocaleString()} Tips`}>
+          <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-tertiary/10 text-tertiary cursor-default">
+          {formatCount(user.tipsCount)} Tips
+          </span>
+        </Tooltip>
       </div>
       <p className="text-sm text-tertiary/60">@{user.username}</p>
       {/* Rank badge */}
