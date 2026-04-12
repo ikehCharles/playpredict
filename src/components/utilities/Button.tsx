@@ -59,6 +59,10 @@ const ButtonUI: React.FC<ButtonUIProps> = (props) => {
             fontSizeSM: 14,
             fontSizeLG: 14,
             fontSizeXL: 14,
+            fontSizeIcon:30,
+            onlyIconSize: 30,
+            onlyIconSizeSM: 30,
+            onlyIconSizeLG: 30,
             defaultShadow: defaultShadow
           },
         },

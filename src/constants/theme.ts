@@ -6,9 +6,11 @@ export const THEME_CSS_VARS = {
   background: "--background",
   error: "--error",
   success: "--success",
+  warning: "--warning",
 } as const;
 
 export type ThemeColorName = keyof typeof THEME_CSS_VARS;
+export type ColorTheme = Exclude<ThemeColorName, "background" | "error" | "success">
 
 export const THEME_COLOR_KEYS = Object.keys(
   THEME_CSS_VARS,

@@ -9,8 +9,8 @@
     --background: 250, 248, 254;
     --error: 228, 25, 85;
     --success: 0, 170, 87;
+    --warning: 217, 175, 0;
 }
-
 
 /* @media (prefers-color-scheme: dark) {
     :root {
@@ -20,6 +20,7 @@
         --background: 5, 1, 12;
         --error: 220, 52, 84;
         --success: 76, 175, 80;
+        --warning: 217, 175, 0;
 }
 } */
 
@@ -31,6 +32,7 @@
     --color-accent: rgb(var(--accent));
     --color-error: rgb(var(--error));
     --color-success: rgb(var(--success));
+    --color-warning: rgb(var(--warning));
     --font-sans: 'Satoshi', 'Inter', sans-serif;
 }
 

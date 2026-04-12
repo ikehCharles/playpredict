@@ -1,7 +1,7 @@
 import { cssRgbVar, isThemeColorKey, ThemeColorName } from "./theme";
 
 export function toColor(
-  color: Exclude<ThemeColorName, "background" | "error" | "success">,
+  color: ThemeColorName,
   opacity: number = 1,
 ) {
   return cssRgbVar(color, opacity >= 1 ? undefined : opacity);

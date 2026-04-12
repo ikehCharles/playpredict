@@ -9,22 +9,32 @@ import {
   HiOutlineMinusCircle,
   HiOutlineQuestionMarkCircle,
 } from "react-icons/hi2";
-import { Button } from "../../utilities";
+import { Button, Tag } from "@utilities";
 
-type TimeFilter = "all-time" | "today" | "this-week" | "this-month";
+type TimeFilter = "all-time" | "today" | "this-week" | "this-month" | "custom";
 
 const timeFilters: { label: string; value: TimeFilter }[] = [
   { label: "All-Time", value: "all-time" },
   { label: "Today", value: "today" },
   { label: "This Week", value: "this-week" },
   { label: "This Month", value: "this-month" },
+  { label: "Custom", value: "custom" },
 ];
 
 const formIconMap: Record<FormResult, React.ReactNode> = {
-  loss: <HiOutlineXCircle className="w-6 h-6 text-error" />,
-  win: <HiOutlineCheckCircle className="w-6 h-6 text-green-500" />,
-  draw: <HiOutlineMinusCircle className="w-6 h-6 text-tertiary/40" />,
-  pending: <HiOutlineQuestionMarkCircle className="w-6 h-6 text-primary" />,
+  loss: <div className="p-2 rounded-xl bg-error/10">
+    <HiOutlineXCircle className="w-6 h-6 text-error" />
+  </div>
+  ,
+  win: <div className="p-2 w-full h-full rounded-xl bg-success/10">
+  <HiOutlineCheckCircle className="w-6 h-6 text-success" />
+  </div> ,
+  draw: <div className="p-2 rounded-xl bg-tertiary/10">
+  <HiOutlineMinusCircle className="w-6 h-6 text-tertiary/40" />
+  </div>,
+  pending: <div className="p-2 rounded-xl bg-primary/10">
+  <HiOutlineQuestionMarkCircle className="w-6 h-6 text-primary" />
+  </div>,
 };
 
 export default function ProfileStats() {
@@ -43,11 +53,11 @@ export default function ProfileStats() {
             bgColor={filter === f.value ? "primary" : "secondary"}
             bgColorOpacity={filter === f.value ? 0.05 : 1}
             borderColor={filter === f.value ? "primary" : "tertiary"}
-            borderColorOpacity={0.1}
+            borderColorOpacity={0}
             textColor={filter === f.value ? "primary" : "tertiary"
 
             }
-            // transparent={filter !== f.value}
+          // transparent={filter !== f.value}
           >
             {f.label}
           </Button>
@@ -83,7 +93,6 @@ export default function ProfileStats() {
             label="Total Win Rate"
             winRate={stats.totalWinRate}
             tips={stats.totalWinRateTips}
-            color="bg-tertiary"
           />
           {/* Per-sport cards */}
           {stats.sportWinRates.map((s) => (
@@ -93,36 +102,43 @@ export default function ProfileStats() {
               icon={s.icon}
               winRate={s.winRate}
               tips={s.tips}
-              color={s.color}
             />
           ))}
         </div>
       </div>
 
       {/* ── Average Odds / Streaks ── */}
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-background rounded-xl p-4">
-          <p className="text-xs text-tertiary/60">Average Odds</p>
-          <p className="text-lg font-bold text-primary">{stats.averageOdds.toFixed(2)}</p>
-        </div>
-        <div className="bg-background rounded-xl p-4">
-          <p className="text-xs text-tertiary/60">Win Streak</p>
-          <p className="text-lg font-bold text-primary">{stats.winStreak}</p>
-        </div>
-        <div className="bg-background rounded-xl p-4">
-          <p className="text-xs text-tertiary/60">Lose Streak</p>
-          <p className="text-lg font-bold text-tertiary">{stats.loseStreak}</p>
-        </div>
+      <div className="grid grid-cols-2 gap-2">
+        <StatsCard
+          label="Average Odds"
+          value={stats.averageOdds.toFixed(2)}
+          valueClassName="text-primary"
+        />
+        <StatsCard
+          label="ROI"
+          value={`${stats.roi}%`}
+          valueClassName="text-primary"
+        />
+        <StatsCard
+          label="Win Streak"
+          value={stats.winStreak}
+          valueClassName="text-primary"
+        />
+        <StatsCard
+          label="Lose Streak"
+          value={stats.loseStreak}
+          valueClassName="text-tertiary"
+        />
       </div>
 
       {/* ── Form + Achievements ── */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {/* Form */}
         <div className="bg-background rounded-xl p-4">
           <h3 className="text-sm font-semibold text-tertiary mb-3">Form</h3>
           <div className="flex flex-wrap gap-2">
             {stats.form.map((result, i) => (
-              <span key={i}>{formIconMap[result]}</span>
+              <div key={i}>{formIconMap[result]}</div>
             ))}
           </div>
         </div>
@@ -144,6 +160,25 @@ export default function ProfileStats() {
   );
 }
 
+/* ── Stats Card sub-component ── */
+
+function StatsCard({
+  label,
+  value,
+  valueClassName = "text-primary",
+}: {
+  label: string;
+  value: React.ReactNode;
+  valueClassName?: string;
+}) {
+  return (
+    <div className="bg-background rounded-xl p-4">
+      <p className="text-xs text-tertiary">{label}</p>
+      <p className={`text-lg font-bold ${valueClassName}`}>{value}</p>
+    </div>
+  );
+}
+
 /* ── Win Rate Card sub-component ── */
 
 function WinRateCard({
@@ -151,26 +186,25 @@ function WinRateCard({
   icon,
   winRate,
   tips,
-  color,
 }: {
   label: string;
   icon?: string;
   winRate: number;
   tips: number;
-  color: string;
 }) {
   return (
     <div className="bg-secondary shrink-0 flex flex-col items-center gap-2 border border-tertiary/10 rounded-xl px-4 py-3 min-w-30">
-      <span className="text-xs text-tertiary/70 flex items-center gap-1">
+      <span className="text-xs text-tertiary flex items-center gap-1">
         {icon && <span className="text-sm">{icon}</span>}
         {label}
       </span>
-      <span className={`${color} text-secondary text-xs font-semibold rounded-full px-3 py-0.5`}>
+      <Tag colorbycount={winRate} variant="solid" rootClassName="rounded-full text-center! w-[100px]">
         {winRate}% W.R
-      </span>
-      <span className="bg-tertiary text-secondary text-xs font-medium rounded-full px-3 py-0.5">
+      </Tag>
+      <Tag color={"tertiary"} variant="solid" rootClassName="rounded-full text-center! w-[100px]">
         {tips} Tips
-      </span>
+      </Tag>
+
     </div>
   );
 }

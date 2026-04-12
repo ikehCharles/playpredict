@@ -53,7 +53,7 @@ export default function HomeFilters({
         {/* Action Buttons */}
         <div className="flex gap-3 items-center">
 
-          <Badge size="small" className="text-xs!" style={{ padding:' 0 3px', fontSize: 10, fontWeight: 500}} count={2} color="red" offset={[-10, 8]}>
+          <Badge size="small" className="text-xs!" style={{ padding:' 0 3px', fontSize: 10, fontWeight: 500}} count={2} color="var(--color-error)" offset={[-13, 13]}>
             <Button
               bgColorOpacity={0.05}
               borderColorOpacity={0.05}

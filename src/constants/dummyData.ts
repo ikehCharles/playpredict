@@ -79,6 +79,7 @@ export const predictionsDummyData: PredictionItemType[] = [
       verified: true,
       winRate: "84%",
       tips: 1250,
+      roi: 35.5,
     },
     match: {
       home: "RC Lens",
@@ -104,6 +105,7 @@ export const predictionsDummyData: PredictionItemType[] = [
       verified: true,
       winRate: "84%",
       tips: 1250,
+      roi: 35.5,
     },
     match: {
       home: "RC Lens",
@@ -129,6 +131,7 @@ export const predictionsDummyData: PredictionItemType[] = [
       verified: true,
       winRate: "84%",
       tips: 1250,
+      roi: 35.5,
     },
     match: {
       home: "RC Lens",
@@ -157,6 +160,7 @@ export const savedPredictionsDummyData: PredictionItemType[] = [
       verified: true,
       winRate: "84%",
       tips: 1250,
+      roi: 35.5,
     },
     match: {
       home: "RC Lens",
@@ -181,6 +185,7 @@ export const savedPredictionsDummyData: PredictionItemType[] = [
       verified: true,
       winRate: "87%",
       tips: 101,
+      roi: 35.5,
     },
     match: {
       home: "Boston Celtics",
@@ -205,6 +210,7 @@ export const savedPredictionsDummyData: PredictionItemType[] = [
       verified: true,
       winRate: "46%",
       tips: 258,
+      roi: 35.5,
     },
     match: {
       home: "Barcelona",
@@ -240,6 +246,7 @@ export const currentUserProfile = {
   winRate: 10,
   tipsCount: 10,
   rank: 1000,
+  roi: 35.5,
 };
 
 // Users shown on Following page (list of people you follow / search)
@@ -342,6 +349,7 @@ export const rankingsDummyData = [
     winRate: 98,
     tipsCount: 1024,
     rank: 1,
+    roi: 85.5,
   },
   {
     id: "2",
@@ -352,6 +360,7 @@ export const rankingsDummyData = [
     winRate: 96,
     tipsCount: 1250,
     rank: 2,
+    roi:20
   },
   {
     id: "3",
@@ -359,9 +368,10 @@ export const rankingsDummyData = [
     username: "alanibetting",
     avatar: "https://i.pravatar.cc/150?img=8",
     verified: true,
-    winRate: 95,
+    winRate: 44,
     tipsCount: 865,
     rank: 3,
+    roi: 64.5,
   },
   {
     id: "4",
@@ -372,6 +382,7 @@ export const rankingsDummyData = [
     winRate: 94,
     tipsCount: 767,
     rank: 4,
+    roi: 75.5,
   },
   {
     id: "5",
@@ -382,6 +393,7 @@ export const rankingsDummyData = [
     winRate: 94,
     tipsCount: 829,
     rank: 5,
+    roi: 25.5,
   },
   {
     id: "6",
@@ -392,6 +404,7 @@ export const rankingsDummyData = [
     winRate: 92,
     tipsCount: 542,
     rank: 6,
+    roi: 66.5,
   },
   {
     id: "7",
@@ -402,6 +415,7 @@ export const rankingsDummyData = [
     winRate: 91,
     tipsCount: 623,
     rank: 7,
+    roi: 55.5,
   },
   {
     id: "8",
@@ -412,6 +426,7 @@ export const rankingsDummyData = [
     winRate: 90,
     tipsCount: 456,
     rank: 8,
+    roi: 45.5,
   },
   currentUserProfile,
 ];
@@ -481,11 +496,12 @@ export const profileStatsDummyData: ProfileStatsType = {
   totalWinRate: 78,
   totalWinRateTips: 258,
   sportWinRates: [
-    { sport: "Football",   icon: "⚽", winRate: 88, tips: 101, color: "bg-primary" },
-    { sport: "Basketball", icon: "🏀", winRate: 68, tips: 64,  color: "bg-error" },
-    { sport: "Tennis",     icon: "🎾", winRate: 78, tips: 92,  color: "bg-primary" },
+    { sport: "Football",   icon: "⚽", winRate: 80, tips: 101  },
+    { sport: "Basketball", icon: "🏀", winRate: 68, tips: 64  },
+    { sport: "Tennis",     icon: "🎾", winRate: 23, tips: 12 },
   ],
   averageOdds: 2.15,
+  roi: 35.5,
   winStreak: 9,
   loseStreak: 7,
   form: ["loss", "win", "draw", "loss", "draw", "win", "win", "win", "pending"],

@@ -11,6 +11,7 @@ export interface PredictionUserType {
     verified?: boolean;
     winRate: string;
     tips: number;
+    roi: number;
 }
 
 export interface PredictionMatchType {
@@ -48,7 +49,6 @@ export interface SportWinRateType {
     icon: string;
     winRate: number;
     tips: number;
-    color: string;          // Tailwind bg- class for the badge
 }
 
 export interface ProfileStatsType {
@@ -61,6 +61,7 @@ export interface ProfileStatsType {
     sportWinRates: SportWinRateType[];
     averageOdds: number;
     winStreak: number;
+    roi: number;
     loseStreak: number;
     form: FormResult[];
     achievements: string[];   // badge image URLs (empty strings = placeholder)

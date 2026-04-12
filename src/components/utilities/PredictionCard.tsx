@@ -77,10 +77,12 @@ export default function PredictionCard({
                                 {user.verified && (
                                     <MdVerified className="text-blue-800" />
                                 )}
-                                <Tag color={`success`} variant="solid" rootClassName="rounded-full" className="font-semibold rounded-full">
+                                <Tag color={`success`} variant="solid"  className="font-semibold rounded-full">
                                     {user.winRate} W.R
                                 </Tag>
-                                <Tag color="black" variant="solid" className="font-semibold rounded-full" >{user.tips} Tips</Tag>
+                                <Tag color={`success`} variant="solid" className="font-semibold rounded-full">
+                                    {user.roi}% ROI
+                                </Tag>
                             </div>
                             <div className="text-xs text-tertiary/80">
                                 @{user.username}
