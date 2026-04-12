@@ -9,7 +9,7 @@ export interface PredictionUserType {
     username: string;
     avatar: string;
     verified?: boolean;
-    winRate: string;
+    winRate: number;
     tips: number;
     roi: number;
 }
