@@ -15,9 +15,9 @@ export default function FloatingPredictButton() {
     <Link
       href="/predict"
       aria-label="Start prediction flow"
-      className="fixed right-4 bottom-20 md:bottom-6 md:right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary text-secondary shadow-sm shadow-tertiary transition-transform hover:scale-[1.03] active:scale-95"
+      className="fixed right-4 bottom-30 md:bottom-6 md:right-6 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary text-secondary shadow-sm shadow-tertiary/40 transition-transform hover:scale-[1.03] active:scale-95"
     >
-      <Icon icon="fi fi-rr-edit" className="scale-120 leading-none" />
+      <Icon icon="fi fi-rr-edit" className="scale-140 leading-none" />
     </Link>
   );
 }
