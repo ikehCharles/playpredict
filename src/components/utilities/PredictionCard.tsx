@@ -63,7 +63,7 @@ export default function PredictionCard({
                 </div>
                 <div onClick={() => setIsDetailsOpen(true)}>
                     {/* User */}
-                    <div className="mb-3 flex items-center gap-3">
+                    <div className="mb-3 flex items-start gap-3">
                         <div>
                             <Badge color='none' title="punter avatar and country" offset={[-5, 30]}>
                                 <Avatar size={40} src={user.avatar} />
@@ -77,18 +77,23 @@ export default function PredictionCard({
                                 {user.verified && (
                                     <MdVerified className="text-blue-800" />
                                 )}
+                                
+                            </div>
+                            <div className="text-xs text-tertiary/80">
+                                @{user.username}
+                            </div>
+                            <div className="flex items-center gap-1 mt-2">
                                 <Tag colorbycount={user.winRate} variant="solid"  className="font-semibold rounded-full">
                                     {user.winRate}% W.R
                                 </Tag>
                                 <Tag colorbycount={user.roi} variant="solid" className="font-semibold rounded-full">
                                     {user.roi}% ROI
                                 </Tag>
-                                <Tag color={'tertiary'} variant="solid" className="font-semibold rounded-full">
+                                <Tag bgcolor={'tertiary'} textcolor={'tertiary'} bgopacity={0.1} variant="solid" className="font-semibold text-primary rounded-full">
+                                    <span className="text-tertiary">
                                     {user.tips} Tips
+                                    </span>
                                 </Tag>
-                            </div>
-                            <div className="text-xs text-tertiary/80">
-                                @{user.username}
                             </div>
 
                         </div>

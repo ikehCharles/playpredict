@@ -53,13 +53,11 @@ function TeamBadge({ name }: { name: string }) {
 
 function DateDivider({ date }: { date: string }) {
     return (
-        <div className="flex items-center gap-3 text-sm font-semibold text-tertiary/75">
-            <span className="h-px flex-1 bg-tertiary/15" />
+        <div className="flex items-center justify-center bg-secondary p-3 gap-3 text-sm font-semibold text-tertiary/75">
             <span className="inline-flex items-center gap-2">
                 <Icon icon="fi fi-rr-calendar" className="text-sm text-tertiary/70" />
                 {date}
             </span>
-            <span className="h-px flex-1 bg-tertiary/15" />
         </div>
     );
 }
@@ -117,7 +115,7 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                     </span>
                 </div>
 
-                <div className="flex items-center gap-2 mb-4 overflow-x-auto bg-secondary p-2 shadow-small">
+                <div className="flex items-center gap-2 overflow-x-auto bg-secondary p-2 shadow-small">
                     {marketTabs.map((tab) => (
                         <button
                             key={tab}
@@ -133,11 +131,15 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                         </button>
                     ))}
                 </div>
+                <div className="mb-4 shadow-xs" >
+                    <DateDivider date={new Date().toDateString()} />
+                </div>
 
-                <div className="space-y-3 pt-1">
+
+                <div className="space-y-3 px-2 pt-1">
                     {Object.entries(groupedFixtures).map(([date, dateFixtures]) => (
                         <div key={date} className="space-y-3">
-                            <DateDivider date={date} />
+                            
                             {dateFixtures.map((fixture) => (
                                 <article
                                     key={fixture.id}
@@ -149,15 +151,15 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                                         <span className="font-semibold">{fixture.kickoffTime}</span>
                                     </div>
 
-                                    <div className="mb-3 flex items-center justify-center gap-2 text-[26px] font-medium text-tertiary">
+                                    <div className="mb-3 flex items-center justify-center gap-2  font-medium text-tertiary">
                                         <span className="inline-flex items-center gap-2">
-                                            <span className="text-xl">{fixture.home}</span>
+                                            <span className="">{fixture.home}</span>
                                             <TeamBadge name={fixture.home} />
                                         </span>
-                                        <span className="text-xl">-</span>
+                                        <span className="">-</span>
                                         <span className="inline-flex items-center gap-2">
                                             <TeamBadge name={fixture.away} />
-                                            <span className="text-xl">{fixture.away}</span>
+                                            <span className="">{fixture.away}</span>
                                         </span>
                                     </div>
 
@@ -184,7 +186,7 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                     <span className="line-clamp-2 flex-1 text-left text-sm font-semibold">
                         Lens v PSG - 1X; Sinner, Jannick v Medvedev, Danil - 1st set winner
                     </span>
-                    <span className="rounded-full bg-secondary px-3 py-1 text-xl font-bold text-primary">
+                    <span className="rounded-full bg-secondary px-3 py-1  font-bold text-primary">
                         20.53
                     </span>
                 </button>

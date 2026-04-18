@@ -12,7 +12,7 @@ export interface FollowingUser {
   avatar: string;
   verified: boolean;
   bio: string;
-  winRate: string;
+  winRate: number;
   winRateColor: "green" | "red" | "yellow";
   tipsCount: number;
   isFollowing: boolean;
@@ -34,13 +34,13 @@ export default function FollowingCard({ user, onFollowToggle }: FollowingCardPro
           <div>
             <div className="flex items-center gap-1.5 font-semibold text-tertiary">
               {user.name}
-              {user.verified && <MdVerified className="w-4 h-4 text-blue-600 flex-shrink-0" />}
+              {user.verified && <MdVerified className="w-4 h-4 text-blue-600 shrink-0" />}
             </div>
             <p className="text-sm text-tertiary/70">@{user.username}</p>
           </div>
           <Button
             type={user.isFollowing ? "default" : "primary"}
-            className="rounded-lg flex-shrink-0"
+            className="rounded-lg shrink-0"
             onClick={() => onFollowToggle?.(user.id, user.isFollowing)}
           >
             {user.isFollowing ? "Following" : "Follow"}
@@ -48,10 +48,10 @@ export default function FollowingCard({ user, onFollowToggle }: FollowingCardPro
         </div>
         <p className="text-sm text-tertiary/80 mt-2 line-clamp-2">{user.bio}</p>
         <div className="flex gap-2 mt-2">
-          <Tag color={tagColor} className="!m-0 font-semibold">
+          <Tag color={tagColor} className="m-0! font-semibold">
             {user.winRate} W.R
           </Tag>
-          <Tag color="default" className="!m-0 font-semibold">
+          <Tag color="default" className="m-0! font-semibold">
             {user.tipsCount} Tips
           </Tag>
         </div>

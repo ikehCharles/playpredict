@@ -78,11 +78,23 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
 
       {/* User info */}
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-1.5">
-          <span className="font-semibold text-tertiary truncate">{user.name}</span>
-          {user.verified && (
-            <MdVerified className="w-4 h-4 text-blue-500 shrink-0" />
-          )}
+        <div className="flex items-center justify-between gap-1.5">
+          <div className="flex items-center gap-1">
+            <span className="font-semibold text-tertiary truncate">{user.name}</span>
+            {user.verified && (
+              <MdVerified className="w-4 h-4 text-blue-500 shrink-0" />
+            )}
+          </div>
+          <span
+            className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-full ${rankStyle.bg} ${rankStyle.text}`}
+          >
+            <LuTrophy className="w-3 h-3" />
+            {getRankSuffix(user.rank)}
+          </span>
+
+        </div>
+        <div className="flex items-center gap-2">
+
           {/* ROI badges */}
           <Tag colorbycount={user.roi || 0} variant="solid" className="font-semibold rounded-full">
             {user.roi} ROI
@@ -91,7 +103,7 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
           <Tag colorbycount={user.winRate} variant="solid" className="font-semibold rounded-full">
             {user.winRate} W.R
           </Tag>
-          
+
           <Tooltip title={`${user.tipsCount.toLocaleString()} Tips`}>
             <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-tertiary/10 text-tertiary cursor-default">
               {formatCount(user.tipsCount)} Tips
@@ -101,12 +113,7 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
         <p className="text-sm text-tertiary/60">@{user.username}</p>
         {/* Rank badge */}
         <div className="flex items-center gap-1 mt-1">
-          <span
-            className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-full ${rankStyle.bg} ${rankStyle.text}`}
-          >
-            <LuTrophy className="w-3 h-3" />
-            {getRankSuffix(user.rank)}
-          </span>
+
         </div>
       </div>
     </div>
