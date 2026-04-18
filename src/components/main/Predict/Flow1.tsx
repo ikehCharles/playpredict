@@ -144,7 +144,7 @@ export default function Flow1({ onLeagueSelect }: Flow1Props) {
                 </section>
             </div>
 
-            <div className="fixed inset-x-2 bottom-20 z-30 md:hidden">
+            <div className="fixed inset-x-2 bottom-25 z-30 md:hidden">
                 <button
                     type="button"
                     className="flex w-full items-center gap-3 rounded-2xl bg-[#180533] px-3 py-3 text-secondary shadow-lg"
