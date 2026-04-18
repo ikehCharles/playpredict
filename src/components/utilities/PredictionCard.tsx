@@ -82,7 +82,7 @@ export default function PredictionCard({
                             <div className="text-xs text-tertiary/80">
                                 @{user.username}
                             </div>
-                            <div className="flex items-center gap-1 mt-2">
+                            <div className="flex items-center gap-1 mt-1">
                                 <Tag colorbycount={user.winRate} variant="solid"  className="font-semibold rounded-full">
                                     {user.winRate}% W.R
                                 </Tag>

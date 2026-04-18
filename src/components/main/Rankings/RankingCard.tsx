@@ -93,7 +93,8 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
           </span>
 
         </div>
-        <div className="flex items-center gap-2">
+        <p className="text-sm text-tertiary/60">@{user.username}</p>
+        <div className="flex items-center gap-2 mt-1">
 
           {/* ROI badges */}
           <Tag colorbycount={user.roi || 0} variant="solid" className="font-semibold rounded-full">
@@ -110,7 +111,6 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
             </span>
           </Tooltip>
         </div>
-        <p className="text-sm text-tertiary/60">@{user.username}</p>
         {/* Rank badge */}
         <div className="flex items-center gap-1 mt-1">
 
