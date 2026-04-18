@@ -12,3 +12,4 @@ export { default as BookieBetButton } from './BookieBetButton';
 export { default as ReportTipSheet } from './ReportTipSheet';
 export { default as RightDrawer } from './RightDrawer';
 export { default as ServiceWorkerRegistration } from './ServiceWorkerRegistration';
+export { default as FloatingPredictButton } from './FloatingPredictButton';

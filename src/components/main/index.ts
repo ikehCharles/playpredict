@@ -1,6 +1,7 @@
 export { default as Home } from './Home';
 export { type Filter as Filter } from './Home/Filters';
 export { default as Saved } from './Saved';
+export { default as Predict } from './Predict';
 
 // Profile components
 export { default as ProfileBlock } from './Profile/ProfileBlock';

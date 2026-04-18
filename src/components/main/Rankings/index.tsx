@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import RankingsHeader from "./RankingsHeader";
 import RankingsFilters, { RankingsFilterState } from "./RankingsFilters";
 import RankingsList from "./RankingsList";
 import RankingCard from "./RankingCard";
 import { rankingsDummyData, currentUserProfile } from "@constants";
+import { PageHeader } from "@common";
 
 const defaultFilters: RankingsFilterState = {
   sport: "all",
@@ -38,7 +38,7 @@ export default function Rankings() {
 
   return (
     <div className="w-full mx-auto min-h-[50vh] pb-20 md:pb-24">
-      <RankingsHeader />
+      <PageHeader title="Rankings" />
       <div className="max-w-8xl mx-auto mt-2 px-2">
         <RankingsFilters
           filters={filters}

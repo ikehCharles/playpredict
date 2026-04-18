@@ -17,7 +17,7 @@ const XSlidingButtons: React.FC<XSlidingButtonsProps> = (props) => {
  
     return (
 
-        <div style={{ scrollbarWidth: 'none' }} className="flex item-center px-2 gap-3 pb-3 pt-1 overflow-x-auto">
+        <div style={{ scrollbarWidth: 'none' }} className="flex item-center px-1 gap-3 pb-3 pt-1 overflow-x-auto">
             {buttonList.map((btn) => (
                 <Button
                     bgColor={btn.id === selectedButton.id ? 'primary' : 'secondary'}

@@ -15,6 +15,7 @@ export { default as Dropdown } from './Dropdown';
 export { default as Tag } from './Tag';
 export { default as Badge } from './Badge';
 export { default as Icon } from './Icon';
+export { default as Collapsible } from './Collapsible';
 export {
   default as PhoneInput,
   getCountries,

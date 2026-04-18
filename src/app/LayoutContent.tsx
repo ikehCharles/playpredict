@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { BottomNav, Sidebar } from "@common";
+import { BottomNav, FloatingPredictButton, Sidebar } from "@common";
 
 export default function LayoutContent({
   children,
@@ -20,6 +20,7 @@ export default function LayoutContent({
         <main className={!shouldHideNav ? "pb-20 md:pb-6" : ""}>
           {children}
         </main>
+        {pathname === "/" && <FloatingPredictButton />}
         {!shouldHideNav && <BottomNav />}
       </div>
     </div>
