@@ -18,7 +18,7 @@ export default function RankingsList({ users, currentUser, onFollowClick }: Rank
   }
 
   return (
-    <div className="flex flex-col gap-3  overflow-hidden">
+    <div className="flex flex-col   overflow-hidden">
       {users.map((user) => (
         <RankingCard key={user.id} user={user} currentUser={currentUser} onFollowClick={onFollowClick} />
       ))}

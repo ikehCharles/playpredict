@@ -240,7 +240,7 @@ export const currentUserProfile = {
   joinDate: "05 Jan, 2025",
   bio: "Data-driven punter. I bet on stats, trends & form, not gut. Big accas & smart singles. No sure things, just sharp analysis & calculated risks.",
   avatar: "https://i.pravatar.cc/150?img=3",
-  verified: false,
+  verified: true,
   followingCount: 12,
   followersCount: 643,
   winRate: 10,

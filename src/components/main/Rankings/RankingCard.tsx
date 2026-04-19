@@ -27,22 +27,22 @@ interface RankingCardProps {
 }
 
 const getRankSuffix = (rank: number): React.ReactNode => {
-  if (rank === 1) return (<span className="bg-primary border border-primary/10 font-bold text-secondary rounded-md p-1 px-2.5 flex items-center">
+  if (rank === 1) return (<span className="bg-primary border border-primary/10 font-bold text-secondary rounded-md px-2 flex items-center">
     <span>1st</span>
     <Icon icon={'fi fi-sr-bullet mt-0.5'} />
     <span>$50,000</span>
   </span>);
-  if (rank === 2) return (<span className="bg-primary/10 border font-bold border-primary/10 text-primary rounded-md p-1 px-2.5 flex items-center">
+  if (rank === 2) return (<span className="bg-primary/10 border font-bold border-primary/10 text-primary rounded-md p-0.5 px-2 flex items-center">
     <span>2nd</span>
     <Icon icon={'fi fi-sr-bullet mt-0.5'} />
     <span>$30,000</span>
   </span>);
-  if (rank === 3) return (<span className="bg-primary/10 border font-bold border-primary/10 text-primary rounded-md p-1 px-2.5 flex items-center">
+  if (rank === 3) return (<span className="bg-primary/10 border font-bold border-primary/10 text-primary rounded-md p-0.5 px-2 flex items-center">
     <span>3rd</span>
     <Icon className="text-primary" icon={'fi fi-sr-bullet mt-0.5'} />
     <span>$20,000</span>
   </span>);
-  return <span className="bg-tertiary/5 font-bold border border-tertiary/10 rounded-md text-tertiary p-1 px-2.5" >{rank}th</span>;
+  return <span className="bg-tertiary/5 font-bold border border-tertiary/10 rounded-md text-tertiary p-0.5 px-2" >{rank}th</span>;
 };
 
 
@@ -67,7 +67,7 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between gap-1.5">
           <div className="flex items-center gap-1">
-            <span className="font-semibold text-tertiary truncate">{user.name}</span>
+            <span className="font-semibold text-tertiary truncate">{user.name}{user.id === currentUser?.id ? " (You)" : ""}</span>
             {user.verified && (
               <MdVerified className="w-4 h-4 text-blue-500 shrink-0" />
             )}
@@ -98,7 +98,7 @@ export default function RankingCard({ user, currentUser, onFollowClick }: Rankin
           </Tooltip>
         </div>
         {/* Rank badge */}
-        <div className="flex items-center py-1 text-sm text-tertiary gap-1 mt-1">
+        <div className="flex items-center py-1 pb-2 opacity-75 text-sm text-tertiary gap-1 mt-1">
           Active 16/30 days this month
         </div>
       </div>
