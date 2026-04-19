@@ -57,7 +57,7 @@ export default function Predict() {
           <Flow1 onLeagueSelect={setSelectedLeague} />
         )}
       </div>
-      <div className="fixed z-30 md:hidden" style={{ bottom: 'calc(4rem + env(safe-area-inset-bottom, 0px))' }}>
+      <div className="fixed z-30 md:hidden px-2" style={{ bottom: 'calc(4.5rem + env(safe-area-inset-bottom, 0px))' }}>
         <SelectedPrediction />
       </div>
     </div>
