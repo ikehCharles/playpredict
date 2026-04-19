@@ -348,7 +348,7 @@ export const rankingsDummyData = [
     verified: true,
     winRate: 98,
     tipsCount: 1024,
-    rank: 1,
+    rank: 2,
     roi: 85.5,
   },
   {
@@ -359,8 +359,8 @@ export const rankingsDummyData = [
     verified: true,
     winRate: 96,
     tipsCount: 1250,
-    rank: 2,
-    roi:20
+    rank: 1,
+    roi:75
   },
   {
     id: "3",
@@ -381,7 +381,7 @@ export const rankingsDummyData = [
     verified: true,
     winRate: 94,
     tipsCount: 767,
-    rank: 4,
+    rank: 5,
     roi: 75.5,
   },
   {
@@ -392,7 +392,7 @@ export const rankingsDummyData = [
     verified: true,
     winRate: 94,
     tipsCount: 829,
-    rank: 5,
+    rank: 4,
     roi: 25.5,
   },
   {
