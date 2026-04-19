@@ -7,6 +7,7 @@ import Flow1 from "./Flow1";
 import Flow2 from "./Flow2";
 import Flow3 from "./Flow3";
 import type { Fixture } from "./Flow2";
+import SelectedPrediction from "./SelectedPrediction";
 
 export default function Predict() {
   const [selectedLeague, setSelectedLeague] = useState<string | null>(null);
@@ -55,6 +56,9 @@ export default function Predict() {
         ) : (
           <Flow1 onLeagueSelect={setSelectedLeague} />
         )}
+      </div>
+      <div className="fixed z-30 md:hidden" style={{ bottom: 'calc(4rem + env(safe-area-inset-bottom, 0px))' }}>
+        <SelectedPrediction />
       </div>
     </div>
   );
