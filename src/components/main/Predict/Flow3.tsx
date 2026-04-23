@@ -502,23 +502,7 @@ export default function Flow3({ fixture }: Flow3Props) {
                 />
             </div>
 
-            {/* Bottom bet slip bar */}
-            <div className="fixed inset-x-2 bottom-3 z-30 md:hidden">
-                <button
-                    type="button"
-                    className="flex w-full items-center gap-3 rounded-xl bg-[#1a0f3a] px-3 py-2.5 text-secondary shadow-lg"
-                >
-                    <span className="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-secondary/10 px-1 text-xs font-bold">
-                        4
-                    </span>
-                    <span className="line-clamp-1 flex-1 text-left text-sm font-semibold text-secondary/90">
-                        {fixture.home} v {fixture.away} - 1X
-                    </span>
-                    <span className="rounded-full bg-secondary px-2 py-0.5 text-xs font-bold text-primary">
-                        20.53
-                    </span>
-                </button>
-            </div>
+            
         </div>
     );
 }
