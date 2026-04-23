@@ -61,7 +61,7 @@ export default function Flow1({ onLeagueSelect }: Flow1Props) {
         label: (
             <div className="flex w-full justify-between items-center gap-3">
                 <div className="flex items-center gap-3">
-                <span className="h-6 w-6 rounded-full bg-tertiary/10" />
+                <span className="h-6 w-6 rounded-full bg-primary/10" />
                 <span className="text-sm text-tertiary">{group.country}</span>
                 </div>
                 <CountPill value={group.count} />
