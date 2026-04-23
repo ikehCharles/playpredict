@@ -109,11 +109,11 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
         <div className="mx-auto w-full max-w-8xl bg-background ">
             <div className="">
                 <div className="flex items-center justify-between bg-secondary px-3 py-3 border-b border-tertiary/10">
-                    <div className="flex items-center gap-2 text-sm font-medium text-tertiary">
-                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] text-primary">⚽</span>
+                    <div className="flex items-center gap-2 text-sm font-semibold text-tertiary">
+                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary">⚽</span>
                         <span>{selectedLeague}</span>
                     </div>
-                    <span className="inline-flex min-w-9 items-center justify-center rounded-full bg-background px-2 py-1 text-xs font-bold text-tertiary/80">
+                    <span className="inline-flex min-w-9 items-center justify-center rounded-full bg-background px-2 py-1 text-xs font-semibold text-tertiary/80">
                         4
                     </span>
                 </div>
@@ -134,7 +134,7 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                         </button>
                     ))}
                 </div>
-                <div className="mb-4 shadow-sm shadow-tertiary/5">
+                <div className="mb-4 shadow-sm font-semibold shadow-tertiary/5">
                     <DatePicker2 value={selectedDate} onChange={handleDateChange} />
                 </div>
 

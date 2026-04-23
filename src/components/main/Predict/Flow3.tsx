@@ -424,7 +424,7 @@ export default function Flow3({ fixture }: Flow3Props) {
             </div>
 
             {/* Tab bar */}
-            <div className="flex items-center overflow-x-auto bg-secondary border-t border-primary/5 p-3 shadow-sm">
+            <div className="flex items-center overflow-x-auto bg-secondary border-t border-primary/5 p-2 px-3 shadow-sm">
                 {topTabs.map((tab) => (
                     <Button
                         key={tab}
