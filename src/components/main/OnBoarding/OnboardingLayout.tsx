@@ -34,7 +34,7 @@ const OnboardingLayout: React.FC<OnboardingLayoutProps> = ({
   showDecorations = true,
 }) => {
   return (
-    <div className="relative h-[70vh] lg:h-[90vh] pb-[100px] overflow-auto bg-secondary flex flex-col">
+    <div className="relative h-[70vh] lg:h-[90vh] pb-25 overflow-auto bg-secondary flex flex-col">
       {/* Header */}
       <PageHeader centered />
 

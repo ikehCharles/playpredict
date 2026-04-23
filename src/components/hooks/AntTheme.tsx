@@ -72,8 +72,13 @@ const ThemeConfigProvider: React.FC<{ children: React.ReactNode }> = (props) => 
 
                         colorText: "rgb(42, 227, 63)",
                     },
-                    
-
+                    DatePicker: {
+                        colorPrimary: cssRgbVar("primary"),
+                        colorBgContainer: cssRgbVar("secondary"),
+                        colorText: cssRgbVar("primary"),
+                        colorTextDisabled: cssRgbVar("primary", 0.5),
+                        colorBgElevated: cssRgbVar("secondary"),
+                    },
                 },
 
             }}

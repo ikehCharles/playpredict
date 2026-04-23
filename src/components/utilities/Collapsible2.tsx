@@ -17,7 +17,7 @@ type CollapsibleProps = CollapseProps & {
     contentBorderColorOpacity?: number; // Only values from 0.0 to 1.0
 }
 
-export default function Collapsible(props: CollapsibleProps) {
+export default function Collapsible2(props: CollapsibleProps) {
 
 
     const headerBg = toColor(props.headerBgColor || 'secondary', props.headerBgColorOpacity ?? 1);
@@ -33,34 +33,29 @@ export default function Collapsible(props: CollapsibleProps) {
             theme={{
                 components: {
                     Collapse: {
+                        borderlessContentBg: contentBg,
                         contentBg,
                         headerBg,
                         colorText: contentColorText,
                         colorTextHeading: headerColorText,
                         colorBorder: contentColorBorder,
                         borderlessContentPadding: '0 15px',
+
                     }
                 }
             }}>
             <Collapse
                 {...props}
+                // activeKey={props.isOpen ? ["panel"] : []}
                 bordered={false}
                 styles={{
                     header: {
                         display: 'flex',
                         alignItems: 'center',
-                        border: 'none',
-                        background:headerBg,
-                    },
-                    
-                    ...props.styles
-                    
+                    }
                 }}
                 expandIcon={({ isActive }) => (
-                    <div className="text-lg flex items-center mt-0.5 ">
-                        <Icon icon={`fi fi-ss-angle-small-down`} className={`text-primary/60 transition-transform ${isActive ? "rotate-180" : "rotate-0"}`} />
-
-                    </div>
+                    <Icon icon={`fi fi-ss-angle-small-down`} className={`text-primary transition-transform ${isActive ? "rotate-180" : "rotate-0"}`} />
                 )}
             />
         </ConfigProvider>

@@ -1,6 +1,7 @@
 export { default as Button } from './Button';
 export { default as RadioGroup } from './RadioGroup';
 export { default as DatePicker } from './DatePicker';
+export { default as DatePicker2 } from './DatePicker2';
 export { default as XSlidingButtons } from './XSlidingButtons';
 export { default as PredictionCard, type PredictionCardProps } from './PredictionCard';
 export { default as Input } from './Input';
@@ -16,6 +17,7 @@ export { default as Tag } from './Tag';
 export { default as Badge } from './Badge';
 export { default as Icon } from './Icon';
 export { default as Collapsible } from './Collapsible';
+export { default as Collapsible2 } from './Collapsible2';
 export {
   default as PhoneInput,
   getCountries,

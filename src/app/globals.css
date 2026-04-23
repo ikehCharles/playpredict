@@ -10,6 +10,7 @@
     --error: 228, 25, 85;
     --success: 0, 170, 87;
     --warning: 217, 175, 0;
+    --shadow-small: 0 1px 2px 0 rgb(var(--tertiary), 0.1);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -34,6 +35,7 @@
     --color-success: rgb(var(--success));
     --color-warning: rgb(var(--warning));
     --font-sans: 'Satoshi', 'Inter', sans-serif;
+    --shadow-small: var(--shadow-small)
 }
 
 @layer utilities {

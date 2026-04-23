@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 
 interface PageHeaderProps {
   // Title for simple headers (Saved, Rankings, Profile)
-  title?: string;
-
+  title?: string | ReactNode;
+noShadow?: boolean;
   // Full navigation header (Home)
   showNavigation?: boolean;
   showAuth?: boolean;
@@ -28,6 +28,7 @@ interface PageHeaderProps {
 
 export default function PageHeader({
   title,
+  noShadow = false,
   showAuth = false,
   isAuthenticated = false,
   showMobileHeader = false,
@@ -53,7 +54,7 @@ export default function PageHeader({
                 width={140}
                 height={40}
                 priority
-                // className="dark:hidden"
+              // className="dark:hidden"
               />
               {/* <Image
                 src="/icons/PlayPredictLogoWhite.svg"
@@ -73,28 +74,30 @@ export default function PageHeader({
   // Full navigation header 
   return (
     <>
-   
-    {/* Mobile: Logo + Navigation */}
-    <header className={`border-b shadow-small border-tertiary/5 ${showMobileHeader ? "" : " "} sticky bg-secondary top-0 z-50 ${className}`} style={{ paddingTop: 'env(safe-area-inset-top)' }}>
-      
-    <div className="  mx-auto px-2 ">
-        <div className=" pl-2 pr-2 py-5 flex items-center justify-between gap-2">
-          {leftContent ?? null}
-          {title ? (
-            <h1 className="text-[16px] font-bold text-tertiary flex-1 min-w-0 truncate">
-              {title}
-            </h1>
-          ) : !leftContent && !rightContent ? (
-            <Link href="/" className="flex items-center gap-2 flex-1">
-              <Image
-                src="/icons/PlayPredictLogoBlue.svg"
-                alt="PlayPredict"
-                width={140}
-                height={34}
-                priority
-                // className="dark:hidden"
-              />
-              {/* <Image
+
+      {/* Mobile: Logo + Navigation */}
+      <header className={` ${noShadow ? "" : "shadow-small"} ${showMobileHeader ? "" : " "} sticky bg-secondary top-0 z-50 ${className}`} style={{ paddingTop: 'env(safe-area-inset-top)' }}>
+
+        <div className="  mx-auto px-2 ">
+          <div className=" pl-2 pr-2 py-5 flex items-center justify-between gap-2">
+            {leftContent ?? null}
+            {title ? typeof title === 'string' ? (
+              <h1 className={`text-[16px] font-bold text-tertiary flex-1 min-w-0 truncate`}>
+                {title}
+              </h1>
+            )
+              : title
+              : !leftContent && !rightContent ? (
+                <Link href="/" className="flex items-center gap-2 flex-1">
+                  <Image
+                    src="/icons/PlayPredictLogoBlue.svg"
+                    alt="PlayPredict"
+                    width={140}
+                    height={34}
+                    priority
+                  // className="dark:hidden"
+                  />
+                  {/* <Image
                 src="/icons/PlayPredictLogoWhite.svg"
                 alt="PlayPredict"
                 width={120}
@@ -102,17 +105,17 @@ export default function PageHeader({
                 priority
                 className="hidden dark:block"
               /> */}
-            </Link>
-          ) : (
-            <span className="flex-1" />
-          )}
-          {rightContent ?? null}
+                </Link>
+              ) : (
+                <span className="flex-1" />
+              )}
+            {rightContent ?? null}
+          </div>
+
         </div>
 
-      </div>
-      
 
-    </header>
+      </header>
 
     </>
   );
