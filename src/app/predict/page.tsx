@@ -1,7 +1,10 @@
-"use client";
-
+import { Suspense } from "react";
 import { Predict } from "@main";
 
 export default function PredictPage() {
-  return <Predict />;
+  return (
+    <Suspense>
+      <Predict />
+    </Suspense>
+  );
 }
