@@ -392,51 +392,51 @@ export default function Flow3({ fixture }: Flow3Props) {
     return (
         <div className="mx-auto w-full max-w-8xl bg-background pb-24">
             {/* Fixture header */}
-            <div className="fixed top-16 left-0 right-0 z-20 bg-secondary shadow-sm">
-            <div className="px-4 pt-3 pb-4">
+            <div className="sticky z-20 bg-secondary shadow-sm" style={{ top: 'calc(4rem + env(safe-area-inset-top, 0px))' }}>
+                <div className="px-4 pt-3 pb-4">
 
-                <div className="flex items-center justify-between gap-2">
-                    <div className="flex flex-1 flex-col items-center gap-2">
-                        <TeamBadge name={fixture.home} />
-                        <span className="text-xs font-semibold text-tertiary line-clamp-2 text-center leading-tight">
-                            {fixture.home}
-                        </span>
+                    <div className="flex items-center justify-between gap-2">
+                        <div className="flex flex-1 flex-col items-center gap-2">
+                            <TeamBadge name={fixture.home} />
+                            <span className="text-xs font-semibold text-tertiary line-clamp-2 text-center leading-tight">
+                                {fixture.home}
+                            </span>
+                        </div>
+                        <div className="flex min-w-20 flex-col items-center gap-1">
+                            <span className="text-xs text-tertiary/50">Today</span>
+                            <span className="text-sm font-bold text-tertiary">{fixture.kickoffTime}</span>
+                        </div>
+                        <div className="flex flex-1 flex-col items-center gap-2">
+                            <TeamBadge name={fixture.away} />
+                            <span className="text-xs font-semibold text-tertiary line-clamp-2 text-center leading-tight">
+                                {fixture.away}
+                            </span>
+                        </div>
                     </div>
-                    <div className="flex min-w-20 flex-col items-center gap-1">
-                        <span className="text-xs text-tertiary/50">Today</span>
-                        <span className="text-sm font-bold text-tertiary">{fixture.kickoffTime}</span>
-                    </div>
-                    <div className="flex flex-1 flex-col items-center gap-2">
-                        <TeamBadge name={fixture.away} />
-                        <span className="text-xs font-semibold text-tertiary line-clamp-2 text-center leading-tight">
-                            {fixture.away}
-                        </span>
-                    </div>
+                </div>
+
+                {/* Tab bar */}
+                <div className="flex items-center overflow-x-auto border-t border-primary/5 p-2 px-3">
+                    {topTabs.map((tab) => (
+                        <Button
+                            key={tab}
+                            onClick={() => setActiveTopTab(tab)}
+                            bgColor={tab === activeTopTab ? "primary" : "secondary"}
+                            bgColorOpacity={tab === activeTopTab ? 0.05 : 1}
+                            borderColor={tab === activeTopTab ? "primary" : "tertiary"}
+                            borderColorOpacity={0}
+                            textColor={tab === activeTopTab ? "primary" : "tertiary"
+                            }
+                        >
+                            {tab}
+                        </Button>
+
+                    ))}
                 </div>
             </div>
 
-            {/* Tab bar */}
-            <div className="flex items-center overflow-x-auto border-t border-primary/5 p-2 px-3">
-                {topTabs.map((tab) => (
-                    <Button
-                        key={tab}
-                        onClick={() => setActiveTopTab(tab)}
-                        bgColor={tab === activeTopTab ? "primary" : "secondary"}
-                        bgColorOpacity={tab === activeTopTab ? 0.05 : 1}
-                        borderColor={tab === activeTopTab ? "primary" : "tertiary"}
-                        borderColorOpacity={0}
-                        textColor={tab === activeTopTab ? "primary" : "tertiary"
-                        }
-                    >
-                        {tab}
-                    </Button>
-
-                ))}
-            </div>
-            </div>
-
             {/* Search */}
-            <div className="px-3 py-3 pt-45">
+            <div className="px-3 py-3">
                 <Input
                     placeholder="Search by market or outcome"
                     prefix={<HiOutlineMagnifyingGlass className="w-4 h-4 text-tertiary/50" />}
@@ -492,7 +492,7 @@ export default function Flow3({ fixture }: Flow3Props) {
                 />
             </div>
 
-            
+
         </div>
     );
 }
