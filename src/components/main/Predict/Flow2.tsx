@@ -150,7 +150,7 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
 
     return (
         <div className="mx-auto w-full max-w-8xl bg-background">
-            <div className="sticky top-16 z-20 bg-secondary shadow-sm">
+            <div className="fixed top-16 left-0 right-0 z-20 bg-secondary shadow-sm">
                 <div className="flex items-center justify-between px-3 py-3 border-b border-tertiary/10">
                     <div className="flex items-center gap-2 text-sm font-medium text-tertiary">
                         <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary">⚽</span>
@@ -180,7 +180,7 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                 </div>
             </div>
 
-            <div className="px-2 pt-2 pb-6 space-y-1">
+            <div className="px-2 pt-37 pb-6 space-y-1">
                 {groupedByDate.map(({ date, items }) => (
                     <div
                         key={date}

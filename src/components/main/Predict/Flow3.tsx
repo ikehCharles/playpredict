@@ -392,7 +392,7 @@ export default function Flow3({ fixture }: Flow3Props) {
     return (
         <div className="mx-auto w-full max-w-8xl bg-background pb-24">
             {/* Fixture header */}
-            <div className="sticky top-16 z-20 bg-secondary shadow-sm">
+            <div className="fixed top-16 left-0 right-0 z-20 bg-secondary shadow-sm">
             <div className="px-4 pt-3 pb-4">
 
                 <div className="flex items-center justify-between gap-2">
@@ -436,7 +436,7 @@ export default function Flow3({ fixture }: Flow3Props) {
             </div>
 
             {/* Search */}
-            <div className="px-3 py-3">
+            <div className="px-3 py-3 pt-45">
                 <Input
                     placeholder="Search by market or outcome"
                     prefix={<HiOutlineMagnifyingGlass className="w-4 h-4 text-tertiary/50" />}
