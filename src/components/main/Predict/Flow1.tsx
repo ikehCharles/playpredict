@@ -18,10 +18,10 @@ type CountryGroup = {
 };
 
 const sports: IdNameIconType[] = [
-    { id: '1', name: "Football", icon: "fi fi-rr-football" },
-    { id: '2', name: "Basketball", icon: "fi fi-rr-basketball" },
-    { id: '3', name: "Tennis", icon: "fi fi-rr-tennis" },
-    { id: '4', name: "American Football", icon: "fi fi-rr-football-helmet" },
+    { id: '1', name: "Football", icon: "fi fi-sr-football" },
+    { id: '2', name: "Basketball", icon: "fi fi-sr-basketball" },
+    { id: '3', name: "Tennis", icon: "fi fi-sr-tennis" },
+    { id: '4', name: "Am. Football", icon: "fi fi-sr-rugby" },
 ];
 
 const popularCompetitions: Competition[] = [

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button, Collapsible, Icon, Input } from "@utilities";
+import { OddButton } from "@common";
 import type { Fixture } from "./Flow2";
 import { HiOutlineMagnifyingGlass, HiOutlineInformationCircle } from "react-icons/hi2";
 import { FaStar, FaRegStar } from "react-icons/fa";
@@ -284,36 +285,18 @@ function TeamBadge({ name }: { name: string }) {
     );
 }
 
-function MarketButton({ label, odd, selected, onToggle }: { label: string; odd?: string; selected: boolean; onToggle: () => void }) {
-    return (
-        <Button
-            block
-            onClick={onToggle}
-            bgColor="primary"
-            bgColorOpacity={selected ? 1 : 0.05}
-            textColor={selected ? "secondary" : "primary"}
-            borderColorOpacity={0}
-            ctrlheight={34}
-            borderradius={6}
-        >
-            <span className="flex w-full font-semibold items-center justify-between text-xs">
-                <span className={`truncate ${selected ? 'opacity-100' : 'opacity-80'} `}>{label}</span>
-                {odd ? <span className={`ml-1 shrink-0 `}>{odd}</span> : null}
-            </span>
-        </Button>
-    );
-}
 
-function OddsGrid({ section }: { section: MarketSection }) {
+function OddsGrid({ section, selectedKey, onSelect }: {
+    section: MarketSection;
+    selectedKey: string | null;
+    onSelect: (key: string | null) => void;
+}) {
     const [showAll, setShowAll] = useState(false);
-    const [selected, setSelected] = useState<number | null>(() => {
-        const idx = section.rows.findIndex((r) => r.active);
-        return idx !== -1 ? idx : null;
-    });
     const { rows, cols, colHeaders, showMoreAt } = section;
 
     const visibleCount = showMoreAt && !showAll ? showMoreAt * cols : rows.length;
     const hasMore = !!showMoreAt && rows.length > showMoreAt * cols;
+    const toKey = (i: number) => `${section.id}-${i}`;
 
     return (
         <div className="px-1 py-3 border-t border-tertiary/10">
@@ -326,12 +309,13 @@ function OddsGrid({ section }: { section: MarketSection }) {
             )}
             <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
                 {rows.slice(0, visibleCount).map((odd, i) => (
-                    <MarketButton
+                    <OddButton
                         key={i}
                         label={odd.label}
                         odd={odd.odd}
-                        selected={selected === i}
-                        onToggle={() => setSelected(prev => prev === i ? null : i)}
+                        highlighted={selectedKey === toKey(i)}
+                        onClick={() => onSelect(selectedKey === toKey(i) ? null : toKey(i))}
+                        borderradius={6}
                     />
                 ))}
             </div>
@@ -385,6 +369,13 @@ const Favorite: React.FC<{ value?: boolean; onChange?: (val: boolean) => void }>
 export default function Flow3({ fixture }: Flow3Props) {
     const [activeTopTab, setActiveTopTab] = useState(topTabs[0]);
     const [search, setSearch] = useState("");
+    const [selectedOdd, setSelectedOdd] = useState<string | null>(() => {
+        for (const s of marketSections) {
+            const idx = s.rows.findIndex((r) => r.active);
+            if (idx !== -1) return `${s.id}-${idx}`;
+        }
+        return null;
+    });
 
     const defaultActiveKey = marketSections
         .filter((s) => s.initiallyExpanded)
@@ -428,7 +419,6 @@ export default function Flow3({ fixture }: Flow3Props) {
                 {topTabs.map((tab) => (
                     <Button
                         key={tab}
-                        size="middle"
                         onClick={() => setActiveTopTab(tab)}
                         bgColor={tab === activeTopTab ? "primary" : "secondary"}
                         bgColorOpacity={tab === activeTopTab ? 0.05 : 1}
@@ -468,7 +458,6 @@ export default function Flow3({ fixture }: Flow3Props) {
                             background: 'var(--color-secondary)',
                             borderBottomRightRadius: 12,
                             borderBottomLeftRadius: 12,
-                            boxShadow: 'var(--shadow-card)'
                         },
                         header: {
                             display: 'flex',
@@ -476,7 +465,6 @@ export default function Flow3({ fixture }: Flow3Props) {
                             background: 'var(--color-secondary)',
                             borderTopRightRadius: 12,
                             borderTopLeftRadius: 12,
-                            boxShadow: 'var(--shadow-card)'
                         },
 
                     }}
@@ -495,8 +483,8 @@ export default function Flow3({ fixture }: Flow3Props) {
                                 <Favorite />
                             </div>
                         ),
-                        children: <OddsGrid section={section} />,
-                        className: 'mb-2',
+                        children: <OddsGrid section={section} selectedKey={selectedOdd} onSelect={setSelectedOdd} />,
+                        className: 'mb-2 shadow-small',
 
                     }))}
                 />

@@ -85,7 +85,7 @@ export default function Rankings() {
       </div>
 
       {/* Fixed current user bar */}
-      <div className="fixed md:bottom-0 left-0 md:left-27.5 right-0 z-100 bg-secondary border-t border-primary/20" style={{ bottom: 'calc(3.5rem + env(safe-area-inset-bottom, 0px))' }}>
+      <div className="fixed md:bottom-0 left-0 md:left-27.5 right-0 z-10 bg-secondary border-t border-primary/20" style={{ bottom: 'calc(3.6rem + env(safe-area-inset-bottom, 0px))' }}>
         <div className=" bg-primary/5 w-full">
           <div className="max-w-8xl  mx-auto">
             <RankingCard
