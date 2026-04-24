@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { DatePickerProps } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import { DatePicker2 } from "@utilities";
@@ -25,7 +25,7 @@ export type Fixture = {
     date: string;
 };
 
-const marketTabs = ["1X2", "DC", "O/U", "BTTS", "Home O/U"];
+const marketTabs = ["1X2", "DC", "O/U", "BTTS", "Home O/U", "Away O/U", "1st Half 1X2", "1st Half DC", "1st Half O/U"];
 
 const fixtures: Fixture[] = [
     { id: "1", leaguePath: "Football / England / Premier League", kickoffTime: "02:00 PM", home: "Man. City", away: "Man. United", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "17/12/2025" },
@@ -93,48 +93,81 @@ function FixtureCard({ fixture, onFixtureSelect }: { fixture: Fixture; onFixture
     );
 }
 
+const groupedByDate = (() => {
+    const map = new Map<string, Fixture[]>();
+    for (const f of fixtures) {
+        if (!map.has(f.date)) map.set(f.date, []);
+        map.get(f.date)!.push(f);
+    }
+    return Array.from(map.entries()).map(([date, items]) => ({ date, items }));
+})();
+
 export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
     const [activeMarket, setActiveMarket] = useState(marketTabs[0]);
     const [selectedDate, setSelectedDate] = useState<Dayjs>(() =>
         fixtures.length ? fromFixtureDate(fixtures[0].date) : dayjs()
     );
 
-    const selectedDateKey = selectedDate.format("DD/MM/YYYY");
+    const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
+    const isScrollingRef = useRef(false);
 
-    const selectedDateFixtures = useMemo(
-        () => fixtures.filter((fixture) => fixture.date === selectedDateKey),
-        [selectedDateKey]
-    );
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (isScrollingRef.current) return;
+                const visible = entries
+                    .filter((e) => e.isIntersecting)
+                    .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+                if (visible.length > 0) {
+                    const date = (visible[0].target as HTMLElement).dataset.date;
+                    if (date) {
+                        setSelectedDate((prev) => {
+                            const next = fromFixtureDate(date);
+                            return prev.isSame(next, "day") ? prev : next;
+                        });
+                    }
+                }
+            },
+            { rootMargin: "-180px 0px -50% 0px", threshold: 0 }
+        );
+
+        sectionRefs.current.forEach((el) => observer.observe(el));
+        return () => observer.disconnect();
+    }, []);
 
     const handleDateChange: DatePickerProps["onChange"] = (value) => {
-        if (!value) {
-            return;
+        if (!value) return;
+        const d = value as Dayjs;
+        setSelectedDate(d);
+        const key = d.format("DD/MM/YYYY");
+        const el = sectionRefs.current.get(key);
+        if (el) {
+            isScrollingRef.current = true;
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTimeout(() => { isScrollingRef.current = false; }, 800);
         }
-        setSelectedDate(value as Dayjs);
     };
 
     return (
-        <div className="mx-auto w-full max-w-8xl bg-background ">
-            <div className="">
-                <div className="flex items-center justify-between bg-secondary px-3 py-3 border-b border-tertiary/10">
+        <div className="mx-auto w-full max-w-8xl bg-background">
+            <div className="sticky top-16 z-20 bg-secondary shadow-sm">
+                <div className="flex items-center justify-between px-3 py-3 border-b border-tertiary/10">
                     <div className="flex items-center gap-2 text-sm font-medium text-tertiary">
                         <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary">⚽</span>
                         <span>{selectedLeague}</span>
                     </div>
                     <span className="inline-flex min-w-9 items-center justify-center rounded-full bg-background px-2 py-1 text-xs text-tertiary/80">
-                        4
+                        {fixtures.length}
                     </span>
                 </div>
 
-                <div className="flex items-center gap-2 overflow-x-auto bg-secondary p-2 border-b border-tertiary/10">
+                <div className="flex items-center gap-2 overflow-x-auto p-2 border-b border-tertiary/10">
                     {marketTabs.map((tab) => (
                         <button
                             key={tab}
                             type="button"
                             className={`whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium transition ${
-                                activeMarket === tab
-                                    ? "bg-primary/10 text-primary"
-                                    : "text-tertiary/80"
+                                activeMarket === tab ? "bg-primary/10 text-primary" : "text-tertiary/80"
                             }`}
                             onClick={() => setActiveMarket(tab)}
                         >
@@ -142,25 +175,32 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                         </button>
                     ))}
                 </div>
-                <div className="mb-4 shadow-sm font-medium shadow-tertiary/5">
+                <div className="font-medium">
                     <DatePicker2 value={selectedDate} onChange={handleDateChange} />
-                </div>
-
-
-                <div className="space-y-3 px-2 pt-1">
-                    {selectedDateFixtures.length === 0 ? (
-                        <div className="rounded-2xl bg-secondary p-4 text-center text-sm text-tertiary/70">
-                            No fixtures available for this date.
-                        </div>
-                    ) : (
-                        selectedDateFixtures.map((fixture) => (
-                            <FixtureCard key={fixture.id} fixture={fixture} onFixtureSelect={onFixtureSelect} />
-                        ))
-                    )}
                 </div>
             </div>
 
-           
+            <div className="px-2 pt-2 pb-6 space-y-1">
+                {groupedByDate.map(({ date, items }) => (
+                    <div
+                        key={date}
+                        ref={(el) => {
+                            if (el) sectionRefs.current.set(date, el);
+                            else sectionRefs.current.delete(date);
+                        }}
+                        data-date={date}
+                    >
+                        <div className="py-2 px-1 text-xs font-semibold text-tertiary/40">
+                            {fromFixtureDate(date).format("dddd, D MMM YYYY")}
+                        </div>
+                        <div className="space-y-3">
+                            {items.map((fixture) => (
+                                <FixtureCard key={fixture.id} fixture={fixture} onFixtureSelect={onFixtureSelect} />
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
