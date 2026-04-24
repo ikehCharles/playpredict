@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button, Collapsible, Icon, Input } from "@utilities";
 import { OddButton } from "@common";
 import type { Fixture } from "./Flow2";
-import { HiOutlineMagnifyingGlass, HiOutlineInformationCircle } from "react-icons/hi2";
+import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { IoInformation } from "react-icons/io5";
 
@@ -392,7 +392,8 @@ export default function Flow3({ fixture }: Flow3Props) {
     return (
         <div className="mx-auto w-full max-w-8xl bg-background pb-24">
             {/* Fixture header */}
-            <div className="bg-secondary px-4 pt-3 pb-4">
+            <div className="sticky top-16 z-20 bg-secondary shadow-sm">
+            <div className="px-4 pt-3 pb-4">
 
                 <div className="flex items-center justify-between gap-2">
                     <div className="flex flex-1 flex-col items-center gap-2">
@@ -415,7 +416,7 @@ export default function Flow3({ fixture }: Flow3Props) {
             </div>
 
             {/* Tab bar */}
-            <div className="flex items-center overflow-x-auto bg-secondary border-t border-primary/5 p-2 px-3 shadow-sm">
+            <div className="flex items-center overflow-x-auto border-t border-primary/5 p-2 px-3">
                 {topTabs.map((tab) => (
                     <Button
                         key={tab}
@@ -431,6 +432,7 @@ export default function Flow3({ fixture }: Flow3Props) {
                     </Button>
 
                 ))}
+            </div>
             </div>
 
             {/* Search */}
