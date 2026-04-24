@@ -30,7 +30,7 @@ type MarketSection = {
     showMoreAt?: number;
 };
 
-const topTabs = ["Popular", "Goals", "Half", "Bookings", "Corners", "Specials", "Players", "Minutes"];
+const topTabs = ["Star", "Popular", "Goals", "Half", "Bookings", "Corners", "Specials", "Players", "Minutes"];
 
 const marketSections: MarketSection[] = [
     {
@@ -416,8 +416,10 @@ export default function Flow3({ fixture }: Flow3Props) {
                 </div>
 
                 {/* Tab bar */}
-                <div className="flex items-center overflow-x-auto border-t border-primary/5 p-2 px-3">
-                    {topTabs.map((tab) => (
+                <div className="flex items-center gap-2 overflow-x-auto border-t border-primary/5 p-2 ">
+
+                    {topTabs.map((tab) =>
+                    (
                         <Button
                             key={tab}
                             onClick={() => setActiveTopTab(tab)}
@@ -428,10 +430,13 @@ export default function Flow3({ fixture }: Flow3Props) {
                             textColor={tab === activeTopTab ? "primary" : "tertiary"
                             }
                         >
-                            {tab}
+                            <span className="w-10 flex px-2 items-center justify-center">
+                            {tab === 'Star' ? tab === activeTopTab ? <FaStar size={16} /> : <FaRegStar size={16} /> : tab}
+                            </span>
                         </Button>
 
-                    ))}
+                    )
+                    )}
                 </div>
             </div>
 
@@ -458,15 +463,15 @@ export default function Flow3({ fixture }: Flow3Props) {
 
                         body: {
                             background: 'var(--color-secondary)',
-                            borderBottomRightRadius: 12,
-                            borderBottomLeftRadius: 12,
+                            borderBottomRightRadius: 20,
+                            borderBottomLeftRadius: 20,
                         },
                         header: {
                             display: 'flex',
                             alignItems: 'center',
                             background: 'var(--color-secondary)',
-                            borderTopRightRadius: 12,
-                            borderTopLeftRadius: 12,
+                            borderTopRightRadius: 20,
+                            borderTopLeftRadius: 20,
                         },
 
                     }}

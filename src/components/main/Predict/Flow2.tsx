@@ -66,7 +66,7 @@ function FixtureCard({ fixture, onFixtureSelect }: { fixture: Fixture; onFixture
     const toggle = (key: string) => setSelected(prev => prev === key ? null : key);
 
     return (
-        <article className="rounded-2xl bg-secondary p-3 shadow-small">
+        <article className="rounded-xl bg-secondary p-3 shadow-small">
             <div className="mb-3 flex items-center justify-between border-b border-tertiary/10 pb-2 text-xs text-tertiary/70">
                 <span className="line-clamp-1 font-medium">⚽ {fixture.leaguePath}</span>
                 <span className="font-semibold">{fixture.kickoffTime}</span>

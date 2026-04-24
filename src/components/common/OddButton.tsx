@@ -22,7 +22,6 @@ export default function OddButton({ label, odd, highlighted = false, onClick, bo
             bgColorOpacity={highlighted ? 1 : 0.05}
             textColor={highlighted ? "secondary" : "primary"}
             borderColorOpacity={0}
-            borderradius={borderradius}
             ctrlheight={ctrlheight}
         >
             <span className="flex w-full items-center justify-between text-sm font-semibold">

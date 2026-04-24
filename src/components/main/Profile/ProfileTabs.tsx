@@ -6,6 +6,7 @@ import { PredictionCard, type PredictionCardProps } from "@utilities";
 import { predictionsDummyData } from "@constants";
 import { MdInsertChartOutlined } from "react-icons/md";
 import ProfileStats from "./ProfileStats";
+import ProfileLikes from "./ProfileLikes";
 
 import type { Dayjs } from "dayjs";
 
@@ -69,7 +70,7 @@ const filterOptions = [
         </div>
       )}
       {tab === "likes" && (
-        <p className="py-8 text-center text-tertiary/70 text-sm">Likes content coming soon.</p>
+        <ProfileLikes />
       )}
       {tab === "stats" && <ProfileStats />}
     </div>
