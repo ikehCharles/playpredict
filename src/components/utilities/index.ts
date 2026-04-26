@@ -17,6 +17,7 @@ export { default as Tag } from './Tag';
 export { default as Badge } from './Badge';
 export { default as Icon } from './Icon';
 export { default as Collapsible } from './Collapsible';
+export { default as Drawer } from './Drawer';
 export { default as Collapsible2 } from './Collapsible2';
 export {
   default as PhoneInput,

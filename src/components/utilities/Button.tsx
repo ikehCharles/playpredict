@@ -2,9 +2,9 @@ import { ThemeColorName, toColor } from "@constants";
 import { Button, ButtonProps, ConfigProvider } from "antd";
 
 type ButtonUIProps = ButtonProps & {
-  bgColor?: Exclude<ThemeColorName, "background" | "error" | "success"> | "transparent";
-  textColor?: Exclude<ThemeColorName, "background" | "error" | "success">;
-  borderColor?: Exclude<ThemeColorName, "background" | "error" | "success">;
+  bgColor?: Exclude<ThemeColorName, "background" | "success"> | "transparent";
+  textColor?: Exclude<ThemeColorName, "background"  | "success">;
+  borderColor?: Exclude<ThemeColorName, "background"  | "success">;
   bgColorOpacity?: number; // Only values from 0.0 to 1.0
   textColorOpacity?: number; // Only values from 0.0 to 1.0
   borderColorOpacity?: number; // Only values from 0.0 to 1.0
@@ -49,6 +49,8 @@ const ButtonUI: React.FC<ButtonUIProps> = (props) => {
             controlHeightLG: Math.max((props.ctrlheight ?? 40) + 5, 1),
             controlHeightSM: Math.max((props.ctrlheight ?? 40) - 5, 1),
             colorBorder,
+            colorLinkHover:'transparent',
+            defaultHoverBorderColor: 'transparent',
             fontWeight: 500,
             borderRadius: borderradius,
             borderRadiusSM: borderradius,

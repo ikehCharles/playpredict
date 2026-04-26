@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icon } from "../utilities";
 
-export default function FloatingPredictButton() {
+const FloatingPredictButton: React.FC<{ onClick?: (e:React.MouseEvent) => void }> = ({ onClick }) => {
   const pathname = usePathname();
 
   if (pathname === "/predict") {
@@ -14,11 +14,14 @@ export default function FloatingPredictButton() {
   return (
     <Link
       href="/predict"
+      onClick={onClick}
       aria-label="Start prediction flow"
       className="fixed right-4 md:right-6 z-50 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary text-secondary shadow-md shadow-tertiary/40 transition-transform hover:scale-[1.03] active:scale-95"
-    style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}
+      style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}
     >
       <Icon icon="fi fi-rr-edit" className="scale-120 leading-none" />
     </Link>
   );
 }
+
+export default FloatingPredictButton;

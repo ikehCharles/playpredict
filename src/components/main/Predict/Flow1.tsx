@@ -76,7 +76,7 @@ export default function Flow1({ onLeagueSelect }: Flow1Props) {
                     >
                         <button
                             type="button"
-                            className="flex w-full items-center gap-3 py-4 text-left"
+                            className="flex cursor-pointer w-full items-center gap-3 py-4 text-left"
                             onClick={() => onLeagueSelect(`${group.country} / ${league}`)}
                         >
                             <span className="h-6 w-6 rounded-full bg-tertiary/10" />
@@ -113,7 +113,7 @@ export default function Flow1({ onLeagueSelect }: Flow1Props) {
                             <button
                                 key={item.name}
                                 type="button"
-                                className="flex w-full items-center gap-3 rounded-xl shadow-sm shadow-tertiary/5 bg-secondary px-3 py-2 text-left"
+                                className="flex cursor-pointer w-full items-center gap-3 rounded-xl shadow-sm shadow-tertiary/5 bg-secondary px-3 py-2 text-left"
                                 onClick={() => onLeagueSelect(`England / ${item.name}`)}
                             >
                                 <span className="h-7 w-7 rounded-full bg-primary/10" />

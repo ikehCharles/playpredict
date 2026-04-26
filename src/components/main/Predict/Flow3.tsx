@@ -286,17 +286,18 @@ function TeamBadge({ name }: { name: string }) {
 }
 
 
-function OddsGrid({ section, selectedKey, onSelect }: {
-    section: MarketSection;
-    selectedKey: string | null;
-    onSelect: (key: string | null) => void;
-}) {
+function OddsGrid({ section }: { section: MarketSection }) {
+    const [selectedKey, setSelectedKey] = useState<string | null>(() => {
+        const idx = section.rows.findIndex((r) => r.active);
+        return idx !== -1 ? `${section.id}-${idx}` : null;
+    });
     const [showAll, setShowAll] = useState(false);
     const { rows, cols, colHeaders, showMoreAt } = section;
 
     const visibleCount = showMoreAt && !showAll ? showMoreAt * cols : rows.length;
     const hasMore = !!showMoreAt && rows.length > showMoreAt * cols;
     const toKey = (i: number) => `${section.id}-${i}`;
+    const hasSelection = selectedKey !== null;
 
     return (
         <div className="px-1 py-3 border-t border-tertiary/10">
@@ -308,16 +309,21 @@ function OddsGrid({ section, selectedKey, onSelect }: {
                 </div>
             )}
             <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
-                {rows.slice(0, visibleCount).map((odd, i) => (
-                    <OddButton
-                        key={i}
-                        label={odd.label}
-                        odd={odd.odd}
-                        highlighted={selectedKey === toKey(i)}
-                        onClick={() => onSelect(selectedKey === toKey(i) ? null : toKey(i))}
-                        borderradius={6}
-                    />
-                ))}
+                {rows.slice(0, visibleCount).map((odd, i) => {
+                    const key = toKey(i);
+                    const isSelected = selectedKey === key;
+                    return (
+                        <div key={i} className={hasSelection && !isSelected ? "opacity-40" : "transition-opacity"}>
+                            <OddButton
+                                label={odd.label}
+                                odd={odd.odd}
+                                highlighted={isSelected}
+                                onClick={() => setSelectedKey(isSelected ? null : key)}
+                                borderradius={6}
+                            />
+                        </div>
+                    );
+                })}
             </div>
             {hasMore && (
                 <button
@@ -332,10 +338,8 @@ function OddsGrid({ section, selectedKey, onSelect }: {
                         </span>
                         :
                         <span className="flex items-center gap-1 justify-center">
-
                             {`Show ${Math.ceil(rows.length / cols) - showMoreAt!} more `}
                             <Icon icon={`fi fi-ss-angle-small-down`} className={`text-primary/60 transition-transform mt-1`} />
-
                         </span>
                     }
                 </button>
@@ -369,14 +373,6 @@ const Favorite: React.FC<{ value?: boolean; onChange?: (val: boolean) => void }>
 export default function Flow3({ fixture }: Flow3Props) {
     const [activeTopTab, setActiveTopTab] = useState(topTabs[0]);
     const [search, setSearch] = useState("");
-    const [selectedOdd, setSelectedOdd] = useState<string | null>(() => {
-        for (const s of marketSections) {
-            const idx = s.rows.findIndex((r) => r.active);
-            if (idx !== -1) return `${s.id}-${idx}`;
-        }
-        return null;
-    });
-
     const defaultActiveKey = marketSections
         .filter((s) => s.initiallyExpanded)
         .map((s) => s.id);
@@ -392,7 +388,7 @@ export default function Flow3({ fixture }: Flow3Props) {
     return (
         <div className="mx-auto w-full max-w-8xl bg-background pb-24">
             {/* Fixture header */}
-            <div className="sticky z-20 bg-secondary shadow-sm" style={{ top: 'calc(4rem + env(safe-area-inset-top, 0px))' }}>
+            <div className="sticky z-20 bg-secondary shadow-sm top-[calc(4rem+env(safe-area-inset-top,0px))] md:top-0 ">
                 <div className="px-4 pt-3 pb-4">
 
                     <div className="flex items-center justify-between gap-2">
@@ -490,7 +486,7 @@ export default function Flow3({ fixture }: Flow3Props) {
                                 <Favorite />
                             </div>
                         ),
-                        children: <OddsGrid section={section} selectedKey={selectedOdd} onSelect={setSelectedOdd} />,
+                        children: <OddsGrid section={section} />,
                         className: 'mb-2 shadow-small',
 
                     }))}

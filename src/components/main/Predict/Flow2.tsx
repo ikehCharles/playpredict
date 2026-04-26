@@ -72,7 +72,7 @@ function FixtureCard({ fixture, onFixtureSelect }: { fixture: Fixture; onFixture
                 <span className="font-semibold">{fixture.kickoffTime}</span>
             </div>
 
-            <div onClick={() => onFixtureSelect(fixture)} className="mb-3 flex items-center justify-center gap-2 font-medium text-tertiary">
+            <div onClick={() => onFixtureSelect(fixture)} className="mb-3 cursor-pointer flex items-center justify-center gap-2 font-medium text-tertiary">
                 <span className="inline-flex items-center gap-2">
                     <span>{fixture.home}</span>
                     <TeamBadge name={fixture.home} />
@@ -150,7 +150,7 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
 
     return (
         <div className="mx-auto w-full max-w-8xl bg-background">
-            <div className="sticky  z-20 bg-secondary shadow-sm" style={{ top: 'calc(4rem + env(safe-area-inset-top, 0px))' }}>
+            <div className="sticky z-20 bg-secondary shadow-sm top-[calc(4rem+env(safe-area-inset-top,0px))] md:top-0">
                 <div className="flex items-center justify-between px-3 py-3 border-b border-tertiary/10">
                     <div className="flex items-center gap-2 text-sm font-medium text-tertiary">
                         <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary">⚽</span>
