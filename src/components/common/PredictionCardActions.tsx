@@ -12,6 +12,7 @@ interface PredictionCardActionsProps {
     odd?: number;
     isSaved?: boolean;
     stopPropagation?: boolean;
+    resultBadge?: React.ReactNode;
 }
 
 export default function PredictionCardActions({
@@ -20,6 +21,7 @@ export default function PredictionCardActions({
     odd,
     isSaved: initialSaved = false,
     stopPropagation = false,
+    resultBadge,
 }: PredictionCardActionsProps) {
     const [isReportOpen, setIsReportOpen] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
@@ -60,17 +62,21 @@ export default function PredictionCardActions({
             >
 
 
-                {odd !== undefined && (
-                    <div className="rounded-xl overflow-hidden flex border border-tertiary/20 items-center gap-2">
-                        <p className="pl-2 font-medium">{odd}</p>
-                        <p className="bg-tertiary border border-tertiary p-2.5"><Image
-                            src="https://getesports.net/wp-content/uploads/sites/21169/2025/05/stake-logo.png"
-                            alt="Stake"
-                            width={64}
-                            height={16}
-                            className="h-4 w-auto"
-                        /></p>
-                    </div>
+                {resultBadge ? (
+                    resultBadge
+                ) : (
+                    odd !== undefined && (
+                        <div className="rounded-xl overflow-hidden flex border border-tertiary/20 items-center gap-2">
+                            <p className="pl-2 font-medium">{odd}</p>
+                            <p className="bg-tertiary border border-tertiary p-2.5"><Image
+                                src="https://getesports.net/wp-content/uploads/sites/21169/2025/05/stake-logo.png"
+                                alt="Stake"
+                                width={64}
+                                height={16}
+                                className="h-4 w-auto"
+                            /></p>
+                        </div>
+                    )
                 )}
 
                 <Button

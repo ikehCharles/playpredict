@@ -17,6 +17,8 @@ export interface PredictionUserType {
 export interface PredictionMatchType {
     home: string;
     away: string;
+    homeScore?: number;
+    awayScore?: number;
 }
 
 export interface PredictionType {
@@ -28,11 +30,15 @@ export interface PredictionStatsType {
     likes: number;
 }
 
+export type PredictionResult = "won" | "lost" | "void" | "pending";
+
 export interface PredictionItemType {
     sport: string;
     league: string;
     timeAgo?: string;
     isSaved?: boolean;
+    isModerated?: boolean;
+    result?: PredictionResult;
     user: PredictionUserType;
     match: PredictionMatchType;
     prediction: PredictionType;
