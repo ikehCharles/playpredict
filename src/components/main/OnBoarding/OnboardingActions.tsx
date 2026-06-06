@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@utilities";
+import { Button } from "@playpredict/ui";
 
 interface OnboardingActionsProps {
   primaryText: string;

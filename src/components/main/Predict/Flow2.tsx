@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import type { DatePickerProps } from "antd";
-import dayjs, { Dayjs } from "dayjs";
-import { DatePicker2 } from "@utilities";
+import { useEffect, useMemo, useRef, useState } from "react";
+import dayjs from "dayjs";
 import { OddButton } from "@common";
+import { useInfiniteGames } from "@api";
+import type { Game } from "@models";
 
 type Flow2Props = {
     selectedLeague: string;
+    tournamentId?: number;
     onFixtureSelect: (fixture: Fixture) => void;
 };
 
@@ -27,18 +28,6 @@ export type Fixture = {
 
 const marketTabs = ["1X2", "DC", "O/U", "BTTS", "Home O/U", "Away O/U", "1st Half 1X2", "1st Half DC", "1st Half O/U"];
 
-const fixtures: Fixture[] = [
-    { id: "1", leaguePath: "Football / England / Premier League", kickoffTime: "02:00 PM", home: "Man. City", away: "Man. United", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "17/12/2025" },
-    { id: "2", leaguePath: "Football / England / Premier League", kickoffTime: "04:30 PM", home: "Everton", away: "Brentford", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "17/12/2025" },
-    { id: "3", leaguePath: "Football / England / Premier League", kickoffTime: "06:00 PM", home: "Wolves", away: "West Ham", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "17/12/2025" },
-    { id: "4", leaguePath: "Football / England / Premier League", kickoffTime: "06:00 PM", home: "Chelsea", away: "Liverpool", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "18/12/2025" },
-    { id: "5", leaguePath: "Football / England / Premier League", kickoffTime: "06:00 PM", home: "Arsenal", away: "Tottenham", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "18/12/2025" },
-    { id: "6", leaguePath: "Football / England / Premier League", kickoffTime: "06:00 PM", home: "Brighton", away: "Crystal Palace", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "18/12/2025" },
-    { id: "7", leaguePath: "Football / England / Premier League", kickoffTime: "06:00 PM", home: "Newcastle", away: "Bournemouth", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "18/12/2025" },
-    { id: "8", leaguePath: "Football / England / Premier League", kickoffTime: "06:00 PM", home: "Leeds", away: "Fulham", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "18/12/2025" },
-    { id: "9", leaguePath: "Football / England / Premier League", kickoffTime: "06:00 PM", home: "Burnley", away: "Sunderland", odds: { w1: 1.25, x: 2.45, w2: 4.56 }, date: "18/12/2025" },
-];
-
 function TeamBadge({ name }: { name: string }) {
     const initials = name
         .split(" ")
@@ -54,16 +43,26 @@ function TeamBadge({ name }: { name: string }) {
     );
 }
 
-function fromFixtureDate(date: string): Dayjs {
-    const [day, month, year] = date.split("/").map(Number);
-    return dayjs(new Date(year, month - 1, day));
+function gameToFixture(game: Game, leaguePath: string): Fixture {
+    const start = dayjs(game.startTime);
+    return {
+        id: String(game.fixtureId ?? game._id),
+        leaguePath,
+        kickoffTime: start.isValid() ? start.format("hh:mm A") : "",
+        home: game.homeTeam?.name ?? "Home",
+        away: game.awayTeam?.name ?? "Away",
+        odds: {
+            w1: game.odds?.w1 ?? 0,
+            x: game.odds?.x ?? 0,
+            w2: game.odds?.w2 ?? 0,
+        },
+        date: start.isValid() ? start.format("DD/MM/YYYY") : "",
+    };
 }
-
 
 function FixtureCard({ fixture, onFixtureSelect }: { fixture: Fixture; onFixtureSelect: (f: Fixture) => void }) {
     const [selected, setSelected] = useState<string | null>(null);
-
-    const toggle = (key: string) => setSelected(prev => prev === key ? null : key);
+    const toggle = (key: string) => setSelected((prev) => (prev === key ? null : key));
 
     return (
         <article className="rounded-xl bg-secondary p-3 shadow-small">
@@ -93,60 +92,51 @@ function FixtureCard({ fixture, onFixtureSelect }: { fixture: Fixture; onFixture
     );
 }
 
-const groupedByDate = (() => {
-    const map = new Map<string, Fixture[]>();
-    for (const f of fixtures) {
-        if (!map.has(f.date)) map.set(f.date, []);
-        map.get(f.date)!.push(f);
-    }
-    return Array.from(map.entries()).map(([date, items]) => ({ date, items }));
-})();
-
-export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
+export default function Flow2({ selectedLeague, tournamentId, onFixtureSelect }: Flow2Props) {
     const [activeMarket, setActiveMarket] = useState(marketTabs[0]);
-    const [selectedDate, setSelectedDate] = useState<Dayjs>(() =>
-        fixtures.length ? fromFixtureDate(fixtures[0].date) : dayjs()
+
+    const gamesQuery = useInfiniteGames(tournamentId);
+
+    const allGames = useMemo(
+        () => gamesQuery.data?.pages.flatMap((p) => p.data) ?? [],
+        [gamesQuery.data],
     );
+    const fixtures = useMemo(
+        () => allGames.map((g) => gameToFixture(g, selectedLeague)),
+        [allGames, selectedLeague],
+    );
+    const total = gamesQuery.data?.pages[0]?.total ?? 0;
 
-    const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
-    const isScrollingRef = useRef(false);
+    const groupedByDate = useMemo(() => {
+        const map = new Map<string, Fixture[]>();
+        for (const f of fixtures) {
+            const key = f.date || "Unknown";
+            if (!map.has(key)) map.set(key, []);
+            map.get(key)!.push(f);
+        }
+        return Array.from(map.entries()).map(([date, items]) => ({ date, items }));
+    }, [fixtures]);
 
+    // Infinite scroll — when the sentinel scrolls into view, request the next page.
+    const sentinelRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
+        const el = sentinelRef.current;
+        if (!el) return;
         const observer = new IntersectionObserver(
             (entries) => {
-                if (isScrollingRef.current) return;
-                const visible = entries
-                    .filter((e) => e.isIntersecting)
-                    .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-                if (visible.length > 0) {
-                    const date = (visible[0].target as HTMLElement).dataset.date;
-                    if (date) {
-                        setSelectedDate((prev) => {
-                            const next = fromFixtureDate(date);
-                            return prev.isSame(next, "day") ? prev : next;
-                        });
-                    }
+                if (
+                    entries[0]?.isIntersecting &&
+                    gamesQuery.hasNextPage &&
+                    !gamesQuery.isFetchingNextPage
+                ) {
+                    gamesQuery.fetchNextPage();
                 }
             },
-            { rootMargin: "-180px 0px -50% 0px", threshold: 0 }
+            { rootMargin: "200px 0px" },
         );
-
-        sectionRefs.current.forEach((el) => observer.observe(el));
+        observer.observe(el);
         return () => observer.disconnect();
-    }, []);
-
-    const handleDateChange: DatePickerProps["onChange"] = (value) => {
-        if (!value) return;
-        const d = value as Dayjs;
-        setSelectedDate(d);
-        const key = d.format("DD/MM/YYYY");
-        const el = sectionRefs.current.get(key);
-        if (el) {
-            isScrollingRef.current = true;
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-            setTimeout(() => { isScrollingRef.current = false; }, 800);
-        }
-    };
+    }, [gamesQuery]);
 
     return (
         <div className="mx-auto w-full max-w-8xl bg-background">
@@ -157,7 +147,7 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                         <span>{selectedLeague}</span>
                     </div>
                     <span className="inline-flex min-w-9 items-center justify-center rounded-full bg-background px-2 py-1 text-xs text-tertiary/80">
-                        {fixtures.length}
+                        {total}
                     </span>
                 </div>
 
@@ -175,31 +165,53 @@ export default function Flow2({ selectedLeague, onFixtureSelect }: Flow2Props) {
                         </button>
                     ))}
                 </div>
-                <div className="font-medium">
-                    <DatePicker2 value={selectedDate} onChange={handleDateChange} />
-                </div>
             </div>
 
             <div className="px-2 pt-2 pb-6 space-y-1">
-                {groupedByDate.map(({ date, items }) => (
-                    <div
-                        key={date}
-                        ref={(el) => {
-                            if (el) sectionRefs.current.set(date, el);
-                            else sectionRefs.current.delete(date);
-                        }}
-                        data-date={date}
-                    >
-                        <div className="py-2 px-1 text-xs font-semibold text-tertiary/40">
-                            {fromFixtureDate(date).format("dddd, D MMM YYYY")}
-                        </div>
-                        <div className="space-y-3">
-                            {items.map((fixture) => (
-                                <FixtureCard key={fixture.id} fixture={fixture} onFixtureSelect={onFixtureSelect} />
-                            ))}
-                        </div>
+                {tournamentId === undefined ? (
+                    <div className="py-12 text-center text-sm text-tertiary/60">
+                        No tournament selected.
                     </div>
-                ))}
+                ) : gamesQuery.isLoading ? (
+                    <div className="space-y-3 pt-3">
+                        {Array.from({ length: 4 }).map((_, i) => (
+                            <div key={i} className="h-28 rounded-xl bg-tertiary/5 animate-pulse" />
+                        ))}
+                    </div>
+                ) : gamesQuery.isError ? (
+                    <div className="rounded-lg bg-error/10 border border-error/20 px-3 py-3 text-sm text-error">
+                        Couldn&apos;t load fixtures: {gamesQuery.error.message}
+                    </div>
+                ) : fixtures.length === 0 ? (
+                    <div className="py-12 text-center text-sm text-tertiary/60">
+                        No fixtures for this competition.
+                    </div>
+                ) : (
+                    <>
+                        {groupedByDate.map(({ date, items }) => (
+                            <div key={date}>
+                                <div className="py-2 px-1 text-xs font-semibold text-tertiary/40">
+                                    {date && dayjs(date, "DD/MM/YYYY").isValid()
+                                        ? dayjs(date, "DD/MM/YYYY").format("dddd, D MMM YYYY")
+                                        : date}
+                                </div>
+                                <div className="space-y-3">
+                                    {items.map((fixture) => (
+                                        <FixtureCard key={fixture.id} fixture={fixture} onFixtureSelect={onFixtureSelect} />
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+
+                        <div ref={sentinelRef} className="h-10" />
+
+                        {gamesQuery.isFetchingNextPage && (
+                            <div className="py-4 text-center text-xs text-tertiary/60">
+                                Loading more…
+                            </div>
+                        )}
+                    </>
+                )}
             </div>
         </div>
     );

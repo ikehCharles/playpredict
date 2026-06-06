@@ -1,6 +1,6 @@
 "use client";
 
-import { PredictionCard, PredictionCardProps } from "@utilities";
+import { PredictionCard, PredictionCardProps } from "@common";
 import { savedPredictionsDummyData } from "@constants";
 
 export default function SavedPredictionsList() {

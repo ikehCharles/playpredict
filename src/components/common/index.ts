@@ -8,6 +8,7 @@ export { default as Avatar } from './Avatar';
 export { default as AuthBottomSheet } from './AuthBottomSheet';
 export { default as PredictionDetailsBottomSheet } from './PredictionDetailsBottomSheet';
 export { default as PredictionCardActions } from './PredictionCardActions';
+export { default as PredictionCard, type PredictionCardProps } from './PredictionCard';
 export { default as BookieBetButton } from './BookieBetButton';
 export { default as ReportTipSheet } from './ReportTipSheet';
 export { default as RightDrawer } from './RightDrawer';

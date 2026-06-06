@@ -9,7 +9,7 @@ import {
   HiOutlineMinusCircle,
   HiOutlineQuestionMarkCircle,
 } from "react-icons/hi2";
-import { Button, Tag } from "@utilities";
+import { Button, Tag } from "@playpredict/ui";
 
 type TimeFilter = "all-time" | "today" | "this-week" | "this-month" | "custom";
 

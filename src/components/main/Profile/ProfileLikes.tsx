@@ -1,6 +1,6 @@
 "use client";
 
-import { PredictionCard, type PredictionCardProps } from "@utilities";
+import { PredictionCard, type PredictionCardProps } from "@common";
 import { predictionsDummyData } from "@constants";
 
 const likedPredictions: PredictionCardProps[] = predictionsDummyData.map((item) => ({

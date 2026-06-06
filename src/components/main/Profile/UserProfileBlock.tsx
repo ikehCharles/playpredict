@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { Avatar } from "@common";
-import { Button, Icon } from "@utilities";
+import { Button, Icon } from "@playpredict/ui";
 import { MdVerified } from "react-icons/md";
 import {
   HiOutlineCalendar,

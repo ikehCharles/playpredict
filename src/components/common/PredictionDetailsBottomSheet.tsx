@@ -7,7 +7,7 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import PredictionCardActions from "./PredictionCardActions";
 import BookieBetButton from "./BookieBetButton";
 import type { PredictionItemType } from "@models";
-import { Button, Dropdown } from "@utilities";
+import { Button, Dropdown } from "@playpredict/ui";
 
 
 const items: MenuProps['items'] = [

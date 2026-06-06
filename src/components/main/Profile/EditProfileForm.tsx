@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Input, TextArea, Select, Button, Form, Tooltip, PhoneInput, isValidPhoneNumber, getCountries, phoneLocaleEn } from "@utilities";
+import { Input, TextArea, Select, Button, Form, Tooltip, PhoneInput, isValidPhoneNumber, getCountries, phoneLocaleEn } from "@playpredict/ui";
 import { currentUserProfile } from "@constants";
 import { HiOutlineUser, HiOutlineEnvelope } from "react-icons/hi2";
 import { MdCheckCircle, MdCancel } from "react-icons/md";

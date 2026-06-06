@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Button from "../utilities/Button";
+import { Button } from "@playpredict/ui";
 import ReportTipSheet from "./ReportTipSheet";
-import { Icon } from "../utilities";
+import { Icon } from "@playpredict/ui";
 
 interface PredictionCardActionsProps {
     likes: number;

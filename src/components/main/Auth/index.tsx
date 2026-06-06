@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import EnterEmail from "./EnterEmail";
 import VerifyEmail from "./VerifyEmail";
 import EmailVerified from "./EmailVerified";
@@ -12,7 +13,8 @@ interface AuthProps {
 
 type AuthStep = "enter-email" | "verify-email" | "email-verified";
 
-const Auth: React.FC<AuthProps> = ({ onClose, onSuccess }) => {
+const Auth: React.FC<AuthProps> = ({ onSuccess }) => {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState<AuthStep>("enter-email");
   const [email, setEmail] = useState<string>("");
 
@@ -21,9 +23,7 @@ const Auth: React.FC<AuthProps> = ({ onClose, onSuccess }) => {
     setCurrentStep("verify-email");
   };
 
-  const handleVerify = (otp: string) => {
-    console.log("Verifying OTP:", otp, "for email:", email);
-    // TODO: Implement actual OTP verification
+  const handleVerified = () => {
     setCurrentStep("email-verified");
   };
 
@@ -32,12 +32,15 @@ const Auth: React.FC<AuthProps> = ({ onClose, onSuccess }) => {
   };
 
   const handleComplete = () => {
-    onSuccess?.();
+    if (onSuccess) {
+      onSuccess();
+    } else {
+      router.push("/");
+    }
   };
 
   return (
     <div className="w-full max-w-md mx-auto">
-      {/* White Background Wrapper */}
       <div className="bg-secondary p-6 px-3">
         {currentStep === "enter-email" && (
           <EnterEmail onNext={handleEmailSubmit} />
@@ -47,7 +50,7 @@ const Auth: React.FC<AuthProps> = ({ onClose, onSuccess }) => {
           <VerifyEmail
             email={email}
             onBack={handleBack}
-            onVerify={handleVerify}
+            onVerify={handleVerified}
           />
         )}
 

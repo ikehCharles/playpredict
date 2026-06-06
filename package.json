@@ -9,7 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@playpredict/ui": "^0.0.1",
+    "@tanstack/react-query": "^5.101.0",
     "antd": "^6.2.3",
+    "axios": "^1.17.0",
     "dayjs": "^1.11.19",
     "next": "16.1.3",
     "react": "19.2.3",

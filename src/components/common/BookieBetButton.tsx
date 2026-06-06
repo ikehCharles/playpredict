@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "../utilities";
+import { Button } from "@playpredict/ui";
 
 interface BookieBetButtonProps {
   logoUrl: string;

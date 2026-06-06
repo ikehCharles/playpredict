@@ -2,7 +2,7 @@
 
 import { Dayjs } from "dayjs";
 import { useState } from "react";
-import { Button, DatePicker, Icon } from "@utilities";
+import { Button, DatePicker, Icon } from "@playpredict/ui";
 import { Badge, ConfigProvider } from "antd";
 import { cssRgbVar } from "@constants";
 

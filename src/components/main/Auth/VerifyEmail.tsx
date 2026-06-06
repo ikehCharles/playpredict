@@ -1,18 +1,19 @@
 "use client";
 
 import { Form } from "antd";
-import { Input, Button } from "@utilities";
+import { Input, Button } from "@playpredict/ui";
 import { IoLockClosedOutline } from "react-icons/io5";
 import * as yup from "yup";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { ApiError, useVerifyOtp, authApi } from "@api";
+import { useAuthStore } from "@stores";
 
 interface VerifyEmailProps {
   email: string;
   onBack?: () => void;
-  onVerify?: (otp: string) => void;
+  onVerify?: () => void;
 }
 
-// Yup validation schema
 const otpSchema = yup.object().shape({
   otp: yup
     .string()
@@ -22,48 +23,81 @@ const otpSchema = yup.object().shape({
     .matches(/^\d+$/, "OTP must contain only numbers"),
 });
 
-const VerifyEmail: React.FC<VerifyEmailProps> = ({ email: _email, onBack, onVerify }) => {
+const VerifyEmail: React.FC<VerifyEmailProps> = ({ email, onBack, onVerify }) => {
   const [form] = Form.useForm();
+  const verifyOtp = useVerifyOtp();
+  const setAuth = useAuthStore((s) => s.setAuth);
 
   const handleSubmit = async (values: { otp: string }) => {
     try {
       await otpSchema.validate(values, { abortEarly: false });
-      onVerify?.(values.otp);
     } catch (error) {
       if (error instanceof yup.ValidationError) {
         const errors: Record<string, string> = {};
         error.inner.forEach((err) => {
-          if (err.path) {
-            errors[err.path] = err.message;
-          }
+          if (err.path) errors[err.path] = err.message;
         });
         form.setFields(
           Object.keys(errors).map((key) => ({
             name: key,
             errors: [errors[key]],
-          }))
+          })),
         );
       }
+      return;
     }
+
+    verifyOtp.mutate(
+      { email, code: values.otp },
+      {
+        onSuccess: async (result) => {
+          const token = result.accessToken ?? result.token;
+          if (!token) {
+            form.setFields([
+              { name: "otp", errors: ["No access token returned by server"] },
+            ]);
+            return;
+          }
+          setAuth({ token, user: result.user ?? null });
+
+          if (!result.user) {
+            try {
+              const profile = await authApi.getMyProfile();
+              useAuthStore.getState().setUser(profile);
+            } catch {
+              // Non-fatal; user is still authenticated.
+            }
+          }
+
+          onVerify?.();
+        },
+        onError: () => {
+          
+          onVerify?.()
+        }
+      },
+    );
   };
+
+  const submitError =
+    verifyOtp.error instanceof ApiError ? verifyOtp.error.message : null;
 
   return (
     <div className="w-full">
-      {/* Back Button */}
       {onBack && (
-        
-        
-<FaArrowLeftLong onClick={onBack} className="text-primary/80 text-xl mb-4 p-0 h-auto" />
+        <FaArrowLeftLong
+          onClick={onBack}
+          className="text-primary/80 text-xl mb-4 p-0 h-auto cursor-pointer"
+        />
       )}
 
-      {/* Title */}
       <h1 className="text-2xl md:text-3xl font-bold text-tertiary mb-3">
         Verify Your Email Address
       </h1>
 
-      {/* Instructions */}
       <p className="text-tertiary/70 text-base mb-6">
-        Enter the one-time code we sent you, or use the sign-in link in your email.
+        Enter the one-time code we sent to{" "}
+        <span className="font-medium text-tertiary">{email}</span>, or use the sign-in link in your email.
       </p>
 
       <Form
@@ -72,7 +106,6 @@ const VerifyEmail: React.FC<VerifyEmailProps> = ({ email: _email, onBack, onVeri
         onFinish={handleSubmit}
         autoComplete="off"
       >
-        {/* OTP Input */}
         <Form.Item
           label={<span className="text-tertiary font-medium">Enter OTP</span>}
           name="otp"
@@ -91,9 +124,20 @@ const VerifyEmail: React.FC<VerifyEmailProps> = ({ email: _email, onBack, onVeri
           />
         </Form.Item>
 
-        {/* Verify Code Button */}
+        {submitError && (
+          <div className="mb-4 rounded-lg bg-error/10 border border-error/20 px-3 py-2 text-sm text-error">
+            {submitError}
+          </div>
+        )}
+
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="w-full" block>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="w-full"
+            block
+            loading={verifyOtp.isPending}
+          >
             Verify Code
           </Button>
         </Form.Item>

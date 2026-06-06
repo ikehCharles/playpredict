@@ -6,7 +6,7 @@ import RankingsList from "./RankingsList";
 import RankingCard from "./RankingCard";
 import { rankingsDummyData, currentUserProfile } from "@constants";
 import { PageHeader } from "@common";
-import { Badge, Button, Icon, Input } from "@utilities";
+import { Badge, Button, Icon, Input } from "@playpredict/ui";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
 const defaultFilters: RankingsFilterState = {

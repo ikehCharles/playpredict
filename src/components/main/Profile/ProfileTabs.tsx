@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Segmented, Button, DatePicker, Select } from "@utilities";
-import { PredictionCard, type PredictionCardProps } from "@utilities";
+import { Segmented, Button, DatePicker, Select } from "@playpredict/ui";
+import { PredictionCard, type PredictionCardProps } from "@common";
 import { predictionsDummyData } from "@constants";
 import { MdInsertChartOutlined } from "react-icons/md";
 import ProfileStats from "./ProfileStats";

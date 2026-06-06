@@ -72,3 +72,58 @@ export interface ProfileStatsType {
     form: FormResult[];
     achievements: string[];   // badge image URLs (empty strings = placeholder)
 }
+
+/* ── Sport ── */
+
+export interface Sport {
+    _id: string;
+    sportId: number;
+    sportName: string;
+    slug: string;
+    isActive: boolean;
+}
+
+export interface Tournament {
+    _id: string;
+    tournamentId: number;
+    sportId: number;
+    name: string;
+    slug: string;
+    category: string;
+    categorySlug: string;
+}
+
+/** Generic envelope for paginated list endpoints (matches /sport/participants). */
+export interface Paginated<T> {
+    pageSize: number;
+    pageNumber: number;
+    total: number;
+    data: T[];
+}
+
+/** Best-guess shape for /sport/games — endpoint currently 500s, so adjust when live. */
+export interface Game {
+    _id: string;
+    fixtureId: number | string;
+    tournamentId: number;
+    sportId: number;
+    startTime: string;
+    homeTeam: { id?: number | string; name: string };
+    awayTeam: { id?: number | string; name: string };
+    odds?: {
+        w1?: number;
+        x?: number;
+        w2?: number;
+    };
+}
+
+/* ── Auth ── */
+
+export interface AuthUser {
+    id: string;
+    email: string;
+    name?: string;
+    username?: string;
+    avatar?: string;
+    verified?: boolean;
+}

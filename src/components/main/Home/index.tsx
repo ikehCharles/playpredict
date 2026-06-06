@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { XSlidingButtons } from "@utilities";
+import { XSlidingButtons } from "@playpredict/ui";
 import HomeFilters, { Filter } from "./Filters";
 import { buttonListDummyData } from "@constants";
 import Predictions from "./Predictions";

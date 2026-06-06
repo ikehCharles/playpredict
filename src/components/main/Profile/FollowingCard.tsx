@@ -1,7 +1,7 @@
 "use client";
 
 import { Avatar } from "@common";
-import { Button } from "@utilities";
+import { Button } from "@playpredict/ui";
 import { MdVerified } from "react-icons/md";
 import { Tag } from "antd";
 

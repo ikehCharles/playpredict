@@ -5,10 +5,9 @@ import { useRouter } from "next/navigation";
 import { Avatar, MenuProps } from "antd";
 import { MdMoreVert, MdVerified } from "react-icons/md";
 import { HiOutlineCheckCircle, HiOutlineXCircle, HiOutlineMinusCircle, HiOutlineFlag } from "react-icons/hi2";
-import { PredictionCardActions, PredictionDetailsBottomSheet } from "@common";
-import Badge from "./Badge";
-import Dropdown from "./Dropdown";
-import Tag from "./Tag";
+import { Badge, Dropdown, Tag } from "@playpredict/ui";
+import PredictionCardActions from "./PredictionCardActions";
+import PredictionDetailsBottomSheet from "./PredictionDetailsBottomSheet";
 import type { PredictionItemType, PredictionResult } from "@models";
 
 const items: MenuProps['items'] = [

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Avatar } from "antd";
 import { navItems, currentUserProfile } from "@constants";
-import { Icon } from "../utilities";
+import { Icon } from "@playpredict/ui";
 
 export default function Sidebar() {
   const pathname = usePathname();

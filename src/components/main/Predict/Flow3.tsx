@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Collapsible, Icon, Input } from "@utilities";
+import { Button, Collapsible, Icon, Input } from "@playpredict/ui";
 import { OddButton } from "@common";
 import type { Fixture } from "./Flow2";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";

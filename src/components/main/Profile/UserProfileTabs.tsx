@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Segmented, DatePicker, Select, PredictionCard, type PredictionCardProps } from "@utilities";
+import { Segmented, DatePicker, Select } from "@playpredict/ui";
+import { PredictionCard, type PredictionCardProps } from "@common";
 import { viewedUserTipsDummyData, viewedUserPastTipsDummyData } from "@constants";
 import ProfileStats from "./ProfileStats";
 import ProfileLikes from "./ProfileLikes";

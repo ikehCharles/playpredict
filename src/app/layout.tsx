@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-import { AntTheme as ThemeConfigProvider } from "@hooks";
+import { AntTheme as ThemeConfigProvider, QueryProvider } from "@hooks";
 import LayoutContent from "./LayoutContent";
 import { ServiceWorkerRegistration } from "@common";
 
@@ -50,9 +50,11 @@ export default function RootLayout({
       <body className="antialiased">
 
         <ServiceWorkerRegistration />
-        <ThemeConfigProvider>
-          <LayoutContent>{children}</LayoutContent>
-        </ThemeConfigProvider>
+        <QueryProvider>
+          <ThemeConfigProvider>
+            <LayoutContent>{children}</LayoutContent>
+          </ThemeConfigProvider>
+        </QueryProvider>
       </body>
     </html>
   );

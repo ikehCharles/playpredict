@@ -4,7 +4,7 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Avatar, RightDrawer } from "@common";
-import { Button, Icon } from "@utilities";
+import { Button, Icon } from "@playpredict/ui";
 import { currentUserProfile, GetBreakpoint } from "@constants";
 import { MdVerified } from "react-icons/md";
 import { HiOutlineFlag, HiOutlineCalendar, HiOutlinePencil, HiOutlineShare, HiOutlineCog6Tooth } from "react-icons/hi2";

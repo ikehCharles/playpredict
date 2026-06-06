@@ -6,7 +6,7 @@ import { MdVerified } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 import { LuTrophy } from "react-icons/lu";
 import { formatCount } from "@constants";
-import { Icon, Tag, Tooltip } from "@utilities";
+import { Icon, Tag, Tooltip } from "@playpredict/ui";
 
 export interface RankingUser {
   id: string;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import Button from "../utilities/Button";
+import { Button } from "@playpredict/ui";
 
 const REPORT_REASONS = [
     "Copied or Plagiarized Tip",

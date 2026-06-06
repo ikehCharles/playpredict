@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@utilities";
+import { Button } from "@playpredict/ui";
 import { FaEnvelopeOpenText } from "react-icons/fa6";
 import { IoCheckmarkCircle } from "react-icons/io5";
 

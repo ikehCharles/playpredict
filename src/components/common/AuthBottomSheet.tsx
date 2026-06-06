@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { FaXTwitter } from "react-icons/fa6";
-import { Button } from "@utilities";
+import { Button } from "@playpredict/ui";
 
 interface AuthBottomSheetProps {
   isOpen: boolean;

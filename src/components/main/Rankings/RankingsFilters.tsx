@@ -1,6 +1,6 @@
 "use client";
 
-import { Select } from "@utilities";
+import { Select } from "@playpredict/ui";
 import { rankingsFilterOptions } from "@constants";
 
 export interface RankingsFilterState {

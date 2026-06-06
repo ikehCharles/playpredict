@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navItems } from "@constants";
-import { Icon } from "../utilities";
+import { Icon } from "@playpredict/ui";
 
 export default function BottomNav() {
   const pathname = usePathname();

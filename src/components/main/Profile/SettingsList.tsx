@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Switch } from "@utilities";
+import { Button, Switch } from "@playpredict/ui";
 import Link from "next/link";
 import {
   HiOutlineLanguage,

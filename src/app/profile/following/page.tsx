@@ -6,7 +6,7 @@ import { PageHeader } from "@common";
 import FollowingCard from "@/src/components/main/Profile/FollowingCard";
 import { followingListDummyData } from "@constants";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { Input } from "@utilities";
+import { Input } from "@playpredict/ui";
 import type { FollowingUser } from "@/src/components/main/Profile/FollowingCard";
 import { MdKeyboardBackspace } from "react-icons/md";
 

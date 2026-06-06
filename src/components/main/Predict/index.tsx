@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { PageHeader } from "@common";
-import { Button, Drawer } from "@utilities";
+import { Button, Drawer } from "@playpredict/ui";
 import Flow1 from "./Flow1";
 import Flow2 from "./Flow2";
 import Flow3 from "./Flow3";
@@ -17,6 +17,8 @@ export default function Predict({ drawerMode }: { drawerMode?: boolean }) {
   const searchParams = useSearchParams();
 
   const selectedLeague = searchParams.get("league");
+  const tournamentIdParam = searchParams.get("tournamentId");
+  const selectedTournamentId = tournamentIdParam ? Number(tournamentIdParam) : null;
   const selectedFixture = useMemo(() => {
     const param = searchParams.get("fixture");
     if (!param) return null;
@@ -26,25 +28,36 @@ export default function Predict({ drawerMode }: { drawerMode?: boolean }) {
   const isFlow2 = Boolean(selectedLeague);
   const isFlow3 = Boolean(selectedLeague && selectedFixture);
 
-  const buildHref = (league: string | null, fixture: Fixture | null) => {
+  const buildHref = (
+    league: string | null,
+    tournamentId: number | null,
+    fixture: Fixture | null,
+  ) => {
     const params = new URLSearchParams();
     if (league) params.set("league", league);
+    if (tournamentId !== null) params.set("tournamentId", String(tournamentId));
     if (fixture) params.set("fixture", JSON.stringify(fixture));
     const query = params.toString();
     return query ? `/predict?${query}` : "/predict";
   };
 
-  const backHref = isFlow3 ? buildHref(selectedLeague, null) : "/predict";
+  const backHref = isFlow3 ? buildHref(selectedLeague, selectedTournamentId, null) : "/predict";
 
-  const handleLeagueSelect = (league: string) => router.push(buildHref(league, null));
-  const handleFixtureSelect = (fixture: Fixture) => router.push(buildHref(selectedLeague, fixture));
+  const handleLeagueSelect = (league: string, tournamentId: number) =>
+    router.push(buildHref(league, tournamentId, null));
+  const handleFixtureSelect = (fixture: Fixture) =>
+    router.push(buildHref(selectedLeague, selectedTournamentId, fixture));
   const handleClose = () => router.push("/");
   const handleBack = () => router.push(backHref);
 
   const flows = isFlow3 ? (
     <Flow3 fixture={selectedFixture as Fixture} selectedLeague={selectedLeague ?? ""} />
   ) : isFlow2 ? (
-    <Flow2 selectedLeague={selectedLeague ?? ""} onFixtureSelect={handleFixtureSelect} />
+    <Flow2
+      selectedLeague={selectedLeague ?? ""}
+      tournamentId={selectedTournamentId ?? undefined}
+      onFixtureSelect={handleFixtureSelect}
+    />
   ) : (
     <Flow1 onLeagueSelect={handleLeagueSelect} />
   );

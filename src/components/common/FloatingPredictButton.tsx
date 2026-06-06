@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "../utilities";
+import { Icon } from "@playpredict/ui";
 
 const FloatingPredictButton: React.FC<{ onClick?: (e:React.MouseEvent) => void }> = ({ onClick }) => {
   const pathname = usePathname();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PredictionCard, PredictionCardProps } from "@utilities";
+import { PredictionCard, PredictionCardProps } from "@common";
 import { predictionsDummyData } from "@constants";
 
 export default function Predictions() {
